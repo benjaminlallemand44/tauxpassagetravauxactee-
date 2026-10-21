@@ -9,8 +9,7 @@ from enquete.questionnaire import OUI_PETITS
 
 
 @pytest.fixture(autouse=True)
-def base_temporaire(tmp_path, monkeypatch):
-    monkeypatch.setenv("ENQUETE_DB", str(tmp_path / "reponses.db"))
+def base_temporaire(db, monkeypatch):
     monkeypatch.setenv("ADMIN_PASSWORD", "secret")
 
 
@@ -67,8 +66,7 @@ def test_parcours_complet():
     assert at.metric[2].value == "Validé"
 
 
-def test_validation_bloquee_par_partie2_obligatoire():
-    db = Path(core.chemin_base())
+def test_validation_bloquee_par_partie2_obligatoire(db):
     batiments = core.charger_batiments()
     t = core.tableau_structure(db, "S0001", batiments).assign(statut="Non")
     t.loc[0, "statut"] = OUI_PETITS

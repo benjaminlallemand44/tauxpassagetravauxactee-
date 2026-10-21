@@ -11,11 +11,6 @@ def ref():
     return core.charger_structures(), core.charger_batiments()
 
 
-@pytest.fixture
-def db(tmp_path):
-    return tmp_path / "reponses.db"
-
-
 def test_referentiel_de_test(ref):
     structures, batiments = ref
     tailles = batiments.groupby("id_structure").size().to_dict()

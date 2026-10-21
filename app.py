@@ -26,13 +26,23 @@ def referentiel() -> tuple[pd.DataFrame, pd.DataFrame]:
     return core.charger_structures(), core.charger_batiments()
 
 
-def mot_de_passe_admin() -> str | None:
-    if os.environ.get("ADMIN_PASSWORD"):
-        return os.environ["ADMIN_PASSWORD"]
+def secret(nom: str) -> str | None:
+    """Variable d'environnement, sinon secret Streamlit (Settings > Secrets)."""
+    if os.environ.get(nom):
+        return os.environ[nom]
     try:
-        return st.secrets.get("ADMIN_PASSWORD")
+        return st.secrets.get(nom)
     except Exception:  # pas de fichier secrets.toml
         return None
+
+
+def mot_de_passe_admin() -> str | None:
+    return secret("ADMIN_PASSWORD")
+
+
+# La couche de stockage lit DATABASE_URL dans l'environnement.
+if (url_base := secret("DATABASE_URL")) and not os.environ.get("DATABASE_URL"):
+    os.environ["DATABASE_URL"] = url_base
 
 
 def se_deconnecter() -> None:
@@ -119,7 +129,7 @@ def editeur_partie1(tableau: pd.DataFrame, batiments: pd.DataFrame, cle: str) ->
     donnees = tableau[colonnes].copy()
     donnees["statut"] = donnees["statut"].replace("", None)
     return st.data_editor(
-        donnees, key=cle, hide_index=True, num_rows="fixed", use_container_width=True,
+        donnees, key=cle, hide_index=True, num_rows="fixed", width="stretch",
         height=min(38 + 35 * len(donnees), 600),
         disabled=[c for c in colonnes if c not in ("statut", "commentaire")],
         column_config=config,
@@ -142,7 +152,7 @@ def editeur_partie2(details: pd.DataFrame, cle: str) -> pd.DataFrame:
         **{q["cle"]: _colonne_question(q) for q in QUESTIONS_PARTIE2},
     }
     return st.data_editor(
-        donnees, key=cle, hide_index=True, num_rows="fixed", use_container_width=True,
+        donnees, key=cle, hide_index=True, num_rows="fixed", width="stretch",
         height=min(38 + 35 * len(donnees), 600),
         disabled=["num", "nom_batiment", "statut"], column_config=config,
     )
@@ -191,13 +201,13 @@ def page_questionnaire(structure: dict, batiments: pd.DataFrame) -> None:
                        "est pré-sélectionnée : vérifiez-la et corrigez-la si besoin.")
         edite1 = editeur_partie1(tableau, batiments, f"p1_{id_s}_{version}")
         b1, b2 = st.columns(2)
-        if b1.button("💾 Enregistrer la partie 1", type="primary", use_container_width=True):
+        if b1.button("💾 Enregistrer la partie 1", type="primary", width="stretch"):
             if not _erreurs("Corrigez les saisies suivantes :", core.verifier_reponses(edite1)):
                 core.enregistrer_reponses(db, id_s, edite1, batiments)
                 _nouvelle_version()
                 st.session_state["message"] = "Partie 1 enregistrée."
                 st.rerun()
-        if b2.button(f"Mettre « {STATUT_NON} » sur les bâtiments non renseignés", use_container_width=True):
+        if b2.button(f"Mettre « {STATUT_NON} » sur les bâtiments non renseignés", width="stretch"):
             edite1 = edite1.copy()
             vides = edite1["statut"].fillna("").eq("")
             edite1.loc[vides, "statut"] = STATUT_NON
@@ -227,7 +237,7 @@ def page_questionnaire(structure: dict, batiments: pd.DataFrame) -> None:
                     st.rerun()
 
     st.divider()
-    if st.button("✅ Valider le questionnaire", use_container_width=True):
+    if st.button("✅ Valider le questionnaire", width="stretch"):
         erreurs = core.verifier_reponses(edite1)
         if edite2 is not None:
             erreurs += core.verifier_details(edite2)
@@ -279,6 +289,11 @@ def page_admin(structures: pd.DataFrame, batiments: pd.DataFrame) -> None:
         return
 
     db = core.chemin_base()
+    if isinstance(db, str):
+        st.caption("Stockage des réponses : base PostgreSQL externe (DATABASE_URL).")
+    else:
+        st.warning("Stockage des réponses : fichier local. Sur Streamlit Community Cloud, il est "
+                   "effacé à chaque redémarrage : renseignez DATABASE_URL avant la vraie collecte.")
     synthese = core.avancement(db, structures, batiments)
     export = core.export_complet(db, structures, batiments)
 
@@ -290,7 +305,7 @@ def page_admin(structures: pd.DataFrame, batiments: pd.DataFrame) -> None:
 
     st.subheader("Avancement par structure")
     st.dataframe(
-        synthese, hide_index=True, use_container_width=True,
+        synthese, hide_index=True, width="stretch",
         column_config={"avancement_%": st.column_config.ProgressColumn(
             "Avancement", min_value=0, max_value=100, format="%d %%")},
     )
@@ -299,8 +314,10 @@ def page_admin(structures: pd.DataFrame, batiments: pd.DataFrame) -> None:
     choix = st.selectbox(
         "Structure", synthese["id_structure"],
         format_func=lambda i: f"{i} – {synthese.set_index('id_structure').loc[i, 'nom_structure']}")
-    st.dataframe(export[export["id_structure"] == choix].drop(columns=["email"]),
-                 hide_index=True, use_container_width=True)
+    vue = export[export["id_structure"] == choix].drop(columns=["email"])
+    en_tete = ["num", "nom_batiment", "statut", "commentaire", *[q["cle"] for q in QUESTIONS_PARTIE2]]
+    st.dataframe(vue[en_tete + [c for c in vue.columns if c not in en_tete]],
+                 hide_index=True, width="stretch")
 
     st.subheader("Exports (une ligne par bâtiment)")
     d1, d2 = st.columns(2)

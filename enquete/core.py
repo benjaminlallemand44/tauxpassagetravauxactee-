@@ -8,12 +8,13 @@ import hmac
 import json
 import os
 import re
-import sqlite3
-from contextlib import closing
 from datetime import datetime
+from functools import lru_cache
 from pathlib import Path
 
 import pandas as pd
+from sqlalchemy import create_engine, text
+from sqlalchemy.engine import Engine
 
 from enquete.questionnaire import (QUESTIONS_PARTIE2, STATUT_SI_MOE, STATUTS,
                                    STATUTS_DETAILLES)
@@ -122,49 +123,72 @@ def identifier_par_email(structures: pd.DataFrame, email: str, code: str) -> dic
 
 
 # --------------------------------------------------------------------------
-# Stockage (SQLite)
+# Stockage : PostgreSQL (Supabase…) si DATABASE_URL est défini, sinon fichier SQLite
 # --------------------------------------------------------------------------
-def chemin_base() -> Path:
-    return Path(os.environ.get("ENQUETE_DB", DOSSIER_DONNEES / "reponses.db"))
+_SCHEMA = [
+    """CREATE TABLE IF NOT EXISTS reponses (
+           id_structure TEXT NOT NULL,
+           id_batiment  TEXT NOT NULL,
+           statut       TEXT,
+           commentaire  TEXT,
+           maj_le       TEXT NOT NULL,
+           PRIMARY KEY (id_structure, id_batiment))""",
+    """CREATE TABLE IF NOT EXISTS details (
+           id_structure TEXT NOT NULL,
+           id_batiment  TEXT NOT NULL,
+           donnees      TEXT NOT NULL,
+           maj_le       TEXT NOT NULL,
+           PRIMARY KEY (id_structure, id_batiment))""",
+    """CREATE TABLE IF NOT EXISTS validations (
+           id_structure TEXT PRIMARY KEY,
+           valide_le    TEXT NOT NULL)""",
+]
 
 
-def _connexion(db: Path) -> sqlite3.Connection:
-    db.parent.mkdir(parents=True, exist_ok=True)
-    con = sqlite3.connect(db)
-    con.execute(
-        """CREATE TABLE IF NOT EXISTS reponses (
-               id_structure TEXT NOT NULL,
-               id_batiment  TEXT NOT NULL,
-               statut       TEXT,
-               commentaire  TEXT,
-               maj_le       TEXT NOT NULL,
-               PRIMARY KEY (id_structure, id_batiment))"""
-    )
-    con.execute(
-        """CREATE TABLE IF NOT EXISTS details (
-               id_structure TEXT NOT NULL,
-               id_batiment  TEXT NOT NULL,
-               donnees      TEXT NOT NULL,
-               maj_le       TEXT NOT NULL,
-               PRIMARY KEY (id_structure, id_batiment))"""
-    )
-    con.execute(
-        """CREATE TABLE IF NOT EXISTS validations (
-               id_structure TEXT PRIMARY KEY,
-               valide_le    TEXT NOT NULL)"""
-    )
-    return con
+def chemin_base() -> str | Path:
+    """Adresse de la base (DATABASE_URL) ou, à défaut, chemin du fichier SQLite local."""
+    return os.environ.get("DATABASE_URL") or Path(
+        os.environ.get("ENQUETE_DB", DOSSIER_DONNEES / "reponses.db"))
+
+
+@lru_cache(maxsize=None)
+def _moteur_pour(url: str) -> Engine:
+    # Adresse Supabase « postgresql://… » ou « postgres://… » : on impose le pilote psycopg 3,
+    # le seul installé (le pilote par défaut dépend de la version de SQLAlchemy).
+    for prefixe in ("postgres://", "postgresql://"):
+        if url.startswith(prefixe):
+            url = "postgresql+psycopg://" + url[len(prefixe):]
+    moteur = create_engine(url, pool_pre_ping=True)
+    with moteur.begin() as con:
+        for ddl in _SCHEMA:
+            con.execute(text(ddl))
+    return moteur
+
+
+def _moteur(db: str | Path) -> Engine:
+    if isinstance(db, Path):
+        db.parent.mkdir(parents=True, exist_ok=True)
+        return _moteur_pour(f"sqlite:///{db.resolve()}")
+    return _moteur_pour(db)
+
+
+def _lire(db: str | Path, requete: str, **params) -> pd.DataFrame:
+    with _moteur(db).connect() as con:
+        return pd.read_sql_query(text(requete), con, params=params)
+
+
+def _ecrire(db: str | Path, requete: str, lignes: list[dict]) -> None:
+    if lignes:
+        with _moteur(db).begin() as con:
+            con.execute(text(requete), lignes)
 
 
 def _maintenant() -> str:
     return datetime.now().isoformat(timespec="seconds")
 
 
-def charger_reponses(db: Path, id_structure: str) -> pd.DataFrame:
-    with closing(_connexion(db)) as con:
-        return pd.read_sql_query(
-            "SELECT * FROM reponses WHERE id_structure = ?", con, params=(id_structure,)
-        )
+def charger_reponses(db: str | Path, id_structure: str) -> pd.DataFrame:
+    return _lire(db, "SELECT * FROM reponses WHERE id_structure = :id", id=id_structure)
 
 
 def _nettoyer(valeur) -> str:
@@ -184,26 +208,22 @@ def verifier_reponses(reponses: pd.DataFrame) -> list[str]:
     return erreurs
 
 
-def enregistrer_reponses(db: Path, id_structure: str, reponses: pd.DataFrame,
+def enregistrer_reponses(db: str | Path, id_structure: str, reponses: pd.DataFrame,
                          batiments: pd.DataFrame) -> int:
     """Enregistre les réponses d'une structure. Les bâtiments qui n'appartiennent
     pas à la structure sont ignorés. Renvoie le nombre de lignes enregistrées."""
     autorises = set(batiments.loc[batiments["id_structure"] == id_structure, "id_batiment"])
     maintenant = _maintenant()
     lignes = [
-        (id_structure, r["id_batiment"], _nettoyer(r.get("statut")),
-         _nettoyer(r.get("commentaire")), maintenant)
+        {"s": id_structure, "b": r["id_batiment"], "statut": _nettoyer(r.get("statut")),
+         "commentaire": _nettoyer(r.get("commentaire")), "maj": maintenant}
         for _, r in reponses.iterrows()
         if r["id_batiment"] in autorises
     ]
-    with closing(_connexion(db)) as con, con:
-        con.executemany(
-            """INSERT INTO reponses VALUES (?, ?, ?, ?, ?)
-               ON CONFLICT (id_structure, id_batiment) DO UPDATE SET
-                 statut = excluded.statut, commentaire = excluded.commentaire,
-                 maj_le = excluded.maj_le""",
-            lignes,
-        )
+    _ecrire(db, """INSERT INTO reponses VALUES (:s, :b, :statut, :commentaire, :maj)
+                   ON CONFLICT (id_structure, id_batiment) DO UPDATE SET
+                     statut = excluded.statut, commentaire = excluded.commentaire,
+                     maj_le = excluded.maj_le""", lignes)
     return len(lignes)
 
 
@@ -243,25 +263,21 @@ def verifier_details(details: pd.DataFrame, questions: list[dict] = QUESTIONS_PA
     return erreurs
 
 
-def enregistrer_details(db: Path, id_structure: str, details: pd.DataFrame,
+def enregistrer_details(db: str | Path, id_structure: str, details: pd.DataFrame,
                         batiments: pd.DataFrame, questions: list[dict] = QUESTIONS_PARTIE2) -> int:
     autorises = set(batiments.loc[batiments["id_structure"] == id_structure, "id_batiment"])
     maintenant = _maintenant()
     lignes = [
-        (id_structure, r["id_batiment"],
-         json.dumps({q["cle"]: _valeur_detail(q, r.get(q["cle"])) for q in questions},
-                    ensure_ascii=False),
-         maintenant)
+        {"s": id_structure, "b": r["id_batiment"],
+         "donnees": json.dumps({q["cle"]: _valeur_detail(q, r.get(q["cle"])) for q in questions},
+                               ensure_ascii=False),
+         "maj": maintenant}
         for _, r in details.iterrows()
         if r["id_batiment"] in autorises
     ]
-    with closing(_connexion(db)) as con, con:
-        con.executemany(
-            """INSERT INTO details VALUES (?, ?, ?, ?)
-               ON CONFLICT (id_structure, id_batiment) DO UPDATE SET
-                 donnees = excluded.donnees, maj_le = excluded.maj_le""",
-            lignes,
-        )
+    _ecrire(db, """INSERT INTO details VALUES (:s, :b, :donnees, :maj)
+                   ON CONFLICT (id_structure, id_batiment) DO UPDATE SET
+                     donnees = excluded.donnees, maj_le = excluded.maj_le""", lignes)
     return len(lignes)
 
 
@@ -273,25 +289,21 @@ def _details_en_colonnes(brut: pd.DataFrame, questions: list[dict]) -> pd.DataFr
     return pd.concat([brut[["id_structure", "id_batiment"]], valeurs.reindex(columns=cles)], axis=1)
 
 
-def valider(db: Path, id_structure: str) -> None:
-    with closing(_connexion(db)) as con, con:
-        con.execute(
-            "INSERT OR REPLACE INTO validations VALUES (?, ?)", (id_structure, _maintenant())
-        )
+def valider(db: str | Path, id_structure: str) -> None:
+    _ecrire(db, """INSERT INTO validations VALUES (:s, :le)
+                   ON CONFLICT (id_structure) DO UPDATE SET valide_le = excluded.valide_le""",
+            [{"s": id_structure, "le": _maintenant()}])
 
 
-def date_validation(db: Path, id_structure: str) -> str | None:
-    with closing(_connexion(db)) as con:
-        ligne = con.execute(
-            "SELECT valide_le FROM validations WHERE id_structure = ?", (id_structure,)
-        ).fetchone()
-    return ligne[0] if ligne else None
+def date_validation(db: str | Path, id_structure: str) -> str | None:
+    lignes = _lire(db, "SELECT valide_le FROM validations WHERE id_structure = :id", id=id_structure)
+    return lignes["valide_le"].iloc[0] if len(lignes) else None
 
 
 # --------------------------------------------------------------------------
 # Vues combinées
 # --------------------------------------------------------------------------
-def tableau_structure(db: Path, id_structure: str, batiments: pd.DataFrame) -> pd.DataFrame:
+def tableau_structure(db: str | Path, id_structure: str, batiments: pd.DataFrame) -> pd.DataFrame:
     """Bâtiments de la structure avec leurs réponses déjà saisies. Un bâtiment jamais
     enregistré ayant reçu une MOE est pré-rempli avec STATUT_SI_MOE (colonne pre_rempli)."""
     bats = batiments[batiments["id_structure"] == id_structure].copy()
@@ -308,25 +320,22 @@ def tableau_structure(db: Path, id_structure: str, batiments: pd.DataFrame) -> p
     return tableau.drop(columns=["maj_le"]).reset_index(drop=True)
 
 
-def tableau_details(db: Path, id_structure: str, batiments: pd.DataFrame,
+def tableau_details(db: str | Path, id_structure: str, batiments: pd.DataFrame,
                     questions: list[dict] = QUESTIONS_PARTIE2) -> pd.DataFrame:
     """Partie 2 : bâtiments dont la réponse ENREGISTRÉE ouvre les détails."""
     tableau = tableau_structure(db, id_structure, batiments)
     concernes = tableau[tableau["statut"].isin(STATUTS_DETAILLES) & ~tableau["pre_rempli"]]
-    with closing(_connexion(db)) as con:
-        brut = pd.read_sql_query(
-            "SELECT * FROM details WHERE id_structure = ?", con, params=(id_structure,))
+    brut = _lire(db, "SELECT * FROM details WHERE id_structure = :id", id=id_structure)
     details = _details_en_colonnes(brut, questions).drop(columns=["id_structure"])
     return concernes.merge(details, on="id_batiment", how="left").reset_index(drop=True)
 
 
-def export_complet(db: Path, structures: pd.DataFrame, batiments: pd.DataFrame,
+def export_complet(db: str | Path, structures: pd.DataFrame, batiments: pd.DataFrame,
                    questions: list[dict] = QUESTIONS_PARTIE2) -> pd.DataFrame:
     """Une ligne par bâtiment : référentiel + réponses (parties 1 et 2) + validation."""
-    with closing(_connexion(db)) as con:
-        rep = pd.read_sql_query("SELECT * FROM reponses", con)
-        det = pd.read_sql_query("SELECT * FROM details", con)
-        val = pd.read_sql_query("SELECT * FROM validations", con)
+    rep = _lire(db, "SELECT * FROM reponses")
+    det = _lire(db, "SELECT * FROM details")
+    val = _lire(db, "SELECT * FROM validations")
     infos = structures[["id_structure", "nom_structure", "type_structure", "email"]]
     export = (
         batiments.merge(infos, on="id_structure", how="left")
@@ -340,7 +349,7 @@ def export_complet(db: Path, structures: pd.DataFrame, batiments: pd.DataFrame,
     return export
 
 
-def avancement(db: Path, structures: pd.DataFrame, batiments: pd.DataFrame) -> pd.DataFrame:
+def avancement(db: str | Path, structures: pd.DataFrame, batiments: pd.DataFrame) -> pd.DataFrame:
     export = export_complet(db, structures, batiments)
     export["renseigne"] = export["statut"].fillna("").ne("")
     synthese = (

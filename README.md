@@ -46,7 +46,8 @@ Ouvrez `https://…/?admin=1` et saisissez le mot de passe `ADMIN_PASSWORD`. La 
 - l'export **Excel** ou **CSV** de toutes les réponses, avec une ligne par bâtiment : référentiel,
   réponse de la partie 1, détails de la partie 2, date de validation.
 
-Les réponses sont stockées dans `data/reponses.db` (SQLite). Ce fichier n'est jamais poussé dans
+Les réponses sont stockées dans la base Supabase (voir plus bas), ou à défaut dans
+`data/reponses.db` (SQLite). Ce fichier n'est jamais poussé dans
 le dépôt. Pensez à le **sauvegarder régulièrement** pendant la collecte : faites un export Excel
 ou copiez ce fichier.
 
@@ -137,20 +138,38 @@ figure alors dans `brevo_contacts.csv`, et il faudra envoyer les autres liens à
 
 | Variable | Rôle | Par défaut |
 |---|---|---|
-| `ADMIN_PASSWORD` | mot de passe de la page d'administration (ou `.streamlit/secrets.toml`) | aucun : page admin désactivée |
+| `ADMIN_PASSWORD` | mot de passe de la page d'administration | aucun : page admin désactivée |
+| `DATABASE_URL` | adresse de la base PostgreSQL (Supabase…) qui stocke les réponses | aucune : fichier local |
 | `ENQUETE_DATA_DIR` | dossier du référentiel (`structures.csv`, `batiments.csv`) | `data/` |
-| `ENQUETE_DB` | fichier SQLite des réponses | `data/reponses.db` |
+| `ENQUETE_DB` | fichier SQLite des réponses, si `DATABASE_URL` est absent | `data/reponses.db` |
 
-## Hébergement : à décider avant l'envoi
+Sur Streamlit Community Cloud, ces valeurs se saisissent dans **⋮ → Settings → Secrets**, une
+par ligne : `ADMIN_PASSWORD = "…"`. En local, utilisez des variables d'environnement ou un
+fichier `.streamlit/secrets.toml` (ignoré par Git).
 
-Les réponses sont stockées dans un fichier SQLite. Il faut donc un hébergement avec **disque persistant** :
+## Stockage des réponses : brancher Supabase avant la vraie collecte
 
-- **Serveur ou VM** (OVH, Scaleway, serveur interne…) : `streamlit run app.py` derrière un
-  reverse proxy HTTPS. C'est la solution la plus simple avec le code actuel.
-- **Streamlit Community Cloud** : très bien pour tester, mais ⚠️ le disque est effacé à chaque
-  redémarrage, et les réponses seraient perdues. Pour la vraie collecte, il faudrait passer le
-  stockage sur une base externe (PostgreSQL : Supabase, Neon…). Seules les fonctions de stockage
-  de `enquete/core.py` sont à adapter.
+Sans `DATABASE_URL`, les réponses vont dans un fichier local. C'est parfait sur un ordinateur,
+mais sur Streamlit Community Cloud ce fichier est **effacé à chaque redémarrage**. La page admin
+affiche un avertissement tant que c'est le cas.
+
+1. Créez un compte sur [supabase.com](https://supabase.com), puis **New project** :
+   - un nom, par exemple `enquete-renovation` ;
+   - un **mot de passe de base de données** (notez-le) ;
+   - une **région en Europe**, par exemple Frankfurt ou Paris.
+2. Une fois le projet créé, cliquez sur **Connect** en haut de la page. Choisissez l'onglet
+   **Connection string**, type **URI**, méthode **Session pooler**. Copiez l'adresse, de la forme :
+   `postgresql://postgres.xxxx:[YOUR-PASSWORD]@aws-0-eu-central-1.pooler.supabase.com:5432/postgres`
+   Remplacez `[YOUR-PASSWORD]` par le mot de passe de l'étape 1.
+   ⚠️ Prenez bien le **Session pooler**, et non la « Direct connection » : Streamlit Cloud ne
+   peut pas joindre cette dernière.
+3. Dans les Secrets Streamlit, ajoutez la ligne :
+   `DATABASE_URL = "postgresql://postgres.xxxx:motdepasse@aws-0-eu-central-1.pooler.supabase.com:5432/postgres"`
+4. Enregistrez. L'application redémarre et crée elle-même ses tables (`reponses`, `details`,
+   `validations`). La page admin indique alors « base PostgreSQL externe ».
+
+Les réponses sont ensuite consultables dans la page admin et dans ses exports, mais aussi
+directement dans Supabase (**Table Editor**), qui permet aussi un export CSV.
 
 Pensez au **RGPD** : mention d'information dans le mail, hébergement dans l'UE, durée de conservation.
 
@@ -159,6 +178,8 @@ Pensez au **RGPD** : mention d'information dans le mail, hébergement dans l'UE,
 ```bash
 pip install pytest
 python -m pytest
+# tests supplémentaires sur une base PostgreSQL de test (elle est vidée !) :
+TEST_DATABASE_URL=postgresql://postgres@localhost:5432/postgres python -m pytest
 ```
 
 ## Structure du dépôt
