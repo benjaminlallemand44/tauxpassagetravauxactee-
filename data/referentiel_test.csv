@@ -1,0 +1,440 @@
+﻿id_structure;nom_structure;type_structure;email;nom_batiment;commune;surface_m2;annee_construction;sdie;audit;moe;amo
+S0001;Commune de Saint-Aubin-les-Prés;Commune;test1@votre-domaine.fr;École élémentaire Le Parc;Les Essarts;2580;1937;Oui;Non;Non;Non
+S0001;Commune de Saint-Aubin-les-Prés;Commune;test1@votre-domaine.fr;Crèche Jaurès;Belcourt;1030;1935;Oui;Oui;Non;Non
+S0001;Commune de Saint-Aubin-les-Prés;Commune;test1@votre-domaine.fr;Église Zola;Varennes;4670;1951;Non;Non;Oui;Non
+S0001;Commune de Saint-Aubin-les-Prés;Commune;test1@votre-domaine.fr;Médiathèque Hugo;Montclair;2280;1966;Oui;Non;Non;Non
+S0002;Communauté de communes du Val d'Orve;EPCI;test2@votre-domaine.fr;Déchetterie La Fontaine;Belcourt;7550;1997;Non;Oui;Non;Non
+S0002;Communauté de communes du Val d'Orve;EPCI;test2@votre-domaine.fr;Maison de services Rimbaud;Orvillers;5990;1929;Non;Non;Oui;Non
+S0002;Communauté de communes du Val d'Orve;EPCI;test2@votre-domaine.fr;Siège communautaire Rimbaud;Varennes;8950;1905;Non;Oui;Non;Non
+S0002;Communauté de communes du Val d'Orve;EPCI;test2@votre-domaine.fr;Déchetterie Moulin;Les Essarts;7260;1898;Non;Oui;Oui;Non
+S0002;Communauté de communes du Val d'Orve;EPCI;test2@votre-domaine.fr;Office de tourisme Hugo;Haut-Bois;2320;1963;Non;Oui;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Médiathèque Zola;Les Essarts;750;1934;Non;Oui;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Centre technique Zola;Mirande;1540;1947;Oui;Oui;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Crèche Les Tilleuls;Fontclaire;3780;1936;Non;Non;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;École maternelle Curie;Montclair;8190;1988;Non;Non;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Salle polyvalente Montesquieu;Belcourt;7040;1909;Non;Oui;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;École maternelle Hugo;Fontclaire;1690;1996;Oui;Non;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Gymnase Montesquieu;Saint-Aubin-les-Prés;8990;1956;Non;Non;Non;Oui
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Gymnase Montesquieu;Haut-Bois;80;1962;Non;Oui;Oui;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Salle polyvalente Moulin;Belcourt;2540;1900;Oui;Non;Non;Oui
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Gymnase Curie;Mirande;5700;1922;Non;Non;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Église La Fontaine;Varennes;7380;1959;Non;Oui;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Centre technique Pasteur;Varennes;2380;1896;Non;Non;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;École maternelle Le Parc;Belcourt;2420;1897;Non;Oui;Non;Oui
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Centre technique Moulin;Haut-Bois;1430;2001;Oui;Oui;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Crèche Ferry;Fontclaire;4280;1999;Non;Oui;Oui;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;École élémentaire Zola;Orvillers;8270;1907;Oui;Non;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Salle polyvalente Prévert;Varennes;850;1993;Non;Oui;Non;Oui
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Église Rimbaud;Belcourt;1030;1940;Oui;Non;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;École élémentaire Curie;Fontclaire;100;1979;Non;Oui;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Église Les Peupliers;Mirande;1660;1928;Non;Oui;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Médiathèque Jaurès;Belcourt;6060;2002;Non;Oui;Non;Oui
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;École maternelle Rimbaud;Montclair;780;1897;Non;Non;Non;Oui
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Mairie annexe Les Tilleuls;Prélong;480;1900;Non;Non;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Mairie annexe Les Peupliers;Orvillers;2520;1947;Non;Non;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;École maternelle Jaurès;Mirande;6440;1905;Oui;Oui;Oui;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;École maternelle Moulin;Orvillers;2990;1920;Non;Non;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Église Jaurès;Haut-Bois;3140;1906;Non;Non;Non;Oui
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Église Curie;Les Essarts;2960;1933;Non;Oui;Oui;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Centre technique Hugo;Belcourt;1020;1988;Non;Oui;Oui;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Salle polyvalente Curie;Mirande;5720;1989;Non;Oui;Oui;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Gymnase Montesquieu;Belcourt;8620;1974;Non;Non;Non;Oui
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;École élémentaire Ferry;Varennes;7060;1943;Non;Oui;Oui;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Gymnase Moulin;Montclair;8270;1925;Non;Non;Oui;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Crèche La Fontaine;Varennes;2810;1920;Non;Oui;Oui;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Mairie annexe Moulin;Mirande;3660;1958;Non;Non;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Crèche Ferry;Les Essarts;8930;1897;Non;Non;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Église Ferry;Belcourt;1260;1946;Oui;Oui;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Crèche Ferry;Orvillers;4540;2010;Oui;Oui;Non;Oui
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Crèche Jaurès;Haut-Bois;8330;1930;Non;Oui;Oui;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Médiathèque Les Peupliers;Saint-Aubin-les-Prés;7450;1956;Non;Oui;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Église Curie;Varennes;4380;1977;Non;Non;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Église Rimbaud;Belcourt;3190;1953;Oui;Oui;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Centre technique Prévert;Varennes;5310;2001;Non;Oui;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Salle polyvalente Montesquieu;Prélong;3510;1903;Non;Non;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Mairie annexe Curie;Belcourt;550;1942;Non;Oui;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Mairie annexe Le Parc;Fontclaire;5140;1982;Oui;Oui;Non;Oui
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;École maternelle La Fontaine;Fontclaire;2320;1925;Non;Non;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;École maternelle Prévert;Montclair;8280;1998;Non;Non;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Centre technique Les Tilleuls;Haut-Bois;4440;1994;Non;Non;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Mairie annexe Rimbaud;Les Essarts;7920;2013;Non;Oui;Oui;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Mairie annexe Hugo;Orvillers;3350;1900;Oui;Non;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;École maternelle Zola;Fontclaire;3460;1999;Non;Non;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;École élémentaire Rimbaud;Prélong;3970;2002;Oui;Non;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Crèche Montesquieu;Haut-Bois;8270;1936;Non;Non;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Crèche Le Parc;Montclair;8680;1999;Non;Oui;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;École élémentaire Pasteur;Fontclaire;1460;1998;Oui;Non;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Médiathèque La Fontaine;Fontclaire;2920;1987;Non;Oui;Oui;Oui
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Médiathèque Moulin;Saint-Aubin-les-Prés;8070;1890;Non;Oui;Non;Oui
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Gymnase Moulin;Montclair;4920;1909;Non;Oui;Oui;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Gymnase Les Tilleuls;Prélong;7730;1909;Non;Non;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Salle polyvalente Les Tilleuls;Fontclaire;4140;1930;Oui;Non;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Salle polyvalente Rimbaud;Prélong;8320;1910;Non;Oui;Non;Oui
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Médiathèque Pasteur;Haut-Bois;6710;1967;Oui;Oui;Oui;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Médiathèque Les Peupliers;Mirande;7320;1919;Non;Oui;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Église La Fontaine;Mirande;4840;1991;Non;Oui;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;École maternelle Hugo;Mirande;2570;1998;Non;Oui;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Médiathèque Curie;Mirande;2250;1970;Non;Oui;Oui;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Salle polyvalente Montesquieu;Belcourt;5370;1928;Oui;Non;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Centre technique Les Peupliers;Mirande;4660;1884;Oui;Non;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Médiathèque Prévert;Haut-Bois;5510;1968;Non;Oui;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Salle polyvalente Hugo;Les Essarts;2440;1910;Non;Non;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Gymnase Moulin;Varennes;7640;2003;Non;Non;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;École maternelle Rimbaud;Varennes;3110;1938;Non;Non;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;École élémentaire Jaurès;Haut-Bois;3070;1912;Non;Oui;Non;Oui
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Salle polyvalente Prévert;Mirande;4590;1967;Oui;Oui;Oui;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;École maternelle Zola;Mirande;830;1893;Oui;Oui;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Mairie annexe Pasteur;Haut-Bois;7900;1986;Non;Oui;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Centre technique Prévert;Les Essarts;8880;1989;Non;Oui;Non;Non
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Mairie annexe Les Peupliers;Varennes;2780;1900;Oui;Non;Non;Oui
+S0003;Ville de Montclair;Commune;test3@votre-domaine.fr;Centre technique Le Parc;Prélong;4890;1954;Oui;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Collège Les Peupliers;Varennes;2780;1930;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social Pasteur;Belcourt;1770;1958;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Le Parc;Les Essarts;7240;1983;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Collège Zola;Orvillers;6260;1944;Oui;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département Jaurès;Les Essarts;5980;1890;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre d'exploitation routier Curie;Prélong;4540;2005;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Collège Rimbaud;Montclair;3450;1985;Non;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département Jaurès;Mirande;980;1960;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Collège Les Peupliers;Haut-Bois;4810;1985;Oui;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales La Fontaine;Belcourt;2160;1948;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Collège Jaurès;Prélong;8260;1941;Non;Non;Non;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social Rimbaud;Saint-Aubin-les-Prés;4800;1910;Non;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Musée départemental Hugo;Fontclaire;8620;2003;Non;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département Montesquieu;Montclair;8920;1897;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département Hugo;Belcourt;2970;1956;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Montesquieu;Mirande;3610;1965;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social Le Parc;Varennes;5930;1978;Oui;Oui;Non;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Musée départemental La Fontaine;Fontclaire;4030;1918;Non;Non;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Collège Rimbaud;Mirande;1100;2014;Non;Non;Oui;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social Pasteur;Mirande;8080;1947;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Musée départemental Rimbaud;Haut-Bois;3970;1961;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département Pasteur;Varennes;6540;1953;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Musée départemental Le Parc;Saint-Aubin-les-Prés;4620;1922;Non;Oui;Non;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre d'exploitation routier Ferry;Orvillers;4490;1917;Oui;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social Pasteur;Prélong;8990;1977;Non;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Les Peupliers;Les Essarts;4780;1945;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département Curie;Saint-Aubin-les-Prés;4600;1968;Non;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Rimbaud;Les Essarts;2110;1978;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre d'exploitation routier Le Parc;Les Essarts;300;1981;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Collège Les Tilleuls;Mirande;8600;1953;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social Les Tilleuls;Les Essarts;7020;1915;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Jaurès;Prélong;3810;1913;Oui;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social La Fontaine;Haut-Bois;3820;2008;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales La Fontaine;Les Essarts;7720;1966;Non;Non;Non;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social Rimbaud;Fontclaire;8740;1973;Oui;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre d'exploitation routier Les Peupliers;Les Essarts;6060;1977;Non;Oui;Non;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Collège Les Tilleuls;Haut-Bois;3430;1936;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Musée départemental Zola;Saint-Aubin-les-Prés;1510;1891;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département Curie;Fontclaire;4720;1974;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Musée départemental Le Parc;Montclair;4320;1905;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Musée départemental Ferry;Varennes;4620;1993;Non;Oui;Non;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département Les Peupliers;Orvillers;700;1981;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Collège Les Peupliers;Varennes;6650;1885;Oui;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social Pasteur;Haut-Bois;2200;1935;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département Jaurès;Les Essarts;8870;1917;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Collège Curie;Belcourt;3740;1940;Non;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Montesquieu;Saint-Aubin-les-Prés;7710;1896;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département Moulin;Prélong;520;2013;Non;Oui;Non;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Zola;Saint-Aubin-les-Prés;5100;1993;Oui;Non;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre d'exploitation routier Les Tilleuls;Prélong;5690;1963;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Pasteur;Saint-Aubin-les-Prés;8810;1935;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Zola;Saint-Aubin-les-Prés;3280;1989;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Pasteur;Saint-Aubin-les-Prés;8590;1901;Oui;Non;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département Jaurès;Prélong;5830;1964;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Rimbaud;Belcourt;3020;1959;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social Rimbaud;Saint-Aubin-les-Prés;3660;1974;Oui;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département La Fontaine;Prélong;6360;1886;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre d'exploitation routier Le Parc;Les Essarts;3550;1969;Oui;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social Le Parc;Belcourt;1010;1935;Non;Oui;Non;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre d'exploitation routier La Fontaine;Prélong;6180;1901;Non;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Collège Hugo;Mirande;6850;1988;Non;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Collège Ferry;Fontclaire;1210;1952;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social Zola;Prélong;640;1881;Oui;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre d'exploitation routier Ferry;Saint-Aubin-les-Prés;150;2007;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département Montesquieu;Orvillers;810;1981;Non;Non;Oui;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre d'exploitation routier Les Tilleuls;Fontclaire;5950;1983;Non;Non;Non;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre d'exploitation routier Curie;Prélong;4790;1972;Oui;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département Pasteur;Fontclaire;8990;1959;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Musée départemental Pasteur;Haut-Bois;5300;1929;Non;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social Moulin;Saint-Aubin-les-Prés;1570;1945;Oui;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social La Fontaine;Mirande;4830;1994;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre d'exploitation routier Rimbaud;Orvillers;1620;1992;Oui;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Collège Ferry;Haut-Bois;830;1959;Non;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Musée départemental Rimbaud;Saint-Aubin-les-Prés;6370;2009;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Collège Prévert;Prélong;6750;1928;Non;Non;Non;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Collège La Fontaine;Orvillers;7390;1901;Non;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Montesquieu;Haut-Bois;6320;1920;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Musée départemental Les Tilleuls;Belcourt;8160;1965;Oui;Non;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Musée départemental Rimbaud;Prélong;1610;1965;Oui;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Musée départemental Le Parc;Fontclaire;1400;1901;Non;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Musée départemental Le Parc;Haut-Bois;1030;1988;Non;Non;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre d'exploitation routier La Fontaine;Mirande;2040;1937;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département La Fontaine;Haut-Bois;8630;2014;Oui;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Curie;Montclair;1930;1922;Non;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Les Tilleuls;Les Essarts;7780;1994;Oui;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social Ferry;Prélong;4590;1998;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social Rimbaud;Varennes;8280;1915;Non;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Collège Le Parc;Haut-Bois;8790;1911;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social Rimbaud;Fontclaire;1010;1936;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Montesquieu;Orvillers;2490;1978;Non;Oui;Oui;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Musée départemental Les Peupliers;Orvillers;8180;1917;Oui;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social La Fontaine;Mirande;4670;1881;Non;Non;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Musée départemental Les Tilleuls;Haut-Bois;4410;1908;Non;Oui;Oui;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Musée départemental La Fontaine;Prélong;4760;1896;Oui;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département Les Tilleuls;Varennes;7430;1916;Non;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social Les Peupliers;Saint-Aubin-les-Prés;5440;1972;Oui;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département Jaurès;Fontclaire;4890;1891;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Collège Ferry;Varennes;7580;1906;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département Ferry;Montclair;8580;1998;Non;Oui;Non;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Musée départemental La Fontaine;Mirande;450;1955;Oui;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre d'exploitation routier Montesquieu;Fontclaire;8420;2001;Non;Oui;Non;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Collège Rimbaud;Orvillers;2870;1911;Non;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Ferry;Montclair;5160;2007;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Pasteur;Fontclaire;6240;1926;Non;Oui;Oui;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre d'exploitation routier Prévert;Prélong;7420;1989;Oui;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre d'exploitation routier Les Tilleuls;Fontclaire;2890;1894;Oui;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Musée départemental Curie;Belcourt;1540;1992;Oui;Non;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Les Tilleuls;Belcourt;6270;1919;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département Curie;Haut-Bois;3830;1981;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social Prévert;Haut-Bois;4040;1910;Non;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre d'exploitation routier Le Parc;Mirande;2120;1911;Oui;Non;Oui;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Collège La Fontaine;Orvillers;6910;1968;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social Le Parc;Montclair;8200;1972;Non;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Jaurès;Orvillers;5750;1974;Non;Oui;Non;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Collège Hugo;Fontclaire;7420;2002;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre d'exploitation routier Les Peupliers;Saint-Aubin-les-Prés;4680;1999;Non;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Musée départemental Les Tilleuls;Montclair;7940;1913;Non;Non;Non;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social Hugo;Montclair;1730;1962;Non;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre d'exploitation routier Rimbaud;Saint-Aubin-les-Prés;2640;1930;Non;Oui;Non;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département Pasteur;Haut-Bois;6640;1923;Non;Oui;Non;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département Ferry;Prélong;500;1887;Oui;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social La Fontaine;Prélong;4340;1887;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Moulin;Fontclaire;3120;1996;Oui;Non;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social Ferry;Prélong;1550;1960;Non;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Curie;Orvillers;5350;1907;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Collège Jaurès;Les Essarts;4010;1987;Oui;Oui;Non;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département Le Parc;Orvillers;2020;1920;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Collège Pasteur;Fontclaire;5250;1997;Non;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Les Tilleuls;Mirande;3000;1882;Non;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Ferry;Belcourt;4180;1893;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département Prévert;Haut-Bois;2940;1910;Oui;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département Ferry;Montclair;2110;2010;Non;Non;Oui;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Montesquieu;Mirande;1600;2011;Oui;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département Le Parc;Les Essarts;6150;1966;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Rimbaud;Belcourt;3850;1964;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Musée départemental Rimbaud;Belcourt;6190;2001;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social Le Parc;Belcourt;6050;2002;Oui;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social Rimbaud;Varennes;400;1908;Oui;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social Zola;Haut-Bois;8010;2000;Non;Oui;Non;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social Montesquieu;Orvillers;6860;2002;Non;Oui;Oui;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre d'exploitation routier Montesquieu;Orvillers;7000;1947;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social Hugo;Les Essarts;7290;1933;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Musée départemental Hugo;Les Essarts;1320;1977;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social Hugo;Belcourt;3020;1900;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social Rimbaud;Haut-Bois;2850;1949;Oui;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Musée départemental Montesquieu;Varennes;6610;1939;Oui;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social Jaurès;Haut-Bois;1690;1984;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre d'exploitation routier Ferry;Les Essarts;6690;1895;Non;Non;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Musée départemental Rimbaud;Belcourt;1870;1986;Non;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales La Fontaine;Mirande;1980;1954;Non;Non;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre d'exploitation routier Hugo;Mirande;6640;2014;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social La Fontaine;Saint-Aubin-les-Prés;3460;1921;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre d'exploitation routier La Fontaine;Les Essarts;5890;1929;Oui;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département Ferry;Saint-Aubin-les-Prés;4180;1904;Oui;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre d'exploitation routier Zola;Varennes;4650;1948;Non;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Musée départemental Ferry;Varennes;710;1910;Non;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Musée départemental La Fontaine;Les Essarts;7140;1910;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social Prévert;Montclair;4730;1975;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Musée départemental Rimbaud;Varennes;7880;1943;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département Le Parc;Orvillers;870;1908;Oui;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social Curie;Orvillers;8820;2013;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département Prévert;Belcourt;4720;1913;Non;Oui;Non;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre d'exploitation routier Le Parc;Belcourt;4130;1945;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre d'exploitation routier Le Parc;Saint-Aubin-les-Prés;5620;1895;Non;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Curie;Montclair;7920;1987;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Zola;Saint-Aubin-les-Prés;7070;1914;Non;Non;Non;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département Curie;Varennes;8620;1880;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Montesquieu;Fontclaire;8510;1938;Oui;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Musée départemental La Fontaine;Saint-Aubin-les-Prés;400;1987;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Collège Pasteur;Prélong;420;1994;Non;Oui;Non;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Prévert;Varennes;5600;1935;Non;Non;Non;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social Rimbaud;Prélong;3340;1962;Oui;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Hugo;Les Essarts;700;1924;Non;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Musée départemental Les Peupliers;Fontclaire;8120;2014;Non;Non;Non;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département Prévert;Varennes;8770;1937;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département Zola;Fontclaire;5780;1914;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Rimbaud;Orvillers;1020;1928;Oui;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Collège Moulin;Prélong;7490;1935;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Collège Moulin;Varennes;7670;1910;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Musée départemental Moulin;Fontclaire;2530;1962;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre d'exploitation routier Ferry;Haut-Bois;5170;1999;Oui;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social Ferry;Orvillers;4310;1891;Non;Non;Non;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département Les Tilleuls;Fontclaire;3100;1919;Oui;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département Les Peupliers;Orvillers;2710;2005;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre d'exploitation routier Curie;Montclair;7450;2005;Oui;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département Jaurès;Saint-Aubin-les-Prés;8450;1892;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Musée départemental Curie;Belcourt;2310;2009;Non;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Les Peupliers;Mirande;240;1881;Non;Non;Non;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département Hugo;Belcourt;5220;1990;Non;Non;Non;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social Moulin;Varennes;6420;2014;Non;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Prévert;Prélong;2570;1937;Non;Oui;Non;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Musée départemental La Fontaine;Belcourt;1030;1983;Non;Non;Non;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social Pasteur;Mirande;8730;1991;Non;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département Jaurès;Varennes;2240;2001;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département Les Tilleuls;Belcourt;1910;1960;Oui;Oui;Oui;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Pasteur;Les Essarts;1740;1941;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales La Fontaine;Montclair;8170;1900;Non;Oui;Non;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Collège Ferry;Prélong;7950;1981;Non;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Prévert;Varennes;3720;1976;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département Hugo;Varennes;7380;1898;Oui;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Musée départemental Zola;Orvillers;3770;1907;Oui;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Collège Curie;Saint-Aubin-les-Prés;1990;1990;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre d'exploitation routier Montesquieu;Saint-Aubin-les-Prés;6190;1963;Non;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Musée départemental Montesquieu;Varennes;5930;2013;Oui;Non;Non;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Curie;Saint-Aubin-les-Prés;1790;1991;Non;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social Le Parc;Mirande;6160;1930;Non;Oui;Oui;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département Zola;Orvillers;4580;1965;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre d'exploitation routier Ferry;Prélong;7190;1931;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Musée départemental Le Parc;Mirande;5970;1942;Non;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département Moulin;Prélong;5660;1926;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Musée départemental Moulin;Mirande;8240;1954;Non;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Musée départemental Prévert;Montclair;6560;1957;Oui;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Collège Prévert;Prélong;4980;1982;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Collège La Fontaine;Orvillers;7260;1901;Oui;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département Jaurès;Prélong;6680;1982;Non;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Collège Hugo;Varennes;5300;2012;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales La Fontaine;Prélong;7150;2008;Oui;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Collège Pasteur;Montclair;3640;1959;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Collège Prévert;Mirande;3340;1897;Non;Oui;Non;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Musée départemental Pasteur;Montclair;7660;1942;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Moulin;Fontclaire;6520;1927;Oui;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social Prévert;Prélong;4470;1979;Oui;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Collège Les Tilleuls;Saint-Aubin-les-Prés;8260;1927;Non;Non;Non;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Montesquieu;Orvillers;6190;1979;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département Curie;Les Essarts;6370;1901;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre d'exploitation routier Le Parc;Montclair;5310;1979;Non;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Musée départemental Montesquieu;Montclair;5760;1922;Non;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Collège Rimbaud;Orvillers;170;2004;Oui;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Zola;Mirande;4330;1993;Non;Oui;Oui;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre d'exploitation routier Jaurès;Les Essarts;2380;1953;Oui;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Hôtel du département Montesquieu;Saint-Aubin-les-Prés;5940;1909;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Collège La Fontaine;Mirande;5670;1935;Non;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre d'exploitation routier Rimbaud;Belcourt;4680;1947;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social Moulin;Prélong;7130;1969;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social Rimbaud;Varennes;8320;1895;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Musée départemental Hugo;Les Essarts;5940;1948;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social La Fontaine;Fontclaire;680;1950;Non;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Musée départemental Ferry;Varennes;7870;1980;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Pasteur;Saint-Aubin-les-Prés;4200;2011;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Ferry;Prélong;100;1903;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Collège La Fontaine;Haut-Bois;4150;1935;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre d'exploitation routier Ferry;Haut-Bois;5990;1913;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Collège Jaurès;Saint-Aubin-les-Prés;6490;1997;Oui;Non;Non;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Moulin;Montclair;6730;1957;Oui;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre d'exploitation routier Pasteur;Orvillers;6880;1922;Oui;Non;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Archives départementales Les Peupliers;Saint-Aubin-les-Prés;7280;1904;Oui;Non;Non;Oui
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Musée départemental Prévert;Belcourt;160;1967;Non;Oui;Non;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Collège Moulin;Fontclaire;990;1906;Oui;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Centre médico-social Les Peupliers;Montclair;780;1882;Non;Oui;Oui;Non
+S0004;Département de la Haute-Vallée;Département;test4@votre-domaine.fr;Musée départemental Curie;Fontclaire;6380;1993;Non;Oui;Oui;Oui
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Logements individuels Ferry;Fontclaire;3300;1915;Oui;Non;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Foyer logement La Fontaine;Belcourt;8760;1957;Oui;Non;Non;Oui
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Résidence La Fontaine;Varennes;5140;1978;Oui;Oui;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Résidence Ferry;Orvillers;1430;1979;Non;Oui;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Logements individuels La Fontaine;Saint-Aubin-les-Prés;250;1897;Oui;Non;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Logements individuels Montesquieu;Les Essarts;6510;2008;Non;Non;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Immeuble collectif Hugo;Saint-Aubin-les-Prés;3250;1900;Non;Non;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Logements individuels Les Tilleuls;Saint-Aubin-les-Prés;3250;1991;Non;Oui;Non;Oui
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Logements individuels Pasteur;Mirande;6340;1894;Non;Oui;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Immeuble collectif Le Parc;Belcourt;1750;2007;Non;Oui;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Immeuble collectif Ferry;Montclair;7750;1948;Non;Non;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Logements individuels Hugo;Haut-Bois;730;1947;Non;Oui;Non;Oui
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Foyer logement Jaurès;Mirande;8870;1922;Non;Oui;Oui;Oui
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Résidence Moulin;Haut-Bois;100;1891;Non;Non;Oui;Oui
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Immeuble collectif Curie;Belcourt;5740;1987;Oui;Oui;Oui;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Résidence Les Tilleuls;Orvillers;1300;2008;Non;Oui;Oui;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Résidence Zola;Saint-Aubin-les-Prés;4840;1952;Non;Oui;Oui;Oui
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Foyer logement Moulin;Les Essarts;5850;1957;Non;Oui;Oui;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Immeuble collectif Le Parc;Haut-Bois;7860;1942;Oui;Non;Non;Oui
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Résidence Ferry;Belcourt;7850;1976;Non;Oui;Non;Oui
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Immeuble collectif Zola;Mirande;690;1916;Non;Oui;Oui;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Logements individuels Le Parc;Orvillers;4770;1901;Non;Non;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Résidence Zola;Montclair;2500;1954;Non;Oui;Oui;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Foyer logement Ferry;Mirande;2860;1939;Oui;Non;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Immeuble collectif Pasteur;Montclair;4680;1999;Non;Non;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Logements individuels Hugo;Mirande;2790;1910;Oui;Non;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Résidence Moulin;Orvillers;1590;1903;Non;Non;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Foyer logement Hugo;Montclair;390;1983;Non;Oui;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Résidence La Fontaine;Montclair;1320;1883;Oui;Oui;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Logements individuels Ferry;Saint-Aubin-les-Prés;6040;1946;Non;Oui;Oui;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Logements individuels La Fontaine;Montclair;1020;1964;Oui;Oui;Non;Oui
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Logements individuels Rimbaud;Fontclaire;5160;1887;Non;Non;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Foyer logement Hugo;Mirande;1600;1888;Non;Non;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Logements individuels Jaurès;Saint-Aubin-les-Prés;2940;1978;Oui;Oui;Oui;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Résidence Zola;Orvillers;4990;2004;Non;Oui;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Résidence Ferry;Prélong;2320;1887;Non;Oui;Non;Oui
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Foyer logement La Fontaine;Prélong;2460;1920;Oui;Non;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Résidence La Fontaine;Varennes;5970;1979;Non;Non;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Foyer logement La Fontaine;Orvillers;6130;1887;Non;Oui;Oui;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Immeuble collectif Rimbaud;Mirande;5630;1959;Oui;Oui;Oui;Oui
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Résidence Montesquieu;Mirande;80;1964;Non;Non;Non;Oui
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Foyer logement Jaurès;Belcourt;1590;1916;Non;Non;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Foyer logement Le Parc;Fontclaire;6080;1905;Non;Non;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Logements individuels La Fontaine;Mirande;6720;1961;Oui;Non;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Foyer logement Moulin;Prélong;8420;1924;Non;Non;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Résidence Le Parc;Prélong;4080;1888;Oui;Oui;Oui;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Résidence Prévert;Montclair;3470;1899;Oui;Non;Non;Oui
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Résidence Rimbaud;Orvillers;4650;1882;Non;Non;Non;Oui
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Résidence Le Parc;Belcourt;570;1978;Non;Oui;Oui;Oui
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Logements individuels Ferry;Haut-Bois;3920;1905;Non;Oui;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Immeuble collectif Curie;Mirande;830;1888;Non;Non;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Immeuble collectif Zola;Montclair;7570;1899;Non;Oui;Non;Oui
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Logements individuels Le Parc;Belcourt;4490;1922;Non;Non;Non;Oui
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Immeuble collectif Zola;Haut-Bois;7470;1947;Non;Oui;Oui;Oui
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Logements individuels Curie;Belcourt;3770;1880;Non;Oui;Oui;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Immeuble collectif Pasteur;Belcourt;2190;1923;Non;Non;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Logements individuels Prévert;Mirande;6840;1947;Oui;Oui;Non;Oui
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Foyer logement Curie;Mirande;530;1947;Non;Non;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Immeuble collectif La Fontaine;Saint-Aubin-les-Prés;950;1968;Non;Non;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Résidence Rimbaud;Fontclaire;8460;2013;Non;Oui;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Immeuble collectif Prévert;Les Essarts;880;1981;Non;Oui;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Immeuble collectif Pasteur;Mirande;1850;1922;Non;Non;Non;Oui
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Logements individuels Moulin;Montclair;8620;1946;Non;Oui;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Logements individuels Montesquieu;Orvillers;8850;1950;Non;Oui;Non;Oui
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Logements individuels Pasteur;Fontclaire;1610;1917;Non;Non;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Résidence Les Tilleuls;Saint-Aubin-les-Prés;8120;1953;Non;Oui;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Logements individuels Les Tilleuls;Prélong;4920;1889;Oui;Oui;Oui;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Logements individuels Jaurès;Fontclaire;3470;1940;Oui;Non;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Foyer logement Rimbaud;Les Essarts;3260;1951;Non;Oui;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Immeuble collectif Curie;Les Essarts;7690;1993;Non;Non;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Résidence Moulin;Mirande;2240;1984;Non;Non;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Immeuble collectif Pasteur;Les Essarts;7340;2009;Non;Non;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Immeuble collectif Moulin;Varennes;8650;1894;Oui;Non;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Foyer logement Ferry;Mirande;5250;1981;Non;Non;Non;Oui
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Logements individuels Curie;Mirande;6080;1969;Non;Oui;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Résidence Hugo;Belcourt;4030;1892;Oui;Non;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Immeuble collectif Les Peupliers;Varennes;2830;1984;Non;Non;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Logements individuels Curie;Montclair;6230;1882;Oui;Non;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Foyer logement Zola;Fontclaire;8800;1969;Non;Non;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Logements individuels Les Tilleuls;Saint-Aubin-les-Prés;150;2010;Non;Oui;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Foyer logement Hugo;Saint-Aubin-les-Prés;5010;1896;Non;Non;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Foyer logement Moulin;Montclair;5370;1941;Non;Oui;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Foyer logement Les Peupliers;Montclair;7460;1886;Non;Non;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Logements individuels Le Parc;Belcourt;6050;1928;Non;Oui;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Logements individuels Les Peupliers;Orvillers;5270;1956;Non;Non;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Résidence Prévert;Montclair;7660;1946;Non;Oui;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Foyer logement Les Peupliers;Saint-Aubin-les-Prés;2350;1970;Oui;Non;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Foyer logement Hugo;Prélong;3090;1998;Non;Non;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Résidence Prévert;Varennes;5200;1910;Non;Non;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Immeuble collectif Curie;Varennes;3580;1984;Non;Oui;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Immeuble collectif La Fontaine;Saint-Aubin-les-Prés;5070;1965;Non;Oui;Oui;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Foyer logement Moulin;Montclair;5980;1920;Non;Oui;Non;Oui
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Logements individuels Zola;Fontclaire;4960;1978;Oui;Non;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Foyer logement La Fontaine;Haut-Bois;2030;1884;Non;Non;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Foyer logement Hugo;Montclair;1130;1978;Non;Non;Non;Oui
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Foyer logement Prévert;Haut-Bois;6180;2014;Non;Oui;Non;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Logements individuels Ferry;Varennes;1760;1983;Oui;Oui;Oui;Non
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Résidence Les Tilleuls;Haut-Bois;1810;1911;Non;Oui;Non;Oui
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Foyer logement La Fontaine;Haut-Bois;6460;1892;Non;Non;Oui;Oui
+S0005;Bailleur social Habitat Roseraie;Bailleur social;test5@votre-domaine.fr;Résidence Le Parc;Saint-Aubin-les-Prés;4340;1993;Non;Non;Non;Non

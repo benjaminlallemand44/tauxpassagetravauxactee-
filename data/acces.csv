@@ -1,0 +1,6 @@
+﻿email;id_structure;nom_structure;nb_batiments;code_acces;lien
+test1@votre-domaine.fr;S0001;Commune de Saint-Aubin-les-Prés;4;M7K6GES8;http://localhost:8501/?code=M7K6GES8
+test2@votre-domaine.fr;S0002;Communauté de communes du Val d'Orve;5;WRZ3MFTY;http://localhost:8501/?code=WRZ3MFTY
+test3@votre-domaine.fr;S0003;Ville de Montclair;80;D6EUAY6Y;http://localhost:8501/?code=D6EUAY6Y
+test4@votre-domaine.fr;S0004;Département de la Haute-Vallée;250;H3HUFCDZ;http://localhost:8501/?code=H3HUFCDZ
+test5@votre-domaine.fr;S0005;Bailleur social Habitat Roseraie;100;VVVKBDZR;http://localhost:8501/?code=VVVKBDZR
