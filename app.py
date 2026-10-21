@@ -15,11 +15,10 @@ import pandas as pd
 import streamlit as st
 
 from enquete import core
+from enquete.questionnaire import (QUESTION, QUESTIONS_PARTIE2, STATUT_NON, STATUT_SI_MOE,
+                                   STATUTS, STATUTS_DETAILLES)
 
 st.set_page_config(page_title="Enquête rénovation énergétique", page_icon="🏢", layout="wide")
-
-COLONNES_REFERENTIEL = ["num", "nom_batiment", "commune", "financement"]
-COLONNES_REPONSE = ["statut", "type_travaux", "annee", "commentaire"]
 
 
 @st.cache_data
@@ -57,7 +56,8 @@ def page_connexion(structures: pd.DataFrame) -> None:
 
     st.write(
         "Utilisez le lien personnel reçu par e-mail, ou saisissez ci-dessous "
-        "votre adresse e-mail et le code d'accès indiqué dans ce message."
+        "votre adresse e-mail et le code d'accès indiqué dans ce message (le code est commun "
+        "à toutes les personnes d'une même structure)."
     )
     with st.form("connexion"):
         email = st.text_input("Adresse e-mail")
@@ -73,42 +73,105 @@ def page_connexion(structures: pd.DataFrame) -> None:
 # --------------------------------------------------------------------------
 # Questionnaire
 # --------------------------------------------------------------------------
-def _enregistrer(edite: pd.DataFrame, id_structure: str, batiments: pd.DataFrame) -> bool:
-    erreurs = core.verifier_reponses(edite)
-    if erreurs:
-        st.error("Corrigez les saisies suivantes avant d'enregistrer :\n\n- " + "\n- ".join(erreurs))
-        return False
-    core.enregistrer_reponses(core.chemin_base(), id_structure, edite, batiments)
-    # Nouvelle clé d'éditeur : le tableau est rechargé depuis la base.
+def _colonne_question(q: dict):
+    aide = q.get("aide")
+    libelle = q["libelle"] + (" *" if q.get("obligatoire") else "")
+    if q["type"] == "choix":
+        return st.column_config.SelectboxColumn(libelle, options=q["options"], help=aide, width="medium")
+    if q["type"] == "annee":
+        return st.column_config.NumberColumn(libelle, min_value=core.ANNEE_MIN,
+                                             max_value=core.ANNEE_MAX, step=1, format="%d", help=aide)
+    if q["type"] == "nombre":
+        return st.column_config.NumberColumn(libelle, min_value=0, help=aide)
+    return st.column_config.TextColumn(libelle, help=aide, width="large")
+
+
+def _nouvelle_version() -> None:
+    """Nouvelles clés d'éditeurs : les tableaux sont rechargés depuis la base."""
     st.session_state["version"] = st.session_state.get("version", 0) + 1
-    return True
+
+
+def _erreurs(titre: str, erreurs: list[str]) -> bool:
+    if erreurs:
+        st.error(titre + "\n\n- " + "\n- ".join(erreurs))
+    return bool(erreurs)
+
+
+def editeur_partie1(tableau: pd.DataFrame, batiments: pd.DataFrame, cle: str) -> pd.DataFrame:
+    # La réponse vient juste après le nom du bâtiment, pour rester visible sans défilement.
+    reference = [c for c in core.colonnes_affichees(batiments) if c not in ("num", "nom_batiment")]
+    colonnes = ["id_batiment", "num", "nom_batiment", "statut", "commentaire", *reference]
+    config = {
+        "id_batiment": None,
+        "num": st.column_config.NumberColumn("N°", width="small", pinned=True),
+        "nom_batiment": st.column_config.TextColumn("Bâtiment", pinned=True),
+        "statut": st.column_config.SelectboxColumn(
+            "Réponse", options=STATUTS, width="large", help=QUESTION),
+        "commentaire": st.column_config.TextColumn("Commentaire", width="medium"),
+    }
+    for c in reference:
+        config[c] = st.column_config.TextColumn(core.libelle(c))
+    if tableau["pre_rempli"].any():
+        colonnes.insert(colonnes.index("commentaire") + 1, "pre_rempli")
+        config["pre_rempli"] = st.column_config.CheckboxColumn(
+            "Pré-sélectionné (MOE)", width="small",
+            help="Réponse proposée car une MOE a été financée sur ce bâtiment. À vérifier.")
+    donnees = tableau[colonnes].copy()
+    donnees["statut"] = donnees["statut"].replace("", None)
+    return st.data_editor(
+        donnees, key=cle, hide_index=True, num_rows="fixed", use_container_width=True,
+        height=min(38 + 35 * len(donnees), 600),
+        disabled=[c for c in colonnes if c not in ("statut", "commentaire")],
+        column_config=config,
+    )
+
+
+def editeur_partie2(details: pd.DataFrame, cle: str) -> pd.DataFrame:
+    cles = [q["cle"] for q in QUESTIONS_PARTIE2]
+    donnees = details[["id_batiment", "num", "nom_batiment", "statut", *cles]].copy()
+    for q in QUESTIONS_PARTIE2:
+        if q["type"] in ("nombre", "annee"):
+            donnees[q["cle"]] = pd.to_numeric(donnees[q["cle"]], errors="coerce")
+        else:
+            donnees[q["cle"]] = donnees[q["cle"]].astype(object).where(donnees[q["cle"]].notna(), None)
+    config = {
+        "id_batiment": None,
+        "num": st.column_config.NumberColumn("N°", width="small"),
+        "nom_batiment": st.column_config.TextColumn("Bâtiment"),
+        "statut": st.column_config.TextColumn("Réponse (partie 1)"),
+        **{q["cle"]: _colonne_question(q) for q in QUESTIONS_PARTIE2},
+    }
+    return st.data_editor(
+        donnees, key=cle, hide_index=True, num_rows="fixed", use_container_width=True,
+        height=min(38 + 35 * len(donnees), 600),
+        disabled=["num", "nom_batiment", "statut"], column_config=config,
+    )
 
 
 def page_questionnaire(structure: dict, batiments: pd.DataFrame) -> None:
     db = core.chemin_base()
     id_s = structure["id_structure"]
+    version = st.session_state.get("version", 0)
 
     with st.sidebar:
-        st.markdown(f"**{structure['nom_structure']}**  \n{structure['email']}")
+        st.markdown(f"**{structure['nom_structure']}**")
         st.button("Se déconnecter", on_click=se_deconnecter)
 
     st.title("Travaux de rénovation énergétique")
-    st.write(
-        f"Voici les bâtiments de **{structure['nom_structure']}** ayant bénéficié d'un "
-        "financement (SDIE, audit énergétique, maîtrise d'œuvre ou AMO). Pour chacun, indiquez "
-        "si des travaux de rénovation énergétique ont été réalisés, sont en cours ou sont prévus."
-    )
+    st.write(f"Cette enquête porte sur les bâtiments de **{structure['nom_structure']}**. "
+             "Elle comporte deux parties ; vous pouvez enregistrer et revenir plus tard "
+             "avec le même lien.")
 
     tableau = core.tableau_structure(db, id_s, batiments)
+    details = core.tableau_details(db, id_s, batiments)
     nb = len(tableau)
     nb_renseignes = int(tableau["statut"].ne("").sum())
     valide_le = core.date_validation(db, id_s)
 
     c1, c2, c3 = st.columns(3)
     c1.metric("Bâtiments", nb)
-    c2.metric("Renseignés", f"{nb_renseignes} / {nb}")
+    c2.metric("Partie 1 renseignée", f"{nb_renseignes} / {nb}")
     c3.metric("Statut", "Validé" if valide_le else "En cours de saisie")
-    st.progress(nb_renseignes / nb if nb else 0.0)
 
     if message := st.session_state.pop("message", None):
         st.success(message)
@@ -116,61 +179,76 @@ def page_questionnaire(structure: dict, batiments: pd.DataFrame) -> None:
         st.info(f"Questionnaire validé le {valide_le.replace('T', ' à ')}. "
                 "Vous pouvez encore modifier vos réponses avec le même lien.")
 
-    st.caption("Type de travaux et année : à renseigner si les travaux sont réalisés, en cours ou prévus. "
-               "Pensez à enregistrer régulièrement ; vous pouvez revenir plus tard avec le même lien.")
+    onglet1, onglet2 = st.tabs(["1. Situation des bâtiments",
+                                f"2. Détails des travaux ({len(details)} bâtiment(s))"])
 
-    donnees = tableau[["id_batiment", *COLONNES_REFERENTIEL, *COLONNES_REPONSE]].copy()
-    for col in ["statut", "type_travaux"]:
-        donnees[col] = donnees[col].replace("", None)
+    with onglet1:
+        st.subheader(QUESTION)
+        if definitions := core.charger_definitions():
+            st.info(definitions)
+        if tableau["pre_rempli"].any():
+            st.caption(f"Pour les bâtiments ayant bénéficié d'une MOE, la réponse « {STATUT_SI_MOE} » "
+                       "est pré-sélectionnée : vérifiez-la et corrigez-la si besoin.")
+        edite1 = editeur_partie1(tableau, batiments, f"p1_{id_s}_{version}")
+        b1, b2 = st.columns(2)
+        if b1.button("💾 Enregistrer la partie 1", type="primary", use_container_width=True):
+            if not _erreurs("Corrigez les saisies suivantes :", core.verifier_reponses(edite1)):
+                core.enregistrer_reponses(db, id_s, edite1, batiments)
+                _nouvelle_version()
+                st.session_state["message"] = "Partie 1 enregistrée."
+                st.rerun()
+        if b2.button(f"Mettre « {STATUT_NON} » sur les bâtiments non renseignés", use_container_width=True):
+            edite1 = edite1.copy()
+            vides = edite1["statut"].fillna("").eq("")
+            edite1.loc[vides, "statut"] = STATUT_NON
+            if not _erreurs("Corrigez les saisies suivantes :", core.verifier_reponses(edite1)):
+                core.enregistrer_reponses(db, id_s, edite1, batiments)
+                _nouvelle_version()
+                st.session_state["message"] = f"« {STATUT_NON} » appliqué à {int(vides.sum())} bâtiment(s)."
+                st.rerun()
 
-    edite = st.data_editor(
-        donnees,
-        key=f"editeur_{id_s}_{st.session_state.get('version', 0)}",
-        hide_index=True,
-        num_rows="fixed",
-        use_container_width=True,
-        height=min(38 + 35 * nb, 700),
-        disabled=COLONNES_REFERENTIEL,
-        column_config={
-            "id_batiment": None,
-            "num": st.column_config.NumberColumn("N°", width="small"),
-            "nom_batiment": st.column_config.TextColumn("Bâtiment", width="medium"),
-            "commune": st.column_config.TextColumn("Commune"),
-            "financement": st.column_config.TextColumn("Financé"),
-            "statut": st.column_config.SelectboxColumn(
-                "Travaux ?", options=core.STATUTS, width="medium",
-                help="Des travaux de rénovation énergétique ont-ils été réalisés sur ce bâtiment ?"),
-            "type_travaux": st.column_config.SelectboxColumn(
-                "Type de travaux", options=core.TYPES_TRAVAUX, width="medium"),
-            "annee": st.column_config.NumberColumn(
-                "Année", min_value=core.ANNEE_MIN, max_value=core.ANNEE_MAX, step=1, format="%d"),
-            "commentaire": st.column_config.TextColumn("Commentaire", width="large"),
-        },
-    )
+    edite2 = None
+    with onglet2:
+        st.subheader("Détails des travaux")
+        if details.empty:
+            st.info("Aucun bâtiment concerné pour l'instant. Cette partie liste les bâtiments "
+                    f"pour lesquels vous avez répondu « {' » ou « '.join(STATUTS_DETAILLES)} » "
+                    "dans la partie 1, une fois celle-ci enregistrée.")
+        else:
+            st.write("Pour chacun des bâtiments ayant fait l'objet de travaux, merci de préciser :")
+            if any(q.get("obligatoire") for q in QUESTIONS_PARTIE2):
+                st.caption("* réponse obligatoire pour valider le questionnaire.")
+            edite2 = editeur_partie2(details, f"p2_{id_s}_{version}")
+            if st.button("💾 Enregistrer la partie 2", type="primary"):
+                if not _erreurs("Corrigez les saisies suivantes :", core.verifier_details(edite2)):
+                    core.enregistrer_details(db, id_s, edite2, batiments)
+                    _nouvelle_version()
+                    st.session_state["message"] = "Partie 2 enregistrée."
+                    st.rerun()
 
-    b1, b2, b3 = st.columns(3)
-    if b1.button("💾 Enregistrer", type="primary", use_container_width=True):
-        if _enregistrer(edite, id_s, batiments):
-            st.session_state["message"] = "Réponses enregistrées."
-            st.rerun()
-
-    if b2.button("Mettre « Non » sur les bâtiments non renseignés", use_container_width=True):
-        edite = edite.copy()
-        vides = edite["statut"].fillna("").eq("")
-        edite.loc[vides, "statut"] = "Non"
-        if _enregistrer(edite, id_s, batiments):
-            st.session_state["message"] = f"« Non » appliqué à {int(vides.sum())} bâtiment(s) et enregistré."
-            st.rerun()
-
-    if b3.button("✅ Valider le questionnaire", use_container_width=True):
-        manquants = int(edite["statut"].fillna("").eq("").sum())
+    st.divider()
+    if st.button("✅ Valider le questionnaire", use_container_width=True):
+        erreurs = core.verifier_reponses(edite1)
+        if edite2 is not None:
+            erreurs += core.verifier_details(edite2)
+        if _erreurs("Corrigez les saisies suivantes :", erreurs):
+            return
+        core.enregistrer_reponses(db, id_s, edite1, batiments)
+        if edite2 is not None:
+            core.enregistrer_details(db, id_s, edite2, batiments)
+        _nouvelle_version()
+        manquants = int(edite1["statut"].fillna("").eq("").sum())
         if manquants:
-            st.error(f"{manquants} bâtiment(s) sans réponse. Complétez-les (ou utilisez "
-                     "« Mettre Non sur les bâtiments non renseignés ») avant de valider.")
-        elif _enregistrer(edite, id_s, batiments):
-            core.valider(db, id_s)
-            st.session_state["message"] = "Merci ! Votre questionnaire est validé."
-            st.rerun()
+            st.session_state["message"] = "Réponses enregistrées."
+            st.error(f"Partie 1 : {manquants} bâtiment(s) sans réponse. Complétez-les avant de valider.")
+            return
+        # La partie 2 est relue après enregistrement : de nouveaux « Oui » peuvent y être apparus.
+        a_completer = core.verifier_details(core.tableau_details(db, id_s, batiments), complet=True)
+        if _erreurs("Réponses enregistrées. Partie 2 à compléter avant de valider :", a_completer):
+            return
+        core.valider(db, id_s)
+        st.session_state["message"] = "Merci ! Votre questionnaire est validé."
+        st.rerun()
 
 
 # --------------------------------------------------------------------------
@@ -216,6 +294,13 @@ def page_admin(structures: pd.DataFrame, batiments: pd.DataFrame) -> None:
         column_config={"avancement_%": st.column_config.ProgressColumn(
             "Avancement", min_value=0, max_value=100, format="%d %%")},
     )
+
+    st.subheader("Réponses d'une structure")
+    choix = st.selectbox(
+        "Structure", synthese["id_structure"],
+        format_func=lambda i: f"{i} – {synthese.set_index('id_structure').loc[i, 'nom_structure']}")
+    st.dataframe(export[export["id_structure"] == choix].drop(columns=["email"]),
+                 hide_index=True, use_container_width=True)
 
     st.subheader("Exports (une ligne par bâtiment)")
     d1, d2 = st.columns(2)

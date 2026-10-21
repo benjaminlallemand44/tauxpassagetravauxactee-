@@ -1,440 +1,440 @@
-id_structure;num;id_batiment;nom_batiment;commune;surface_m2;annee_construction;sdie;audit;moe;amo
-S0001;1;S0001-B001;École élémentaire Le Parc;Les Essarts;2580;1937;Oui;Non;Non;Non
-S0001;2;S0001-B002;Crèche Jaurès;Belcourt;1030;1935;Oui;Oui;Non;Non
-S0001;3;S0001-B003;Église Zola;Varennes;4670;1951;Non;Non;Oui;Non
-S0001;4;S0001-B004;Médiathèque Hugo;Montclair;2280;1966;Oui;Non;Non;Non
-S0002;1;S0002-B001;Déchetterie La Fontaine;Belcourt;7550;1997;Non;Oui;Non;Non
-S0002;2;S0002-B002;Maison de services Rimbaud;Orvillers;5990;1929;Non;Non;Oui;Non
-S0002;3;S0002-B003;Siège communautaire Rimbaud;Varennes;8950;1905;Non;Oui;Non;Non
-S0002;4;S0002-B004;Déchetterie Moulin;Les Essarts;7260;1898;Non;Oui;Oui;Non
-S0002;5;S0002-B005;Office de tourisme Hugo;Haut-Bois;2320;1963;Non;Oui;Non;Non
-S0003;1;S0003-B001;Médiathèque Zola;Les Essarts;750;1934;Non;Oui;Non;Non
-S0003;2;S0003-B002;Centre technique Zola;Mirande;1540;1947;Oui;Oui;Non;Non
-S0003;3;S0003-B003;Crèche Les Tilleuls;Fontclaire;3780;1936;Non;Non;Non;Non
-S0003;4;S0003-B004;École maternelle Curie;Montclair;8190;1988;Non;Non;Non;Non
-S0003;5;S0003-B005;Salle polyvalente Montesquieu;Belcourt;7040;1909;Non;Oui;Non;Non
-S0003;6;S0003-B006;École maternelle Hugo;Fontclaire;1690;1996;Oui;Non;Non;Non
-S0003;7;S0003-B007;Gymnase Montesquieu;Saint-Aubin-les-Prés;8990;1956;Non;Non;Non;Oui
-S0003;8;S0003-B008;Gymnase Montesquieu;Haut-Bois;80;1962;Non;Oui;Oui;Non
-S0003;9;S0003-B009;Salle polyvalente Moulin;Belcourt;2540;1900;Oui;Non;Non;Oui
-S0003;10;S0003-B010;Gymnase Curie;Mirande;5700;1922;Non;Non;Non;Non
-S0003;11;S0003-B011;Église La Fontaine;Varennes;7380;1959;Non;Oui;Non;Non
-S0003;12;S0003-B012;Centre technique Pasteur;Varennes;2380;1896;Non;Non;Non;Non
-S0003;13;S0003-B013;École maternelle Le Parc;Belcourt;2420;1897;Non;Oui;Non;Oui
-S0003;14;S0003-B014;Centre technique Moulin;Haut-Bois;1430;2001;Oui;Oui;Non;Non
-S0003;15;S0003-B015;Crèche Ferry;Fontclaire;4280;1999;Non;Oui;Oui;Non
-S0003;16;S0003-B016;École élémentaire Zola;Orvillers;8270;1907;Oui;Non;Non;Non
-S0003;17;S0003-B017;Salle polyvalente Prévert;Varennes;850;1993;Non;Oui;Non;Oui
-S0003;18;S0003-B018;Église Rimbaud;Belcourt;1030;1940;Oui;Non;Non;Non
-S0003;19;S0003-B019;École élémentaire Curie;Fontclaire;100;1979;Non;Oui;Non;Non
-S0003;20;S0003-B020;Église Les Peupliers;Mirande;1660;1928;Non;Oui;Non;Non
-S0003;21;S0003-B021;Médiathèque Jaurès;Belcourt;6060;2002;Non;Oui;Non;Oui
-S0003;22;S0003-B022;École maternelle Rimbaud;Montclair;780;1897;Non;Non;Non;Oui
-S0003;23;S0003-B023;Mairie annexe Les Tilleuls;Prélong;480;1900;Non;Non;Non;Non
-S0003;24;S0003-B024;Mairie annexe Les Peupliers;Orvillers;2520;1947;Non;Non;Non;Non
-S0003;25;S0003-B025;École maternelle Jaurès;Mirande;6440;1905;Oui;Oui;Oui;Non
-S0003;26;S0003-B026;École maternelle Moulin;Orvillers;2990;1920;Non;Non;Non;Non
-S0003;27;S0003-B027;Église Jaurès;Haut-Bois;3140;1906;Non;Non;Non;Oui
-S0003;28;S0003-B028;Église Curie;Les Essarts;2960;1933;Non;Oui;Oui;Non
-S0003;29;S0003-B029;Centre technique Hugo;Belcourt;1020;1988;Non;Oui;Oui;Non
-S0003;30;S0003-B030;Salle polyvalente Curie;Mirande;5720;1989;Non;Oui;Oui;Non
-S0003;31;S0003-B031;Gymnase Montesquieu;Belcourt;8620;1974;Non;Non;Non;Oui
-S0003;32;S0003-B032;École élémentaire Ferry;Varennes;7060;1943;Non;Oui;Oui;Non
-S0003;33;S0003-B033;Gymnase Moulin;Montclair;8270;1925;Non;Non;Oui;Non
-S0003;34;S0003-B034;Crèche La Fontaine;Varennes;2810;1920;Non;Oui;Oui;Non
-S0003;35;S0003-B035;Mairie annexe Moulin;Mirande;3660;1958;Non;Non;Non;Non
-S0003;36;S0003-B036;Crèche Ferry;Les Essarts;8930;1897;Non;Non;Non;Non
-S0003;37;S0003-B037;Église Ferry;Belcourt;1260;1946;Oui;Oui;Non;Non
-S0003;38;S0003-B038;Crèche Ferry;Orvillers;4540;2010;Oui;Oui;Non;Oui
-S0003;39;S0003-B039;Crèche Jaurès;Haut-Bois;8330;1930;Non;Oui;Oui;Non
-S0003;40;S0003-B040;Médiathèque Les Peupliers;Saint-Aubin-les-Prés;7450;1956;Non;Oui;Non;Non
-S0003;41;S0003-B041;Église Curie;Varennes;4380;1977;Non;Non;Non;Non
-S0003;42;S0003-B042;Église Rimbaud;Belcourt;3190;1953;Oui;Oui;Non;Non
-S0003;43;S0003-B043;Centre technique Prévert;Varennes;5310;2001;Non;Oui;Non;Non
-S0003;44;S0003-B044;Salle polyvalente Montesquieu;Prélong;3510;1903;Non;Non;Non;Non
-S0003;45;S0003-B045;Mairie annexe Curie;Belcourt;550;1942;Non;Oui;Non;Non
-S0003;46;S0003-B046;Mairie annexe Le Parc;Fontclaire;5140;1982;Oui;Oui;Non;Oui
-S0003;47;S0003-B047;École maternelle La Fontaine;Fontclaire;2320;1925;Non;Non;Non;Non
-S0003;48;S0003-B048;École maternelle Prévert;Montclair;8280;1998;Non;Non;Non;Non
-S0003;49;S0003-B049;Centre technique Les Tilleuls;Haut-Bois;4440;1994;Non;Non;Non;Non
-S0003;50;S0003-B050;Mairie annexe Rimbaud;Les Essarts;7920;2013;Non;Oui;Oui;Non
-S0003;51;S0003-B051;Mairie annexe Hugo;Orvillers;3350;1900;Oui;Non;Non;Non
-S0003;52;S0003-B052;École maternelle Zola;Fontclaire;3460;1999;Non;Non;Non;Non
-S0003;53;S0003-B053;École élémentaire Rimbaud;Prélong;3970;2002;Oui;Non;Non;Non
-S0003;54;S0003-B054;Crèche Montesquieu;Haut-Bois;8270;1936;Non;Non;Non;Non
-S0003;55;S0003-B055;Crèche Le Parc;Montclair;8680;1999;Non;Oui;Non;Non
-S0003;56;S0003-B056;École élémentaire Pasteur;Fontclaire;1460;1998;Oui;Non;Non;Non
-S0003;57;S0003-B057;Médiathèque La Fontaine;Fontclaire;2920;1987;Non;Oui;Oui;Oui
-S0003;58;S0003-B058;Médiathèque Moulin;Saint-Aubin-les-Prés;8070;1890;Non;Oui;Non;Oui
-S0003;59;S0003-B059;Gymnase Moulin;Montclair;4920;1909;Non;Oui;Oui;Non
-S0003;60;S0003-B060;Gymnase Les Tilleuls;Prélong;7730;1909;Non;Non;Non;Non
-S0003;61;S0003-B061;Salle polyvalente Les Tilleuls;Fontclaire;4140;1930;Oui;Non;Non;Non
-S0003;62;S0003-B062;Salle polyvalente Rimbaud;Prélong;8320;1910;Non;Oui;Non;Oui
-S0003;63;S0003-B063;Médiathèque Pasteur;Haut-Bois;6710;1967;Oui;Oui;Oui;Non
-S0003;64;S0003-B064;Médiathèque Les Peupliers;Mirande;7320;1919;Non;Oui;Non;Non
-S0003;65;S0003-B065;Église La Fontaine;Mirande;4840;1991;Non;Oui;Non;Non
-S0003;66;S0003-B066;École maternelle Hugo;Mirande;2570;1998;Non;Oui;Non;Non
-S0003;67;S0003-B067;Médiathèque Curie;Mirande;2250;1970;Non;Oui;Oui;Non
-S0003;68;S0003-B068;Salle polyvalente Montesquieu;Belcourt;5370;1928;Oui;Non;Non;Non
-S0003;69;S0003-B069;Centre technique Les Peupliers;Mirande;4660;1884;Oui;Non;Non;Non
-S0003;70;S0003-B070;Médiathèque Prévert;Haut-Bois;5510;1968;Non;Oui;Non;Non
-S0003;71;S0003-B071;Salle polyvalente Hugo;Les Essarts;2440;1910;Non;Non;Non;Non
-S0003;72;S0003-B072;Gymnase Moulin;Varennes;7640;2003;Non;Non;Non;Non
-S0003;73;S0003-B073;École maternelle Rimbaud;Varennes;3110;1938;Non;Non;Non;Non
-S0003;74;S0003-B074;École élémentaire Jaurès;Haut-Bois;3070;1912;Non;Oui;Non;Oui
-S0003;75;S0003-B075;Salle polyvalente Prévert;Mirande;4590;1967;Oui;Oui;Oui;Non
-S0003;76;S0003-B076;École maternelle Zola;Mirande;830;1893;Oui;Oui;Non;Non
-S0003;77;S0003-B077;Mairie annexe Pasteur;Haut-Bois;7900;1986;Non;Oui;Non;Non
-S0003;78;S0003-B078;Centre technique Prévert;Les Essarts;8880;1989;Non;Oui;Non;Non
-S0003;79;S0003-B079;Mairie annexe Les Peupliers;Varennes;2780;1900;Oui;Non;Non;Oui
-S0003;80;S0003-B080;Centre technique Le Parc;Prélong;4890;1954;Oui;Oui;Oui;Non
-S0004;1;S0004-B001;Collège Les Peupliers;Varennes;2780;1930;Non;Non;Non;Non
-S0004;2;S0004-B002;Centre médico-social Pasteur;Belcourt;1770;1958;Non;Non;Non;Non
-S0004;3;S0004-B003;Archives départementales Le Parc;Les Essarts;7240;1983;Non;Oui;Non;Non
-S0004;4;S0004-B004;Collège Zola;Orvillers;6260;1944;Oui;Oui;Oui;Non
-S0004;5;S0004-B005;Hôtel du département Jaurès;Les Essarts;5980;1890;Non;Non;Non;Non
-S0004;6;S0004-B006;Centre d'exploitation routier Curie;Prélong;4540;2005;Non;Oui;Non;Non
-S0004;7;S0004-B007;Collège Rimbaud;Montclair;3450;1985;Non;Oui;Oui;Non
-S0004;8;S0004-B008;Hôtel du département Jaurès;Mirande;980;1960;Non;Non;Non;Non
-S0004;9;S0004-B009;Collège Les Peupliers;Haut-Bois;4810;1985;Oui;Non;Non;Non
-S0004;10;S0004-B010;Archives départementales La Fontaine;Belcourt;2160;1948;Non;Oui;Non;Non
-S0004;11;S0004-B011;Collège Jaurès;Prélong;8260;1941;Non;Non;Non;Oui
-S0004;12;S0004-B012;Centre médico-social Rimbaud;Saint-Aubin-les-Prés;4800;1910;Non;Oui;Oui;Non
-S0004;13;S0004-B013;Musée départemental Hugo;Fontclaire;8620;2003;Non;Oui;Oui;Non
-S0004;14;S0004-B014;Hôtel du département Montesquieu;Montclair;8920;1897;Non;Oui;Non;Non
-S0004;15;S0004-B015;Hôtel du département Hugo;Belcourt;2970;1956;Non;Non;Non;Non
-S0004;16;S0004-B016;Archives départementales Montesquieu;Mirande;3610;1965;Non;Non;Non;Non
-S0004;17;S0004-B017;Centre médico-social Le Parc;Varennes;5930;1978;Oui;Oui;Non;Oui
-S0004;18;S0004-B018;Musée départemental La Fontaine;Fontclaire;4030;1918;Non;Non;Oui;Non
-S0004;19;S0004-B019;Collège Rimbaud;Mirande;1100;2014;Non;Non;Oui;Oui
-S0004;20;S0004-B020;Centre médico-social Pasteur;Mirande;8080;1947;Non;Non;Non;Non
-S0004;21;S0004-B021;Musée départemental Rimbaud;Haut-Bois;3970;1961;Non;Non;Non;Non
-S0004;22;S0004-B022;Hôtel du département Pasteur;Varennes;6540;1953;Non;Oui;Non;Non
-S0004;23;S0004-B023;Musée départemental Le Parc;Saint-Aubin-les-Prés;4620;1922;Non;Oui;Non;Oui
-S0004;24;S0004-B024;Centre d'exploitation routier Ferry;Orvillers;4490;1917;Oui;Non;Non;Non
-S0004;25;S0004-B025;Centre médico-social Pasteur;Prélong;8990;1977;Non;Oui;Oui;Non
-S0004;26;S0004-B026;Archives départementales Les Peupliers;Les Essarts;4780;1945;Non;Oui;Non;Non
-S0004;27;S0004-B027;Hôtel du département Curie;Saint-Aubin-les-Prés;4600;1968;Non;Oui;Oui;Non
-S0004;28;S0004-B028;Archives départementales Rimbaud;Les Essarts;2110;1978;Non;Non;Non;Non
-S0004;29;S0004-B029;Centre d'exploitation routier Le Parc;Les Essarts;300;1981;Non;Oui;Non;Non
-S0004;30;S0004-B030;Collège Les Tilleuls;Mirande;8600;1953;Non;Non;Non;Non
-S0004;31;S0004-B031;Centre médico-social Les Tilleuls;Les Essarts;7020;1915;Non;Oui;Non;Non
-S0004;32;S0004-B032;Archives départementales Jaurès;Prélong;3810;1913;Oui;Oui;Oui;Non
-S0004;33;S0004-B033;Centre médico-social La Fontaine;Haut-Bois;3820;2008;Non;Oui;Non;Non
-S0004;34;S0004-B034;Archives départementales La Fontaine;Les Essarts;7720;1966;Non;Non;Non;Oui
-S0004;35;S0004-B035;Centre médico-social Rimbaud;Fontclaire;8740;1973;Oui;Non;Non;Non
-S0004;36;S0004-B036;Centre d'exploitation routier Les Peupliers;Les Essarts;6060;1977;Non;Oui;Non;Oui
-S0004;37;S0004-B037;Collège Les Tilleuls;Haut-Bois;3430;1936;Non;Oui;Non;Non
-S0004;38;S0004-B038;Musée départemental Zola;Saint-Aubin-les-Prés;1510;1891;Non;Non;Non;Non
-S0004;39;S0004-B039;Hôtel du département Curie;Fontclaire;4720;1974;Non;Oui;Non;Non
-S0004;40;S0004-B040;Musée départemental Le Parc;Montclair;4320;1905;Non;Oui;Non;Non
-S0004;41;S0004-B041;Musée départemental Ferry;Varennes;4620;1993;Non;Oui;Non;Oui
-S0004;42;S0004-B042;Hôtel du département Les Peupliers;Orvillers;700;1981;Non;Non;Non;Non
-S0004;43;S0004-B043;Collège Les Peupliers;Varennes;6650;1885;Oui;Non;Non;Non
-S0004;44;S0004-B044;Centre médico-social Pasteur;Haut-Bois;2200;1935;Non;Non;Non;Non
-S0004;45;S0004-B045;Hôtel du département Jaurès;Les Essarts;8870;1917;Non;Non;Non;Non
-S0004;46;S0004-B046;Collège Curie;Belcourt;3740;1940;Non;Oui;Oui;Non
-S0004;47;S0004-B047;Archives départementales Montesquieu;Saint-Aubin-les-Prés;7710;1896;Non;Oui;Non;Non
-S0004;48;S0004-B048;Hôtel du département Moulin;Prélong;520;2013;Non;Oui;Non;Oui
-S0004;49;S0004-B049;Archives départementales Zola;Saint-Aubin-les-Prés;5100;1993;Oui;Non;Oui;Non
-S0004;50;S0004-B050;Centre d'exploitation routier Les Tilleuls;Prélong;5690;1963;Non;Oui;Non;Non
-S0004;51;S0004-B051;Archives départementales Pasteur;Saint-Aubin-les-Prés;8810;1935;Non;Oui;Non;Non
-S0004;52;S0004-B052;Archives départementales Zola;Saint-Aubin-les-Prés;3280;1989;Non;Non;Non;Non
-S0004;53;S0004-B053;Archives départementales Pasteur;Saint-Aubin-les-Prés;8590;1901;Oui;Non;Oui;Non
-S0004;54;S0004-B054;Hôtel du département Jaurès;Prélong;5830;1964;Non;Non;Non;Non
-S0004;55;S0004-B055;Archives départementales Rimbaud;Belcourt;3020;1959;Non;Non;Non;Non
-S0004;56;S0004-B056;Centre médico-social Rimbaud;Saint-Aubin-les-Prés;3660;1974;Oui;Non;Non;Non
-S0004;57;S0004-B057;Hôtel du département La Fontaine;Prélong;6360;1886;Non;Oui;Non;Non
-S0004;58;S0004-B058;Centre d'exploitation routier Le Parc;Les Essarts;3550;1969;Oui;Oui;Non;Non
-S0004;59;S0004-B059;Centre médico-social Le Parc;Belcourt;1010;1935;Non;Oui;Non;Oui
-S0004;60;S0004-B060;Centre d'exploitation routier La Fontaine;Prélong;6180;1901;Non;Oui;Oui;Non
-S0004;61;S0004-B061;Collège Hugo;Mirande;6850;1988;Non;Oui;Oui;Non
-S0004;62;S0004-B062;Collège Ferry;Fontclaire;1210;1952;Non;Non;Non;Non
-S0004;63;S0004-B063;Centre médico-social Zola;Prélong;640;1881;Oui;Oui;Non;Non
-S0004;64;S0004-B064;Centre d'exploitation routier Ferry;Saint-Aubin-les-Prés;150;2007;Non;Non;Non;Non
-S0004;65;S0004-B065;Hôtel du département Montesquieu;Orvillers;810;1981;Non;Non;Oui;Oui
-S0004;66;S0004-B066;Centre d'exploitation routier Les Tilleuls;Fontclaire;5950;1983;Non;Non;Non;Oui
-S0004;67;S0004-B067;Centre d'exploitation routier Curie;Prélong;4790;1972;Oui;Oui;Non;Non
-S0004;68;S0004-B068;Hôtel du département Pasteur;Fontclaire;8990;1959;Non;Non;Non;Non
-S0004;69;S0004-B069;Musée départemental Pasteur;Haut-Bois;5300;1929;Non;Oui;Oui;Non
-S0004;70;S0004-B070;Centre médico-social Moulin;Saint-Aubin-les-Prés;1570;1945;Oui;Non;Non;Non
-S0004;71;S0004-B071;Centre médico-social La Fontaine;Mirande;4830;1994;Non;Non;Non;Non
-S0004;72;S0004-B072;Centre d'exploitation routier Rimbaud;Orvillers;1620;1992;Oui;Non;Non;Non
-S0004;73;S0004-B073;Collège Ferry;Haut-Bois;830;1959;Non;Oui;Oui;Non
-S0004;74;S0004-B074;Musée départemental Rimbaud;Saint-Aubin-les-Prés;6370;2009;Non;Oui;Non;Non
-S0004;75;S0004-B075;Collège Prévert;Prélong;6750;1928;Non;Non;Non;Oui
-S0004;76;S0004-B076;Collège La Fontaine;Orvillers;7390;1901;Non;Oui;Oui;Non
-S0004;77;S0004-B077;Archives départementales Montesquieu;Haut-Bois;6320;1920;Non;Oui;Non;Non
-S0004;78;S0004-B078;Musée départemental Les Tilleuls;Belcourt;8160;1965;Oui;Non;Oui;Non
-S0004;79;S0004-B079;Musée départemental Rimbaud;Prélong;1610;1965;Oui;Oui;Non;Non
-S0004;80;S0004-B080;Musée départemental Le Parc;Fontclaire;1400;1901;Non;Oui;Oui;Non
-S0004;81;S0004-B081;Musée départemental Le Parc;Haut-Bois;1030;1988;Non;Non;Oui;Non
-S0004;82;S0004-B082;Centre d'exploitation routier La Fontaine;Mirande;2040;1937;Non;Non;Non;Non
-S0004;83;S0004-B083;Hôtel du département La Fontaine;Haut-Bois;8630;2014;Oui;Non;Non;Non
-S0004;84;S0004-B084;Archives départementales Curie;Montclair;1930;1922;Non;Oui;Oui;Non
-S0004;85;S0004-B085;Archives départementales Les Tilleuls;Les Essarts;7780;1994;Oui;Non;Non;Non
-S0004;86;S0004-B086;Centre médico-social Ferry;Prélong;4590;1998;Non;Non;Non;Non
-S0004;87;S0004-B087;Centre médico-social Rimbaud;Varennes;8280;1915;Non;Oui;Oui;Non
-S0004;88;S0004-B088;Collège Le Parc;Haut-Bois;8790;1911;Non;Oui;Non;Non
-S0004;89;S0004-B089;Centre médico-social Rimbaud;Fontclaire;1010;1936;Non;Non;Non;Non
-S0004;90;S0004-B090;Archives départementales Montesquieu;Orvillers;2490;1978;Non;Oui;Oui;Oui
-S0004;91;S0004-B091;Musée départemental Les Peupliers;Orvillers;8180;1917;Oui;Non;Non;Non
-S0004;92;S0004-B092;Centre médico-social La Fontaine;Mirande;4670;1881;Non;Non;Oui;Non
-S0004;93;S0004-B093;Musée départemental Les Tilleuls;Haut-Bois;4410;1908;Non;Oui;Oui;Oui
-S0004;94;S0004-B094;Musée départemental La Fontaine;Prélong;4760;1896;Oui;Oui;Non;Non
-S0004;95;S0004-B095;Hôtel du département Les Tilleuls;Varennes;7430;1916;Non;Oui;Oui;Non
-S0004;96;S0004-B096;Centre médico-social Les Peupliers;Saint-Aubin-les-Prés;5440;1972;Oui;Non;Non;Non
-S0004;97;S0004-B097;Hôtel du département Jaurès;Fontclaire;4890;1891;Non;Non;Non;Non
-S0004;98;S0004-B098;Collège Ferry;Varennes;7580;1906;Non;Oui;Non;Non
-S0004;99;S0004-B099;Hôtel du département Ferry;Montclair;8580;1998;Non;Oui;Non;Oui
-S0004;100;S0004-B100;Musée départemental La Fontaine;Mirande;450;1955;Oui;Oui;Non;Non
-S0004;101;S0004-B101;Centre d'exploitation routier Montesquieu;Fontclaire;8420;2001;Non;Oui;Non;Oui
-S0004;102;S0004-B102;Collège Rimbaud;Orvillers;2870;1911;Non;Oui;Oui;Non
-S0004;103;S0004-B103;Archives départementales Ferry;Montclair;5160;2007;Non;Oui;Non;Non
-S0004;104;S0004-B104;Archives départementales Pasteur;Fontclaire;6240;1926;Non;Oui;Oui;Oui
-S0004;105;S0004-B105;Centre d'exploitation routier Prévert;Prélong;7420;1989;Oui;Non;Non;Non
-S0004;106;S0004-B106;Centre d'exploitation routier Les Tilleuls;Fontclaire;2890;1894;Oui;Non;Non;Non
-S0004;107;S0004-B107;Musée départemental Curie;Belcourt;1540;1992;Oui;Non;Oui;Non
-S0004;108;S0004-B108;Archives départementales Les Tilleuls;Belcourt;6270;1919;Non;Oui;Non;Non
-S0004;109;S0004-B109;Hôtel du département Curie;Haut-Bois;3830;1981;Non;Non;Non;Non
-S0004;110;S0004-B110;Centre médico-social Prévert;Haut-Bois;4040;1910;Non;Oui;Oui;Non
-S0004;111;S0004-B111;Centre d'exploitation routier Le Parc;Mirande;2120;1911;Oui;Non;Oui;Oui
-S0004;112;S0004-B112;Collège La Fontaine;Orvillers;6910;1968;Non;Non;Non;Non
-S0004;113;S0004-B113;Centre médico-social Le Parc;Montclair;8200;1972;Non;Oui;Oui;Non
-S0004;114;S0004-B114;Archives départementales Jaurès;Orvillers;5750;1974;Non;Oui;Non;Oui
-S0004;115;S0004-B115;Collège Hugo;Fontclaire;7420;2002;Non;Non;Non;Non
-S0004;116;S0004-B116;Centre d'exploitation routier Les Peupliers;Saint-Aubin-les-Prés;4680;1999;Non;Oui;Oui;Non
-S0004;117;S0004-B117;Musée départemental Les Tilleuls;Montclair;7940;1913;Non;Non;Non;Oui
-S0004;118;S0004-B118;Centre médico-social Hugo;Montclair;1730;1962;Non;Oui;Oui;Non
-S0004;119;S0004-B119;Centre d'exploitation routier Rimbaud;Saint-Aubin-les-Prés;2640;1930;Non;Oui;Non;Oui
-S0004;120;S0004-B120;Hôtel du département Pasteur;Haut-Bois;6640;1923;Non;Oui;Non;Oui
-S0004;121;S0004-B121;Hôtel du département Ferry;Prélong;500;1887;Oui;Non;Non;Non
-S0004;122;S0004-B122;Centre médico-social La Fontaine;Prélong;4340;1887;Non;Oui;Non;Non
-S0004;123;S0004-B123;Archives départementales Moulin;Fontclaire;3120;1996;Oui;Non;Oui;Non
-S0004;124;S0004-B124;Centre médico-social Ferry;Prélong;1550;1960;Non;Oui;Oui;Non
-S0004;125;S0004-B125;Archives départementales Curie;Orvillers;5350;1907;Non;Oui;Non;Non
-S0004;126;S0004-B126;Collège Jaurès;Les Essarts;4010;1987;Oui;Oui;Non;Oui
-S0004;127;S0004-B127;Hôtel du département Le Parc;Orvillers;2020;1920;Non;Oui;Non;Non
-S0004;128;S0004-B128;Collège Pasteur;Fontclaire;5250;1997;Non;Oui;Oui;Non
-S0004;129;S0004-B129;Archives départementales Les Tilleuls;Mirande;3000;1882;Non;Oui;Oui;Non
-S0004;130;S0004-B130;Archives départementales Ferry;Belcourt;4180;1893;Non;Non;Non;Non
-S0004;131;S0004-B131;Hôtel du département Prévert;Haut-Bois;2940;1910;Oui;Oui;Oui;Non
-S0004;132;S0004-B132;Hôtel du département Ferry;Montclair;2110;2010;Non;Non;Oui;Oui
-S0004;133;S0004-B133;Archives départementales Montesquieu;Mirande;1600;2011;Oui;Non;Non;Non
-S0004;134;S0004-B134;Hôtel du département Le Parc;Les Essarts;6150;1966;Non;Oui;Non;Non
-S0004;135;S0004-B135;Archives départementales Rimbaud;Belcourt;3850;1964;Non;Non;Non;Non
-S0004;136;S0004-B136;Musée départemental Rimbaud;Belcourt;6190;2001;Non;Non;Non;Non
-S0004;137;S0004-B137;Centre médico-social Le Parc;Belcourt;6050;2002;Oui;Non;Non;Non
-S0004;138;S0004-B138;Centre médico-social Rimbaud;Varennes;400;1908;Oui;Non;Non;Non
-S0004;139;S0004-B139;Centre médico-social Zola;Haut-Bois;8010;2000;Non;Oui;Non;Oui
-S0004;140;S0004-B140;Centre médico-social Montesquieu;Orvillers;6860;2002;Non;Oui;Oui;Oui
-S0004;141;S0004-B141;Centre d'exploitation routier Montesquieu;Orvillers;7000;1947;Non;Non;Non;Non
-S0004;142;S0004-B142;Centre médico-social Hugo;Les Essarts;7290;1933;Non;Non;Non;Non
-S0004;143;S0004-B143;Musée départemental Hugo;Les Essarts;1320;1977;Non;Non;Non;Non
-S0004;144;S0004-B144;Centre médico-social Hugo;Belcourt;3020;1900;Non;Non;Non;Non
-S0004;145;S0004-B145;Centre médico-social Rimbaud;Haut-Bois;2850;1949;Oui;Oui;Non;Non
-S0004;146;S0004-B146;Musée départemental Montesquieu;Varennes;6610;1939;Oui;Oui;Oui;Non
-S0004;147;S0004-B147;Centre médico-social Jaurès;Haut-Bois;1690;1984;Non;Oui;Non;Non
-S0004;148;S0004-B148;Centre d'exploitation routier Ferry;Les Essarts;6690;1895;Non;Non;Oui;Non
-S0004;149;S0004-B149;Musée départemental Rimbaud;Belcourt;1870;1986;Non;Oui;Oui;Non
-S0004;150;S0004-B150;Archives départementales La Fontaine;Mirande;1980;1954;Non;Non;Oui;Non
-S0004;151;S0004-B151;Centre d'exploitation routier Hugo;Mirande;6640;2014;Non;Oui;Non;Non
-S0004;152;S0004-B152;Centre médico-social La Fontaine;Saint-Aubin-les-Prés;3460;1921;Non;Oui;Non;Non
-S0004;153;S0004-B153;Centre d'exploitation routier La Fontaine;Les Essarts;5890;1929;Oui;Oui;Non;Non
-S0004;154;S0004-B154;Hôtel du département Ferry;Saint-Aubin-les-Prés;4180;1904;Oui;Non;Non;Non
-S0004;155;S0004-B155;Centre d'exploitation routier Zola;Varennes;4650;1948;Non;Oui;Oui;Non
-S0004;156;S0004-B156;Musée départemental Ferry;Varennes;710;1910;Non;Oui;Oui;Non
-S0004;157;S0004-B157;Musée départemental La Fontaine;Les Essarts;7140;1910;Non;Non;Non;Non
-S0004;158;S0004-B158;Centre médico-social Prévert;Montclair;4730;1975;Non;Oui;Non;Non
-S0004;159;S0004-B159;Musée départemental Rimbaud;Varennes;7880;1943;Non;Oui;Non;Non
-S0004;160;S0004-B160;Hôtel du département Le Parc;Orvillers;870;1908;Oui;Oui;Non;Non
-S0004;161;S0004-B161;Centre médico-social Curie;Orvillers;8820;2013;Non;Non;Non;Non
-S0004;162;S0004-B162;Hôtel du département Prévert;Belcourt;4720;1913;Non;Oui;Non;Oui
-S0004;163;S0004-B163;Centre d'exploitation routier Le Parc;Belcourt;4130;1945;Non;Oui;Non;Non
-S0004;164;S0004-B164;Centre d'exploitation routier Le Parc;Saint-Aubin-les-Prés;5620;1895;Non;Oui;Oui;Non
-S0004;165;S0004-B165;Archives départementales Curie;Montclair;7920;1987;Non;Oui;Non;Non
-S0004;166;S0004-B166;Archives départementales Zola;Saint-Aubin-les-Prés;7070;1914;Non;Non;Non;Oui
-S0004;167;S0004-B167;Hôtel du département Curie;Varennes;8620;1880;Non;Oui;Non;Non
-S0004;168;S0004-B168;Archives départementales Montesquieu;Fontclaire;8510;1938;Oui;Non;Non;Non
-S0004;169;S0004-B169;Musée départemental La Fontaine;Saint-Aubin-les-Prés;400;1987;Non;Non;Non;Non
-S0004;170;S0004-B170;Collège Pasteur;Prélong;420;1994;Non;Oui;Non;Oui
-S0004;171;S0004-B171;Archives départementales Prévert;Varennes;5600;1935;Non;Non;Non;Oui
-S0004;172;S0004-B172;Centre médico-social Rimbaud;Prélong;3340;1962;Oui;Non;Non;Non
-S0004;173;S0004-B173;Archives départementales Hugo;Les Essarts;700;1924;Non;Oui;Oui;Non
-S0004;174;S0004-B174;Musée départemental Les Peupliers;Fontclaire;8120;2014;Non;Non;Non;Oui
-S0004;175;S0004-B175;Hôtel du département Prévert;Varennes;8770;1937;Non;Oui;Non;Non
-S0004;176;S0004-B176;Hôtel du département Zola;Fontclaire;5780;1914;Non;Non;Non;Non
-S0004;177;S0004-B177;Archives départementales Rimbaud;Orvillers;1020;1928;Oui;Oui;Oui;Non
-S0004;178;S0004-B178;Collège Moulin;Prélong;7490;1935;Non;Oui;Non;Non
-S0004;179;S0004-B179;Collège Moulin;Varennes;7670;1910;Non;Non;Non;Non
-S0004;180;S0004-B180;Musée départemental Moulin;Fontclaire;2530;1962;Non;Non;Non;Non
-S0004;181;S0004-B181;Centre d'exploitation routier Ferry;Haut-Bois;5170;1999;Oui;Oui;Non;Non
-S0004;182;S0004-B182;Centre médico-social Ferry;Orvillers;4310;1891;Non;Non;Non;Oui
-S0004;183;S0004-B183;Hôtel du département Les Tilleuls;Fontclaire;3100;1919;Oui;Oui;Oui;Non
-S0004;184;S0004-B184;Hôtel du département Les Peupliers;Orvillers;2710;2005;Non;Oui;Non;Non
-S0004;185;S0004-B185;Centre d'exploitation routier Curie;Montclair;7450;2005;Oui;Oui;Non;Non
-S0004;186;S0004-B186;Hôtel du département Jaurès;Saint-Aubin-les-Prés;8450;1892;Non;Non;Non;Non
-S0004;187;S0004-B187;Musée départemental Curie;Belcourt;2310;2009;Non;Oui;Oui;Non
-S0004;188;S0004-B188;Archives départementales Les Peupliers;Mirande;240;1881;Non;Non;Non;Oui
-S0004;189;S0004-B189;Hôtel du département Hugo;Belcourt;5220;1990;Non;Non;Non;Oui
-S0004;190;S0004-B190;Centre médico-social Moulin;Varennes;6420;2014;Non;Oui;Oui;Non
-S0004;191;S0004-B191;Archives départementales Prévert;Prélong;2570;1937;Non;Oui;Non;Oui
-S0004;192;S0004-B192;Musée départemental La Fontaine;Belcourt;1030;1983;Non;Non;Non;Oui
-S0004;193;S0004-B193;Centre médico-social Pasteur;Mirande;8730;1991;Non;Oui;Oui;Non
-S0004;194;S0004-B194;Hôtel du département Jaurès;Varennes;2240;2001;Non;Non;Non;Non
-S0004;195;S0004-B195;Hôtel du département Les Tilleuls;Belcourt;1910;1960;Oui;Oui;Oui;Oui
-S0004;196;S0004-B196;Archives départementales Pasteur;Les Essarts;1740;1941;Non;Non;Non;Non
-S0004;197;S0004-B197;Archives départementales La Fontaine;Montclair;8170;1900;Non;Oui;Non;Oui
-S0004;198;S0004-B198;Collège Ferry;Prélong;7950;1981;Non;Oui;Oui;Non
-S0004;199;S0004-B199;Archives départementales Prévert;Varennes;3720;1976;Non;Non;Non;Non
-S0004;200;S0004-B200;Hôtel du département Hugo;Varennes;7380;1898;Oui;Oui;Oui;Non
-S0004;201;S0004-B201;Musée départemental Zola;Orvillers;3770;1907;Oui;Non;Non;Non
-S0004;202;S0004-B202;Collège Curie;Saint-Aubin-les-Prés;1990;1990;Non;Non;Non;Non
-S0004;203;S0004-B203;Centre d'exploitation routier Montesquieu;Saint-Aubin-les-Prés;6190;1963;Non;Oui;Oui;Non
-S0004;204;S0004-B204;Musée départemental Montesquieu;Varennes;5930;2013;Oui;Non;Non;Oui
-S0004;205;S0004-B205;Archives départementales Curie;Saint-Aubin-les-Prés;1790;1991;Non;Oui;Oui;Non
-S0004;206;S0004-B206;Centre médico-social Le Parc;Mirande;6160;1930;Non;Oui;Oui;Oui
-S0004;207;S0004-B207;Hôtel du département Zola;Orvillers;4580;1965;Non;Oui;Non;Non
-S0004;208;S0004-B208;Centre d'exploitation routier Ferry;Prélong;7190;1931;Non;Non;Non;Non
-S0004;209;S0004-B209;Musée départemental Le Parc;Mirande;5970;1942;Non;Oui;Oui;Non
-S0004;210;S0004-B210;Hôtel du département Moulin;Prélong;5660;1926;Non;Oui;Non;Non
-S0004;211;S0004-B211;Musée départemental Moulin;Mirande;8240;1954;Non;Oui;Oui;Non
-S0004;212;S0004-B212;Musée départemental Prévert;Montclair;6560;1957;Oui;Non;Non;Non
-S0004;213;S0004-B213;Collège Prévert;Prélong;4980;1982;Non;Non;Non;Non
-S0004;214;S0004-B214;Collège La Fontaine;Orvillers;7260;1901;Oui;Oui;Oui;Non
-S0004;215;S0004-B215;Hôtel du département Jaurès;Prélong;6680;1982;Non;Oui;Oui;Non
-S0004;216;S0004-B216;Collège Hugo;Varennes;5300;2012;Non;Oui;Non;Non
-S0004;217;S0004-B217;Archives départementales La Fontaine;Prélong;7150;2008;Oui;Oui;Non;Non
-S0004;218;S0004-B218;Collège Pasteur;Montclair;3640;1959;Non;Oui;Non;Non
-S0004;219;S0004-B219;Collège Prévert;Mirande;3340;1897;Non;Oui;Non;Oui
-S0004;220;S0004-B220;Musée départemental Pasteur;Montclair;7660;1942;Non;Non;Non;Non
-S0004;221;S0004-B221;Archives départementales Moulin;Fontclaire;6520;1927;Oui;Oui;Non;Non
-S0004;222;S0004-B222;Centre médico-social Prévert;Prélong;4470;1979;Oui;Non;Non;Non
-S0004;223;S0004-B223;Collège Les Tilleuls;Saint-Aubin-les-Prés;8260;1927;Non;Non;Non;Oui
-S0004;224;S0004-B224;Archives départementales Montesquieu;Orvillers;6190;1979;Non;Non;Non;Non
-S0004;225;S0004-B225;Hôtel du département Curie;Les Essarts;6370;1901;Non;Non;Non;Non
-S0004;226;S0004-B226;Centre d'exploitation routier Le Parc;Montclair;5310;1979;Non;Oui;Oui;Non
-S0004;227;S0004-B227;Musée départemental Montesquieu;Montclair;5760;1922;Non;Oui;Oui;Non
-S0004;228;S0004-B228;Collège Rimbaud;Orvillers;170;2004;Oui;Oui;Non;Non
-S0004;229;S0004-B229;Archives départementales Zola;Mirande;4330;1993;Non;Oui;Oui;Oui
-S0004;230;S0004-B230;Centre d'exploitation routier Jaurès;Les Essarts;2380;1953;Oui;Non;Non;Non
-S0004;231;S0004-B231;Hôtel du département Montesquieu;Saint-Aubin-les-Prés;5940;1909;Non;Non;Non;Non
-S0004;232;S0004-B232;Collège La Fontaine;Mirande;5670;1935;Non;Oui;Oui;Non
-S0004;233;S0004-B233;Centre d'exploitation routier Rimbaud;Belcourt;4680;1947;Non;Non;Non;Non
-S0004;234;S0004-B234;Centre médico-social Moulin;Prélong;7130;1969;Non;Non;Non;Non
-S0004;235;S0004-B235;Centre médico-social Rimbaud;Varennes;8320;1895;Non;Non;Non;Non
-S0004;236;S0004-B236;Musée départemental Hugo;Les Essarts;5940;1948;Non;Oui;Non;Non
-S0004;237;S0004-B237;Centre médico-social La Fontaine;Fontclaire;680;1950;Non;Non;Non;Non
-S0004;238;S0004-B238;Musée départemental Ferry;Varennes;7870;1980;Non;Oui;Non;Non
-S0004;239;S0004-B239;Archives départementales Pasteur;Saint-Aubin-les-Prés;4200;2011;Non;Oui;Non;Non
-S0004;240;S0004-B240;Archives départementales Ferry;Prélong;100;1903;Non;Oui;Non;Non
-S0004;241;S0004-B241;Collège La Fontaine;Haut-Bois;4150;1935;Non;Oui;Non;Non
-S0004;242;S0004-B242;Centre d'exploitation routier Ferry;Haut-Bois;5990;1913;Non;Oui;Non;Non
-S0004;243;S0004-B243;Collège Jaurès;Saint-Aubin-les-Prés;6490;1997;Oui;Non;Non;Oui
-S0004;244;S0004-B244;Archives départementales Moulin;Montclair;6730;1957;Oui;Oui;Non;Non
-S0004;245;S0004-B245;Centre d'exploitation routier Pasteur;Orvillers;6880;1922;Oui;Non;Non;Non
-S0004;246;S0004-B246;Archives départementales Les Peupliers;Saint-Aubin-les-Prés;7280;1904;Oui;Non;Non;Oui
-S0004;247;S0004-B247;Musée départemental Prévert;Belcourt;160;1967;Non;Oui;Non;Non
-S0004;248;S0004-B248;Collège Moulin;Fontclaire;990;1906;Oui;Oui;Oui;Non
-S0004;249;S0004-B249;Centre médico-social Les Peupliers;Montclair;780;1882;Non;Oui;Oui;Non
-S0004;250;S0004-B250;Musée départemental Curie;Fontclaire;6380;1993;Non;Oui;Oui;Oui
-S0005;1;S0005-B001;Logements individuels Ferry;Fontclaire;3300;1915;Oui;Non;Non;Non
-S0005;2;S0005-B002;Foyer logement La Fontaine;Belcourt;8760;1957;Oui;Non;Non;Oui
-S0005;3;S0005-B003;Résidence La Fontaine;Varennes;5140;1978;Oui;Oui;Non;Non
-S0005;4;S0005-B004;Résidence Ferry;Orvillers;1430;1979;Non;Oui;Non;Non
-S0005;5;S0005-B005;Logements individuels La Fontaine;Saint-Aubin-les-Prés;250;1897;Oui;Non;Non;Non
-S0005;6;S0005-B006;Logements individuels Montesquieu;Les Essarts;6510;2008;Non;Non;Non;Non
-S0005;7;S0005-B007;Immeuble collectif Hugo;Saint-Aubin-les-Prés;3250;1900;Non;Non;Non;Non
-S0005;8;S0005-B008;Logements individuels Les Tilleuls;Saint-Aubin-les-Prés;3250;1991;Non;Oui;Non;Oui
-S0005;9;S0005-B009;Logements individuels Pasteur;Mirande;6340;1894;Non;Oui;Non;Non
-S0005;10;S0005-B010;Immeuble collectif Le Parc;Belcourt;1750;2007;Non;Oui;Non;Non
-S0005;11;S0005-B011;Immeuble collectif Ferry;Montclair;7750;1948;Non;Non;Non;Non
-S0005;12;S0005-B012;Logements individuels Hugo;Haut-Bois;730;1947;Non;Oui;Non;Oui
-S0005;13;S0005-B013;Foyer logement Jaurès;Mirande;8870;1922;Non;Oui;Oui;Oui
-S0005;14;S0005-B014;Résidence Moulin;Haut-Bois;100;1891;Non;Non;Oui;Oui
-S0005;15;S0005-B015;Immeuble collectif Curie;Belcourt;5740;1987;Oui;Oui;Oui;Non
-S0005;16;S0005-B016;Résidence Les Tilleuls;Orvillers;1300;2008;Non;Oui;Oui;Non
-S0005;17;S0005-B017;Résidence Zola;Saint-Aubin-les-Prés;4840;1952;Non;Oui;Oui;Oui
-S0005;18;S0005-B018;Foyer logement Moulin;Les Essarts;5850;1957;Non;Oui;Oui;Non
-S0005;19;S0005-B019;Immeuble collectif Le Parc;Haut-Bois;7860;1942;Oui;Non;Non;Oui
-S0005;20;S0005-B020;Résidence Ferry;Belcourt;7850;1976;Non;Oui;Non;Oui
-S0005;21;S0005-B021;Immeuble collectif Zola;Mirande;690;1916;Non;Oui;Oui;Non
-S0005;22;S0005-B022;Logements individuels Le Parc;Orvillers;4770;1901;Non;Non;Non;Non
-S0005;23;S0005-B023;Résidence Zola;Montclair;2500;1954;Non;Oui;Oui;Non
-S0005;24;S0005-B024;Foyer logement Ferry;Mirande;2860;1939;Oui;Non;Non;Non
-S0005;25;S0005-B025;Immeuble collectif Pasteur;Montclair;4680;1999;Non;Non;Non;Non
-S0005;26;S0005-B026;Logements individuels Hugo;Mirande;2790;1910;Oui;Non;Non;Non
-S0005;27;S0005-B027;Résidence Moulin;Orvillers;1590;1903;Non;Non;Non;Non
-S0005;28;S0005-B028;Foyer logement Hugo;Montclair;390;1983;Non;Oui;Non;Non
-S0005;29;S0005-B029;Résidence La Fontaine;Montclair;1320;1883;Oui;Oui;Non;Non
-S0005;30;S0005-B030;Logements individuels Ferry;Saint-Aubin-les-Prés;6040;1946;Non;Oui;Oui;Non
-S0005;31;S0005-B031;Logements individuels La Fontaine;Montclair;1020;1964;Oui;Oui;Non;Oui
-S0005;32;S0005-B032;Logements individuels Rimbaud;Fontclaire;5160;1887;Non;Non;Non;Non
-S0005;33;S0005-B033;Foyer logement Hugo;Mirande;1600;1888;Non;Non;Non;Non
-S0005;34;S0005-B034;Logements individuels Jaurès;Saint-Aubin-les-Prés;2940;1978;Oui;Oui;Oui;Non
-S0005;35;S0005-B035;Résidence Zola;Orvillers;4990;2004;Non;Oui;Non;Non
-S0005;36;S0005-B036;Résidence Ferry;Prélong;2320;1887;Non;Oui;Non;Oui
-S0005;37;S0005-B037;Foyer logement La Fontaine;Prélong;2460;1920;Oui;Non;Non;Non
-S0005;38;S0005-B038;Résidence La Fontaine;Varennes;5970;1979;Non;Non;Non;Non
-S0005;39;S0005-B039;Foyer logement La Fontaine;Orvillers;6130;1887;Non;Oui;Oui;Non
-S0005;40;S0005-B040;Immeuble collectif Rimbaud;Mirande;5630;1959;Oui;Oui;Oui;Oui
-S0005;41;S0005-B041;Résidence Montesquieu;Mirande;80;1964;Non;Non;Non;Oui
-S0005;42;S0005-B042;Foyer logement Jaurès;Belcourt;1590;1916;Non;Non;Non;Non
-S0005;43;S0005-B043;Foyer logement Le Parc;Fontclaire;6080;1905;Non;Non;Non;Non
-S0005;44;S0005-B044;Logements individuels La Fontaine;Mirande;6720;1961;Oui;Non;Non;Non
-S0005;45;S0005-B045;Foyer logement Moulin;Prélong;8420;1924;Non;Non;Non;Non
-S0005;46;S0005-B046;Résidence Le Parc;Prélong;4080;1888;Oui;Oui;Oui;Non
-S0005;47;S0005-B047;Résidence Prévert;Montclair;3470;1899;Oui;Non;Non;Oui
-S0005;48;S0005-B048;Résidence Rimbaud;Orvillers;4650;1882;Non;Non;Non;Oui
-S0005;49;S0005-B049;Résidence Le Parc;Belcourt;570;1978;Non;Oui;Oui;Oui
-S0005;50;S0005-B050;Logements individuels Ferry;Haut-Bois;3920;1905;Non;Oui;Non;Non
-S0005;51;S0005-B051;Immeuble collectif Curie;Mirande;830;1888;Non;Non;Non;Non
-S0005;52;S0005-B052;Immeuble collectif Zola;Montclair;7570;1899;Non;Oui;Non;Oui
-S0005;53;S0005-B053;Logements individuels Le Parc;Belcourt;4490;1922;Non;Non;Non;Oui
-S0005;54;S0005-B054;Immeuble collectif Zola;Haut-Bois;7470;1947;Non;Oui;Oui;Oui
-S0005;55;S0005-B055;Logements individuels Curie;Belcourt;3770;1880;Non;Oui;Oui;Non
-S0005;56;S0005-B056;Immeuble collectif Pasteur;Belcourt;2190;1923;Non;Non;Non;Non
-S0005;57;S0005-B057;Logements individuels Prévert;Mirande;6840;1947;Oui;Oui;Non;Oui
-S0005;58;S0005-B058;Foyer logement Curie;Mirande;530;1947;Non;Non;Non;Non
-S0005;59;S0005-B059;Immeuble collectif La Fontaine;Saint-Aubin-les-Prés;950;1968;Non;Non;Non;Non
-S0005;60;S0005-B060;Résidence Rimbaud;Fontclaire;8460;2013;Non;Oui;Non;Non
-S0005;61;S0005-B061;Immeuble collectif Prévert;Les Essarts;880;1981;Non;Oui;Non;Non
-S0005;62;S0005-B062;Immeuble collectif Pasteur;Mirande;1850;1922;Non;Non;Non;Oui
-S0005;63;S0005-B063;Logements individuels Moulin;Montclair;8620;1946;Non;Oui;Non;Non
-S0005;64;S0005-B064;Logements individuels Montesquieu;Orvillers;8850;1950;Non;Oui;Non;Oui
-S0005;65;S0005-B065;Logements individuels Pasteur;Fontclaire;1610;1917;Non;Non;Non;Non
-S0005;66;S0005-B066;Résidence Les Tilleuls;Saint-Aubin-les-Prés;8120;1953;Non;Oui;Non;Non
-S0005;67;S0005-B067;Logements individuels Les Tilleuls;Prélong;4920;1889;Oui;Oui;Oui;Non
-S0005;68;S0005-B068;Logements individuels Jaurès;Fontclaire;3470;1940;Oui;Non;Non;Non
-S0005;69;S0005-B069;Foyer logement Rimbaud;Les Essarts;3260;1951;Non;Oui;Non;Non
-S0005;70;S0005-B070;Immeuble collectif Curie;Les Essarts;7690;1993;Non;Non;Non;Non
-S0005;71;S0005-B071;Résidence Moulin;Mirande;2240;1984;Non;Non;Non;Non
-S0005;72;S0005-B072;Immeuble collectif Pasteur;Les Essarts;7340;2009;Non;Non;Non;Non
-S0005;73;S0005-B073;Immeuble collectif Moulin;Varennes;8650;1894;Oui;Non;Non;Non
-S0005;74;S0005-B074;Foyer logement Ferry;Mirande;5250;1981;Non;Non;Non;Oui
-S0005;75;S0005-B075;Logements individuels Curie;Mirande;6080;1969;Non;Oui;Non;Non
-S0005;76;S0005-B076;Résidence Hugo;Belcourt;4030;1892;Oui;Non;Non;Non
-S0005;77;S0005-B077;Immeuble collectif Les Peupliers;Varennes;2830;1984;Non;Non;Non;Non
-S0005;78;S0005-B078;Logements individuels Curie;Montclair;6230;1882;Oui;Non;Non;Non
-S0005;79;S0005-B079;Foyer logement Zola;Fontclaire;8800;1969;Non;Non;Non;Non
-S0005;80;S0005-B080;Logements individuels Les Tilleuls;Saint-Aubin-les-Prés;150;2010;Non;Oui;Non;Non
-S0005;81;S0005-B081;Foyer logement Hugo;Saint-Aubin-les-Prés;5010;1896;Non;Non;Non;Non
-S0005;82;S0005-B082;Foyer logement Moulin;Montclair;5370;1941;Non;Oui;Non;Non
-S0005;83;S0005-B083;Foyer logement Les Peupliers;Montclair;7460;1886;Non;Non;Non;Non
-S0005;84;S0005-B084;Logements individuels Le Parc;Belcourt;6050;1928;Non;Oui;Non;Non
-S0005;85;S0005-B085;Logements individuels Les Peupliers;Orvillers;5270;1956;Non;Non;Non;Non
-S0005;86;S0005-B086;Résidence Prévert;Montclair;7660;1946;Non;Oui;Non;Non
-S0005;87;S0005-B087;Foyer logement Les Peupliers;Saint-Aubin-les-Prés;2350;1970;Oui;Non;Non;Non
-S0005;88;S0005-B088;Foyer logement Hugo;Prélong;3090;1998;Non;Non;Non;Non
-S0005;89;S0005-B089;Résidence Prévert;Varennes;5200;1910;Non;Non;Non;Non
-S0005;90;S0005-B090;Immeuble collectif Curie;Varennes;3580;1984;Non;Oui;Non;Non
-S0005;91;S0005-B091;Immeuble collectif La Fontaine;Saint-Aubin-les-Prés;5070;1965;Non;Oui;Oui;Non
-S0005;92;S0005-B092;Foyer logement Moulin;Montclair;5980;1920;Non;Oui;Non;Oui
-S0005;93;S0005-B093;Logements individuels Zola;Fontclaire;4960;1978;Oui;Non;Non;Non
-S0005;94;S0005-B094;Foyer logement La Fontaine;Haut-Bois;2030;1884;Non;Non;Non;Non
-S0005;95;S0005-B095;Foyer logement Hugo;Montclair;1130;1978;Non;Non;Non;Oui
-S0005;96;S0005-B096;Foyer logement Prévert;Haut-Bois;6180;2014;Non;Oui;Non;Non
-S0005;97;S0005-B097;Logements individuels Ferry;Varennes;1760;1983;Oui;Oui;Oui;Non
-S0005;98;S0005-B098;Résidence Les Tilleuls;Haut-Bois;1810;1911;Non;Oui;Non;Oui
-S0005;99;S0005-B099;Foyer logement La Fontaine;Haut-Bois;6460;1892;Non;Non;Oui;Oui
-S0005;100;S0005-B100;Résidence Le Parc;Saint-Aubin-les-Prés;4340;1993;Non;Non;Non;Non
+id_structure;num;id_batiment;nom_batiment;adresse;code_postal;commune;typologie;rn;financements
+S0001;1;S0001-B001;École maternelle Le Parc;36 rue des Écoles;38110;Belcourt;Enseignement;E865-V215-DE1C;Audit
+S0001;2;S0001-B002;Salle polyvalente La Fontaine;104 place de la Mairie;38110;Belcourt;Culture / loisirs;VNH9-DN65-R6PP;Audit
+S0001;3;S0001-B003;Crèche Montesquieu;38 chemin des Prés;38120;Saint-Aubin-les-Prés;Petite enfance;C42E-J5E6-RHXQ;Audit
+S0001;4;S0001-B004;École maternelle Montesquieu;94 rue des Écoles;38200;Montclair;Enseignement;AXRH-EM3E-2MSH;Audit
+S0002;1;S0002-B001;Piscine intercommunale Zola;114 allée des Tilleuls;38250;Mirande;Sport;9G8F-GVSQ-E8Z5;AMO
+S0002;2;S0002-B002;Office de tourisme Zola;49 allée des Tilleuls;38120;Saint-Aubin-les-Prés;Bureaux;G07H-N7JV-AX0G;AMO
+S0002;3;S0002-B003;Déchetterie Curie;48 place de la Mairie;38210;Varennes;Technique;0MZ1-7QKF-3F55;Audit
+S0002;4;S0002-B004;Piscine intercommunale Les Peupliers;61 place de la Mairie;38200;Montclair;Sport;GVDC-KSQW-W7FE;SDIE + Audit
+S0002;5;S0002-B005;Siège communautaire Le Parc;81 rue de la République;38120;Saint-Aubin-les-Prés;Bureaux;E42N-4FHZ-D8YF;AMO
+S0003;1;S0003-B001;Crèche Zola;53 allée des Tilleuls;38230;Orvillers;Petite enfance;363S-N6FC-CW8V;Audit + AMO
+S0003;2;S0003-B002;École maternelle Les Peupliers;70 rue de la République;38110;Belcourt;Enseignement;5FAT-ZYDS-3AR0;Audit
+S0003;3;S0003-B003;Crèche Curie;25 boulevard Victor Hugo;38250;Mirande;Petite enfance;D33M-33YA-35B4;Audit + MOE + AMO
+S0003;4;S0003-B004;Mairie annexe Les Tilleuls;11 rue du Stade;38110;Belcourt;Bureaux;MGDM-FGS8-KXM4;Audit + AMO
+S0003;5;S0003-B005;Mairie annexe Curie;120 chemin des Prés;38220;Les Essarts;Bureaux;4FQJ-AWK0-K68G;SDIE + Audit
+S0003;6;S0003-B006;Mairie annexe Moulin;88 boulevard Victor Hugo;38230;Orvillers;Bureaux;ZG35-VH20-N8GA;AMO
+S0003;7;S0003-B007;École maternelle Montesquieu;5 chemin des Prés;38200;Montclair;Enseignement;9V82-KQ2P-DF6P;Audit
+S0003;8;S0003-B008;Gymnase Rimbaud;21 place de la Mairie;38210;Varennes;Sport;T1BN-TFHA-6R2Y;Audit
+S0003;9;S0003-B009;Mairie annexe Jaurès;85 rue des Écoles;38210;Varennes;Bureaux;SNH4-HPSN-17GB;Audit + MOE
+S0003;10;S0003-B010;Médiathèque Zola;78 avenue Jean Jaurès;38230;Orvillers;Culture / loisirs;RCG2-V0CQ-V4NM;SDIE
+S0003;11;S0003-B011;Crèche Zola;90 boulevard Victor Hugo;38230;Orvillers;Petite enfance;8CTR-BKS0-KJDV;Audit
+S0003;12;S0003-B012;Mairie annexe La Fontaine;116 place de la Mairie;38250;Mirande;Bureaux;5JN5-FKEC-912F;Audit
+S0003;13;S0003-B013;Mairie annexe Prévert;52 rue des Écoles;38240;Fontclaire;Bureaux;906V-EBX3-F7X8;Audit
+S0003;14;S0003-B014;Centre technique Rimbaud;117 allée des Tilleuls;38240;Fontclaire;Technique;AYWG-FHZF-HW4J;Audit + AMO
+S0003;15;S0003-B015;Gymnase Zola;89 place de la Mairie;38210;Varennes;Sport;D4TT-NXT3-DTR1;AMO
+S0003;16;S0003-B016;Médiathèque La Fontaine;50 rue du Stade;38220;Les Essarts;Culture / loisirs;EZEH-VZ1R-NSAX;Audit
+S0003;17;S0003-B017;École élémentaire Les Peupliers;55 place de la Mairie;38120;Saint-Aubin-les-Prés;Enseignement;XB3G-RMDX-MNRH;AMO
+S0003;18;S0003-B018;École élémentaire Ferry;29 avenue Jean Jaurès;38110;Belcourt;Enseignement;21FC-19F8-Y7DX;Audit
+S0003;19;S0003-B019;École maternelle Hugo;14 rue de la République;38200;Montclair;Enseignement;KRSC-4F6K-72PV;SDIE + AMO
+S0003;20;S0003-B020;Crèche Pasteur;56 chemin des Prés;38250;Mirande;Petite enfance;X9VB-HYXV-HMF5;Audit
+S0003;21;S0003-B021;Crèche Jaurès;64 chemin des Prés;38230;Orvillers;Petite enfance;BZDP-GNHH-0C5F;Audit
+S0003;22;S0003-B022;Centre technique La Fontaine;3 avenue Jean Jaurès;38250;Mirande;Technique;JESF-KQYP-VNPX;Audit + MOE + AMO
+S0003;23;S0003-B023;École maternelle Moulin;28 allée des Tilleuls;38200;Montclair;Enseignement;HJ6C-JEQB-K08H;SDIE + Audit + MOE
+S0003;24;S0003-B024;Centre technique Rimbaud;2 boulevard Victor Hugo;38120;Saint-Aubin-les-Prés;Technique;YYWN-B3GY-74SZ;Audit + MOE + AMO
+S0003;25;S0003-B025;Salle polyvalente Moulin;16 rue du Stade;38120;Saint-Aubin-les-Prés;Culture / loisirs;ERWW-KVK3-6DDG;SDIE + AMO
+S0003;26;S0003-B026;École élémentaire Prévert;89 allée des Tilleuls;38240;Fontclaire;Enseignement;J2EJ-JX4E-GCV7;Audit
+S0003;27;S0003-B027;École maternelle Curie;102 boulevard Victor Hugo;38110;Belcourt;Enseignement;JW7X-KSHZ-W52V;MOE
+S0003;28;S0003-B028;École élémentaire Les Tilleuls;6 place de la Mairie;38220;Les Essarts;Enseignement;YWHB-VZ5Y-PTNM;Audit
+S0003;29;S0003-B029;Salle polyvalente Rimbaud;98 rue de la République;38240;Fontclaire;Culture / loisirs;X5MG-M7S0-XT3C;Audit
+S0003;30;S0003-B030;École élémentaire Hugo;71 place de la Mairie;38210;Varennes;Enseignement;JWZ7-1FAK-0T5E;AMO
+S0003;31;S0003-B031;Gymnase Le Parc;38 boulevard Victor Hugo;38250;Mirande;Sport;TYYF-X9RC-84HT;Audit + MOE + AMO
+S0003;32;S0003-B032;Salle polyvalente Rimbaud;20 allée des Tilleuls;38250;Mirande;Culture / loisirs;YPNR-XMCF-RET2;Audit
+S0003;33;S0003-B033;Gymnase Jaurès;17 chemin des Prés;38250;Mirande;Sport;6W6X-09T9-4YGN;MOE
+S0003;34;S0003-B034;Crèche Les Peupliers;92 allée des Tilleuls;38230;Orvillers;Petite enfance;24FJ-E5V6-6WAK;SDIE
+S0003;35;S0003-B035;Médiathèque Curie;32 rue du Stade;38240;Fontclaire;Culture / loisirs;BAB5-RFZ9-EXGX;SDIE + Audit
+S0003;36;S0003-B036;Gymnase Prévert;45 boulevard Victor Hugo;38120;Saint-Aubin-les-Prés;Sport;VGXK-CRY6-FRPJ;Audit
+S0003;37;S0003-B037;Salle polyvalente Les Tilleuls;111 rue de la République;38110;Belcourt;Culture / loisirs;ZJEP-ECG8-62KW;Audit + MOE
+S0003;38;S0003-B038;Médiathèque Curie;26 place de la Mairie;38240;Fontclaire;Culture / loisirs;QHAG-YJN7-X49E;Audit
+S0003;39;S0003-B039;Médiathèque La Fontaine;51 rue de la République;38120;Saint-Aubin-les-Prés;Culture / loisirs;G7XQ-GRQ6-EY1M;SDIE + MOE
+S0003;40;S0003-B040;Salle polyvalente Pasteur;18 rue de la République;38240;Fontclaire;Culture / loisirs;2KZ7-6F8R-XQT9;Audit
+S0003;41;S0003-B041;Salle polyvalente Le Parc;48 rue des Écoles;38110;Belcourt;Culture / loisirs;WWFQ-6QP3-SHC7;MOE
+S0003;42;S0003-B042;École élémentaire La Fontaine;43 rue des Écoles;38110;Belcourt;Enseignement;8D4D-DEN9-0H98;Audit + MOE
+S0003;43;S0003-B043;Gymnase Ferry;102 rue des Écoles;38110;Belcourt;Sport;M1BG-38T7-4YWQ;SDIE + Audit
+S0003;44;S0003-B044;École élémentaire Prévert;83 rue de la République;38220;Les Essarts;Enseignement;3YSV-6ZW4-5M94;Audit
+S0003;45;S0003-B045;Crèche Prévert;65 rue du Stade;38220;Les Essarts;Petite enfance;67DV-WETN-XST6;Audit + MOE
+S0003;46;S0003-B046;Centre technique Pasteur;107 avenue Jean Jaurès;38120;Saint-Aubin-les-Prés;Technique;5V6Q-83N7-TPV3;Audit
+S0003;47;S0003-B047;Mairie annexe Les Peupliers;62 rue des Écoles;38200;Montclair;Bureaux;6PQ7-HEV1-H1BH;AMO
+S0003;48;S0003-B048;Gymnase Pasteur;19 rue de la République;38240;Fontclaire;Sport;5DRT-XNAQ-KM53;Audit + MOE + AMO
+S0003;49;S0003-B049;Centre technique Prévert;78 allée des Tilleuls;38240;Fontclaire;Technique;THD7-PV7J-ZK2E;Audit + MOE
+S0003;50;S0003-B050;Mairie annexe La Fontaine;33 boulevard Victor Hugo;38200;Montclair;Bureaux;M70Z-VB8R-EP4S;SDIE + MOE
+S0003;51;S0003-B051;Médiathèque Les Tilleuls;52 rue du Stade;38240;Fontclaire;Culture / loisirs;J7S1-MAXQ-5V6F;Audit + MOE
+S0003;52;S0003-B052;Médiathèque Ferry;100 place de la Mairie;38210;Varennes;Culture / loisirs;47CP-P9F6-9GCB;AMO
+S0003;53;S0003-B053;Centre technique La Fontaine;73 allée des Tilleuls;38250;Mirande;Technique;MM9W-4YWK-H3P4;Audit + MOE
+S0003;54;S0003-B054;École maternelle Les Tilleuls;77 rue du Stade;38120;Saint-Aubin-les-Prés;Enseignement;X2WC-MY93-W6N5;SDIE + Audit + MOE
+S0003;55;S0003-B055;Centre technique Ferry;48 boulevard Victor Hugo;38200;Montclair;Technique;RTN3-N4N6-RJG9;Audit + MOE
+S0003;56;S0003-B056;Crèche Les Tilleuls;91 avenue Jean Jaurès;38200;Montclair;Petite enfance;KRN8-5VQ1-QKBD;Audit + MOE
+S0003;57;S0003-B057;Gymnase Hugo;109 avenue Jean Jaurès;38120;Saint-Aubin-les-Prés;Sport;2N8R-9ABA-W2TQ;SDIE
+S0003;58;S0003-B058;Centre technique Montesquieu;31 boulevard Victor Hugo;38210;Varennes;Technique;YCQW-XJRT-AC8G;Audit + MOE
+S0003;59;S0003-B059;École maternelle Pasteur;98 place de la Mairie;38220;Les Essarts;Enseignement;HW9V-5EWP-1T3S;SDIE + Audit
+S0003;60;S0003-B060;École élémentaire Pasteur;108 chemin des Prés;38230;Orvillers;Enseignement;982J-Y8YW-051G;SDIE + Audit
+S0003;61;S0003-B061;Crèche La Fontaine;37 rue des Écoles;38120;Saint-Aubin-les-Prés;Petite enfance;K73F-TX47-Z1F9;SDIE + Audit + MOE
+S0003;62;S0003-B062;Gymnase Montesquieu;47 avenue Jean Jaurès;38120;Saint-Aubin-les-Prés;Sport;1RY2-RQG1-P4PF;Audit
+S0003;63;S0003-B063;Médiathèque Jaurès;46 chemin des Prés;38200;Montclair;Culture / loisirs;BXYB-84X2-JC2C;Audit
+S0003;64;S0003-B064;Centre technique Jaurès;97 rue des Écoles;38220;Les Essarts;Technique;JP3N-H7QV-SWRN;Audit
+S0003;65;S0003-B065;Salle polyvalente Le Parc;55 avenue Jean Jaurès;38120;Saint-Aubin-les-Prés;Culture / loisirs;VBJM-65MJ-KWVA;MOE
+S0003;66;S0003-B066;Médiathèque Hugo;82 rue de la République;38240;Fontclaire;Culture / loisirs;4SQA-19W2-84FQ;Audit + MOE + AMO
+S0003;67;S0003-B067;Centre technique Ferry;57 avenue Jean Jaurès;38230;Orvillers;Technique;8QSM-HF71-BZR7;Audit + MOE
+S0003;68;S0003-B068;Salle polyvalente Moulin;16 place de la Mairie;38250;Mirande;Culture / loisirs;4WBW-5MP4-JKAB;Audit
+S0003;69;S0003-B069;Gymnase La Fontaine;64 rue de la République;38210;Varennes;Sport;QQX8-54KS-YTT4;Audit + MOE
+S0003;70;S0003-B070;Médiathèque Rimbaud;100 place de la Mairie;38200;Montclair;Culture / loisirs;8V37-9KAA-MEPJ;Audit
+S0003;71;S0003-B071;Gymnase Les Tilleuls;69 avenue Jean Jaurès;38220;Les Essarts;Sport;A9AN-2152-GDT1;Audit + MOE
+S0003;72;S0003-B072;Centre technique La Fontaine;104 rue du Stade;38210;Varennes;Technique;KX43-AWTY-XDN9;Audit
+S0003;73;S0003-B073;Crèche La Fontaine;48 avenue Jean Jaurès;38200;Montclair;Petite enfance;MFX7-HWF9-63JR;Audit
+S0003;74;S0003-B074;Médiathèque Moulin;98 place de la Mairie;38230;Orvillers;Culture / loisirs;ZXZK-Z15S-XFDP;Audit
+S0003;75;S0003-B075;Centre technique Montesquieu;2 avenue Jean Jaurès;38220;Les Essarts;Technique;V8GQ-SQ2S-3CQJ;Audit
+S0003;76;S0003-B076;École maternelle Pasteur;51 chemin des Prés;38200;Montclair;Enseignement;NQ9C-S222-8NYX;Audit + MOE
+S0003;77;S0003-B077;Médiathèque Zola;79 boulevard Victor Hugo;38200;Montclair;Culture / loisirs;NZKY-1QN7-TK1Y;Audit
+S0003;78;S0003-B078;Mairie annexe Les Tilleuls;62 place de la Mairie;38110;Belcourt;Bureaux;R9F2-7C1W-MT9T;Audit
+S0003;79;S0003-B079;École élémentaire Montesquieu;27 chemin des Prés;38200;Montclair;Enseignement;YRMB-XNPG-YCFH;SDIE + Audit
+S0003;80;S0003-B080;Salle polyvalente Le Parc;91 allée des Tilleuls;38210;Varennes;Culture / loisirs;MYPH-J7RS-P9J2;Audit + MOE
+S0004;1;S0004-B001;Centre d'exploitation routier Moulin;26 boulevard Victor Hugo;38250;Mirande;Technique;H86F-F3EE-36TN;SDIE + AMO
+S0004;2;S0004-B002;Musée départemental Zola;84 allée des Tilleuls;38200;Montclair;Culture / loisirs;YCJM-J35E-2BTB;SDIE
+S0004;3;S0004-B003;Centre médico-social Jaurès;2 boulevard Victor Hugo;38220;Les Essarts;Santé / social;6NJX-Z8XH-C7NA;AMO
+S0004;4;S0004-B004;Centre d'exploitation routier Les Tilleuls;87 rue des Écoles;38220;Les Essarts;Technique;BSVM-5S6B-8YMF;Audit + MOE
+S0004;5;S0004-B005;Centre d'exploitation routier Les Tilleuls;93 rue de la République;38220;Les Essarts;Technique;GQF3-7XKA-SK7J;SDIE + Audit
+S0004;6;S0004-B006;Archives départementales Zola;90 allée des Tilleuls;38230;Orvillers;Culture / loisirs;DF5W-Q473-C9AM;Audit
+S0004;7;S0004-B007;Archives départementales Montesquieu;58 rue de la République;38120;Saint-Aubin-les-Prés;Culture / loisirs;X8TX-3XK1-SG0D;SDIE + Audit + MOE + AMO
+S0004;8;S0004-B008;Collège Prévert;5 boulevard Victor Hugo;38120;Saint-Aubin-les-Prés;Enseignement;TB8T-QRWR-R58P;Audit + MOE + AMO
+S0004;9;S0004-B009;Centre médico-social La Fontaine;3 boulevard Victor Hugo;38110;Belcourt;Santé / social;XVRE-FXP9-HC72;Audit
+S0004;10;S0004-B010;Collège Moulin;9 avenue Jean Jaurès;38210;Varennes;Enseignement;2W3F-2SWE-D38J;Audit
+S0004;11;S0004-B011;Centre d'exploitation routier Hugo;113 place de la Mairie;38210;Varennes;Technique;ETKH-3BVZ-3PRM;AMO
+S0004;12;S0004-B012;Musée départemental Moulin;109 rue des Écoles;38250;Mirande;Culture / loisirs;K9X3-TT8R-FGDN;AMO
+S0004;13;S0004-B013;Centre médico-social Hugo;49 rue de la République;38110;Belcourt;Santé / social;4CDY-DNK0-DC7Y;Audit
+S0004;14;S0004-B014;Centre médico-social La Fontaine;37 rue du Stade;38230;Orvillers;Santé / social;XPKG-QZX6-YMDQ;SDIE + Audit
+S0004;15;S0004-B015;Collège Montesquieu;120 rue du Stade;38220;Les Essarts;Enseignement;J9CN-ERFZ-NGZZ;Audit + MOE + AMO
+S0004;16;S0004-B016;Musée départemental Curie;118 rue de la République;38250;Mirande;Culture / loisirs;2430-T8E4-90DX;Audit
+S0004;17;S0004-B017;Archives départementales Jaurès;1 rue du Stade;38250;Mirande;Culture / loisirs;01HJ-1VB6-69FC;Audit
+S0004;18;S0004-B018;Collège Zola;59 rue des Écoles;38230;Orvillers;Enseignement;EK52-5SRR-Y30A;Audit
+S0004;19;S0004-B019;Collège Moulin;28 allée des Tilleuls;38110;Belcourt;Enseignement;H24H-2BM1-D9S4;Audit
+S0004;20;S0004-B020;Musée départemental Zola;97 place de la Mairie;38230;Orvillers;Culture / loisirs;5P36-VE4N-SM1H;Audit
+S0004;21;S0004-B021;Archives départementales Curie;88 rue du Stade;38240;Fontclaire;Culture / loisirs;5JF4-5H9R-9RMQ;SDIE + Audit + MOE
+S0004;22;S0004-B022;Centre d'exploitation routier Curie;12 place de la Mairie;38120;Saint-Aubin-les-Prés;Technique;VWT6-15P5-MR0J;Audit
+S0004;23;S0004-B023;Centre médico-social Les Peupliers;49 place de la Mairie;38200;Montclair;Santé / social;8HKH-Z94A-VHTK;SDIE + Audit + MOE
+S0004;24;S0004-B024;Archives départementales Prévert;14 place de la Mairie;38210;Varennes;Culture / loisirs;K0SN-RNWN-V8KM;AMO
+S0004;25;S0004-B025;Archives départementales Hugo;95 allée des Tilleuls;38230;Orvillers;Culture / loisirs;FMRH-SQ7C-B1XD;Audit
+S0004;26;S0004-B026;Archives départementales Curie;82 boulevard Victor Hugo;38250;Mirande;Culture / loisirs;FG9V-R4WY-ST2Q;Audit
+S0004;27;S0004-B027;Collège Les Peupliers;86 chemin des Prés;38210;Varennes;Enseignement;A2SN-V606-GEEW;Audit
+S0004;28;S0004-B028;Centre médico-social Jaurès;62 avenue Jean Jaurès;38230;Orvillers;Santé / social;JT57-9PKN-XDYP;Audit
+S0004;29;S0004-B029;Centre d'exploitation routier La Fontaine;91 avenue Jean Jaurès;38110;Belcourt;Technique;1N6A-FBAN-VXES;SDIE
+S0004;30;S0004-B030;Musée départemental Prévert;76 rue du Stade;38210;Varennes;Culture / loisirs;R0DD-H46B-QMCX;Audit
+S0004;31;S0004-B031;Centre d'exploitation routier Les Tilleuls;51 avenue Jean Jaurès;38240;Fontclaire;Technique;PPXB-K58M-7FK7;Audit
+S0004;32;S0004-B032;Centre médico-social Zola;24 allée des Tilleuls;38240;Fontclaire;Santé / social;BAZJ-8BMW-3P0Z;Audit
+S0004;33;S0004-B033;Archives départementales Les Peupliers;63 rue du Stade;38240;Fontclaire;Culture / loisirs;WZA5-1EJ2-HEJA;Audit
+S0004;34;S0004-B034;Musée départemental Les Tilleuls;15 boulevard Victor Hugo;38120;Saint-Aubin-les-Prés;Culture / loisirs;Q2WD-V6FK-2WGP;SDIE + AMO
+S0004;35;S0004-B035;Centre médico-social La Fontaine;95 chemin des Prés;38210;Varennes;Santé / social;VA8D-D3PH-AMJJ;Audit
+S0004;36;S0004-B036;Collège La Fontaine;101 rue du Stade;38200;Montclair;Enseignement;3H88-F9MF-SZ9H;MOE
+S0004;37;S0004-B037;Collège Montesquieu;96 boulevard Victor Hugo;38240;Fontclaire;Enseignement;QXZM-05XP-4SDV;Audit
+S0004;38;S0004-B038;Musée départemental Les Tilleuls;110 allée des Tilleuls;38200;Montclair;Culture / loisirs;N326-X17A-WX0V;Audit + MOE
+S0004;39;S0004-B039;Centre médico-social Pasteur;84 chemin des Prés;38220;Les Essarts;Santé / social;G5QA-3SKE-V560;SDIE + Audit
+S0004;40;S0004-B040;Archives départementales Jaurès;90 chemin des Prés;38110;Belcourt;Culture / loisirs;7V8Y-4ER5-66MQ;SDIE
+S0004;41;S0004-B041;Centre médico-social Pasteur;68 rue de la République;38200;Montclair;Santé / social;AWPD-9TWD-5687;Audit
+S0004;42;S0004-B042;Centre médico-social Hugo;83 avenue Jean Jaurès;38210;Varennes;Santé / social;FJ1K-DCSJ-3FZR;Audit
+S0004;43;S0004-B043;Collège Ferry;17 rue du Stade;38230;Orvillers;Enseignement;TQBY-4140-GD23;Audit
+S0004;44;S0004-B044;Archives départementales Le Parc;52 avenue Jean Jaurès;38240;Fontclaire;Culture / loisirs;9H5K-5D9M-S4KV;MOE + AMO
+S0004;45;S0004-B045;Archives départementales Prévert;79 rue de la République;38120;Saint-Aubin-les-Prés;Culture / loisirs;KB70-80AZ-PGAQ;Audit + MOE
+S0004;46;S0004-B046;Collège La Fontaine;55 boulevard Victor Hugo;38230;Orvillers;Enseignement;4G4Z-XQ3Z-AQAG;AMO
+S0004;47;S0004-B047;Musée départemental Jaurès;110 rue de la République;38110;Belcourt;Culture / loisirs;F2YQ-R9B2-TEMF;Audit + MOE + AMO
+S0004;48;S0004-B048;Centre d'exploitation routier Montesquieu;87 rue de la République;38120;Saint-Aubin-les-Prés;Technique;BE2S-4XJK-M5X0;Audit
+S0004;49;S0004-B049;Centre médico-social Ferry;76 allée des Tilleuls;38250;Mirande;Santé / social;CF90-T1EP-0N0R;Audit
+S0004;50;S0004-B050;Centre médico-social Prévert;8 place de la Mairie;38240;Fontclaire;Santé / social;H52E-TQX5-68S4;SDIE + Audit + AMO
+S0004;51;S0004-B051;Centre d'exploitation routier Rimbaud;41 rue du Stade;38220;Les Essarts;Technique;MMWH-E4C8-696A;Audit + MOE
+S0004;52;S0004-B052;Centre médico-social Hugo;60 boulevard Victor Hugo;38250;Mirande;Santé / social;75AK-2DM9-5FPS;Audit + MOE
+S0004;53;S0004-B053;Collège Rimbaud;58 rue des Écoles;38240;Fontclaire;Enseignement;6X68-703E-8CSQ;MOE
+S0004;54;S0004-B054;Collège Pasteur;26 allée des Tilleuls;38110;Belcourt;Enseignement;85N7-2X3A-VSZ1;Audit + MOE
+S0004;55;S0004-B055;Centre d'exploitation routier Prévert;114 place de la Mairie;38220;Les Essarts;Technique;2FJZ-TY35-HR8T;Audit
+S0004;56;S0004-B056;Musée départemental Zola;101 chemin des Prés;38110;Belcourt;Culture / loisirs;YZPM-RHB1-ME1H;Audit
+S0004;57;S0004-B057;Centre médico-social Pasteur;32 rue des Écoles;38200;Montclair;Santé / social;H3ER-PBBF-MP1P;AMO
+S0004;58;S0004-B058;Archives départementales Curie;63 rue de la République;38220;Les Essarts;Culture / loisirs;53EE-1Y0N-C8NB;AMO
+S0004;59;S0004-B059;Musée départemental La Fontaine;15 chemin des Prés;38200;Montclair;Culture / loisirs;4QS6-NKM8-AVZM;Audit
+S0004;60;S0004-B060;Centre d'exploitation routier Les Peupliers;76 place de la Mairie;38210;Varennes;Technique;RKJ8-B0S2-BME6;SDIE
+S0004;61;S0004-B061;Centre d'exploitation routier Les Peupliers;114 avenue Jean Jaurès;38200;Montclair;Technique;NW0G-DF4P-G603;Audit
+S0004;62;S0004-B062;Archives départementales Ferry;70 rue du Stade;38240;Fontclaire;Culture / loisirs;6YEA-W42J-1MG6;SDIE + Audit + MOE
+S0004;63;S0004-B063;Musée départemental Ferry;77 allée des Tilleuls;38120;Saint-Aubin-les-Prés;Culture / loisirs;1VAV-A36N-DCTG;MOE
+S0004;64;S0004-B064;Musée départemental Curie;7 chemin des Prés;38250;Mirande;Culture / loisirs;0V5J-YC61-DAJ5;SDIE + Audit
+S0004;65;S0004-B065;Centre d'exploitation routier Les Peupliers;70 rue du Stade;38120;Saint-Aubin-les-Prés;Technique;BQRQ-BW2G-WXGE;Audit
+S0004;66;S0004-B066;Collège Les Peupliers;45 rue du Stade;38120;Saint-Aubin-les-Prés;Enseignement;E3RT-YFYK-5S29;Audit + MOE
+S0004;67;S0004-B067;Centre médico-social Curie;6 rue du Stade;38210;Varennes;Santé / social;5VC9-GM45-RSMH;Audit + MOE
+S0004;68;S0004-B068;Musée départemental Pasteur;54 place de la Mairie;38240;Fontclaire;Culture / loisirs;9666-JPTG-RZY2;Audit
+S0004;69;S0004-B069;Archives départementales Zola;114 chemin des Prés;38110;Belcourt;Culture / loisirs;F3YH-Q1NK-KHZ6;SDIE
+S0004;70;S0004-B070;Centre d'exploitation routier Le Parc;54 avenue Jean Jaurès;38220;Les Essarts;Technique;CWDT-ZQ3A-4KS8;AMO
+S0004;71;S0004-B071;Centre médico-social Moulin;5 allée des Tilleuls;38110;Belcourt;Santé / social;3QCH-QXS7-1FQZ;SDIE + Audit
+S0004;72;S0004-B072;Centre d'exploitation routier Curie;108 boulevard Victor Hugo;38230;Orvillers;Technique;5J1R-3ADE-EDHT;Audit
+S0004;73;S0004-B073;Archives départementales Les Peupliers;23 rue de la République;38200;Montclair;Culture / loisirs;EGKH-VRPX-GDXK;AMO
+S0004;74;S0004-B074;Musée départemental Montesquieu;83 boulevard Victor Hugo;38230;Orvillers;Culture / loisirs;K6Y4-NHMH-GKC9;SDIE + Audit + MOE
+S0004;75;S0004-B075;Musée départemental Les Peupliers;41 place de la Mairie;38240;Fontclaire;Culture / loisirs;1ZJG-TSR2-CNEY;Audit
+S0004;76;S0004-B076;Musée départemental Hugo;13 allée des Tilleuls;38200;Montclair;Culture / loisirs;8GBN-5EPE-KTNQ;Audit
+S0004;77;S0004-B077;Musée départemental Prévert;114 rue des Écoles;38120;Saint-Aubin-les-Prés;Culture / loisirs;7RKT-398C-NTX9;Audit
+S0004;78;S0004-B078;Centre médico-social Les Peupliers;8 rue de la République;38230;Orvillers;Santé / social;WHDA-AZ58-VVSV;MOE + AMO
+S0004;79;S0004-B079;Centre d'exploitation routier Ferry;97 rue des Écoles;38110;Belcourt;Technique;10FE-PK86-RKA4;Audit
+S0004;80;S0004-B080;Musée départemental Zola;114 place de la Mairie;38230;Orvillers;Culture / loisirs;NZPC-AS1E-E8D1;SDIE + Audit + MOE
+S0004;81;S0004-B081;Collège Les Peupliers;33 rue de la République;38240;Fontclaire;Enseignement;3613-7TWR-7GY9;Audit + MOE
+S0004;82;S0004-B082;Collège Les Tilleuls;78 place de la Mairie;38220;Les Essarts;Enseignement;T67J-76ZC-CGCP;MOE
+S0004;83;S0004-B083;Centre médico-social Ferry;31 rue de la République;38250;Mirande;Santé / social;057Z-9546-GEXJ;SDIE + Audit
+S0004;84;S0004-B084;Centre d'exploitation routier La Fontaine;87 chemin des Prés;38230;Orvillers;Technique;V762-08AN-PWH5;Audit + MOE
+S0004;85;S0004-B085;Archives départementales Rimbaud;50 allée des Tilleuls;38220;Les Essarts;Culture / loisirs;TA78-3A6T-YWBR;Audit
+S0004;86;S0004-B086;Centre médico-social Prévert;15 rue du Stade;38250;Mirande;Santé / social;W24G-M0EN-6VFY;Audit + MOE
+S0004;87;S0004-B087;Musée départemental Jaurès;83 place de la Mairie;38110;Belcourt;Culture / loisirs;YZA4-ZMFN-H3ER;SDIE + Audit
+S0004;88;S0004-B088;Archives départementales Rimbaud;64 allée des Tilleuls;38120;Saint-Aubin-les-Prés;Culture / loisirs;M7Z1-6ST2-05KD;Audit
+S0004;89;S0004-B089;Centre médico-social Ferry;72 allée des Tilleuls;38250;Mirande;Santé / social;QW76-E0NP-JQ62;Audit
+S0004;90;S0004-B090;Archives départementales Hugo;79 rue des Écoles;38120;Saint-Aubin-les-Prés;Culture / loisirs;C7SD-XCN6-T27W;Audit
+S0004;91;S0004-B091;Collège Montesquieu;120 rue du Stade;38110;Belcourt;Enseignement;YBB8-6RMR-TFHS;AMO
+S0004;92;S0004-B092;Archives départementales Rimbaud;90 chemin des Prés;38220;Les Essarts;Culture / loisirs;DCDJ-P8BM-7PYT;Audit
+S0004;93;S0004-B093;Archives départementales Montesquieu;14 rue de la République;38110;Belcourt;Culture / loisirs;R933-CHAJ-G93J;Audit + MOE
+S0004;94;S0004-B094;Musée départemental Le Parc;83 rue du Stade;38210;Varennes;Culture / loisirs;FJ3R-RTM3-0GCW;Audit
+S0004;95;S0004-B095;Musée départemental La Fontaine;93 rue des Écoles;38210;Varennes;Culture / loisirs;JWB4-BB7R-2VHG;Audit + MOE
+S0004;96;S0004-B096;Centre médico-social Curie;119 chemin des Prés;38110;Belcourt;Santé / social;3KZP-4MEB-4ATS;SDIE + Audit + MOE
+S0004;97;S0004-B097;Centre d'exploitation routier Moulin;97 allée des Tilleuls;38220;Les Essarts;Technique;07PW-FF2M-R7RG;Audit
+S0004;98;S0004-B098;Centre d'exploitation routier Prévert;6 boulevard Victor Hugo;38250;Mirande;Technique;CM56-A04D-DV6D;Audit
+S0004;99;S0004-B099;Collège Jaurès;59 chemin des Prés;38200;Montclair;Enseignement;2543-BG4E-GTRW;MOE
+S0004;100;S0004-B100;Musée départemental Les Peupliers;93 avenue Jean Jaurès;38110;Belcourt;Culture / loisirs;24P6-JK5J-WRS1;Audit + MOE
+S0004;101;S0004-B101;Musée départemental Les Peupliers;19 boulevard Victor Hugo;38220;Les Essarts;Culture / loisirs;Q097-20S5-KDPD;Audit + AMO
+S0004;102;S0004-B102;Centre médico-social Moulin;15 place de la Mairie;38220;Les Essarts;Santé / social;3X4J-4G6C-ZNP8;SDIE + AMO
+S0004;103;S0004-B103;Centre médico-social Prévert;58 chemin des Prés;38230;Orvillers;Santé / social;K9QM-VA0M-FEVH;SDIE
+S0004;104;S0004-B104;Archives départementales Ferry;100 boulevard Victor Hugo;38250;Mirande;Culture / loisirs;Z6B5-H8CG-4411;Audit
+S0004;105;S0004-B105;Collège Montesquieu;115 allée des Tilleuls;38220;Les Essarts;Enseignement;9QSE-J8X5-SQ0F;AMO
+S0004;106;S0004-B106;Musée départemental Prévert;21 place de la Mairie;38200;Montclair;Culture / loisirs;9YP2-EZE4-GQE2;Audit
+S0004;107;S0004-B107;Archives départementales Jaurès;84 chemin des Prés;38110;Belcourt;Culture / loisirs;6HGB-RRQ4-GRES;Audit
+S0004;108;S0004-B108;Musée départemental Montesquieu;113 place de la Mairie;38110;Belcourt;Culture / loisirs;WAE4-HD9B-AQ7E;Audit + MOE
+S0004;109;S0004-B109;Archives départementales Les Tilleuls;21 rue du Stade;38210;Varennes;Culture / loisirs;1F28-A829-3AGB;Audit
+S0004;110;S0004-B110;Centre d'exploitation routier Moulin;58 allée des Tilleuls;38120;Saint-Aubin-les-Prés;Technique;YAET-9BGA-NX4E;SDIE + Audit + MOE
+S0004;111;S0004-B111;Musée départemental Rimbaud;20 avenue Jean Jaurès;38240;Fontclaire;Culture / loisirs;BY27-5Y80-VTQ2;Audit
+S0004;112;S0004-B112;Archives départementales Les Tilleuls;103 avenue Jean Jaurès;38230;Orvillers;Culture / loisirs;V8GY-E5JT-GC00;SDIE + Audit + MOE
+S0004;113;S0004-B113;Centre d'exploitation routier Ferry;14 place de la Mairie;38240;Fontclaire;Technique;VGGV-QHSD-TYBQ;Audit
+S0004;114;S0004-B114;Archives départementales Rimbaud;111 avenue Jean Jaurès;38200;Montclair;Culture / loisirs;EWA6-DSN3-AR05;AMO
+S0004;115;S0004-B115;Centre d'exploitation routier Ferry;11 rue de la République;38210;Varennes;Technique;RSJ3-BZW0-CJC2;Audit
+S0004;116;S0004-B116;Collège Moulin;84 rue de la République;38230;Orvillers;Enseignement;A5HS-PSSC-045J;Audit
+S0004;117;S0004-B117;Centre d'exploitation routier Les Tilleuls;25 allée des Tilleuls;38210;Varennes;Technique;S0GB-T64J-N7GG;Audit
+S0004;118;S0004-B118;Centre d'exploitation routier Les Peupliers;59 rue de la République;38250;Mirande;Technique;Y7G4-REEM-TP0G;SDIE + Audit
+S0004;119;S0004-B119;Collège Prévert;41 chemin des Prés;38200;Montclair;Enseignement;DHBC-ZCFF-GDEC;Audit
+S0004;120;S0004-B120;Collège Les Peupliers;85 allée des Tilleuls;38120;Saint-Aubin-les-Prés;Enseignement;02YQ-MZHZ-BHSE;SDIE
+S0004;121;S0004-B121;Musée départemental Montesquieu;45 rue du Stade;38110;Belcourt;Culture / loisirs;BX7X-M00D-R6MQ;Audit
+S0004;122;S0004-B122;Archives départementales Ferry;24 allée des Tilleuls;38230;Orvillers;Culture / loisirs;VDTQ-QSHW-B8E6;Audit
+S0004;123;S0004-B123;Centre médico-social La Fontaine;95 place de la Mairie;38200;Montclair;Santé / social;Y0BT-Z8MZ-KG3S;SDIE + Audit + MOE
+S0004;124;S0004-B124;Collège Le Parc;43 boulevard Victor Hugo;38250;Mirande;Enseignement;QQGP-1T7P-CBJP;Audit
+S0004;125;S0004-B125;Collège Les Tilleuls;37 allée des Tilleuls;38240;Fontclaire;Enseignement;9ANT-S45A-NEMM;Audit
+S0004;126;S0004-B126;Archives départementales Le Parc;76 allée des Tilleuls;38230;Orvillers;Culture / loisirs;TAB1-8FG5-DAS6;Audit + AMO
+S0004;127;S0004-B127;Archives départementales Pasteur;34 place de la Mairie;38120;Saint-Aubin-les-Prés;Culture / loisirs;5RKE-FJW8-8A12;Audit
+S0004;128;S0004-B128;Musée départemental Montesquieu;57 place de la Mairie;38220;Les Essarts;Culture / loisirs;BXVK-PYE5-WKQT;Audit + MOE
+S0004;129;S0004-B129;Centre médico-social Hugo;61 rue de la République;38230;Orvillers;Santé / social;ZYK0-VJE0-QCTV;SDIE + Audit
+S0004;130;S0004-B130;Archives départementales Hugo;11 rue du Stade;38210;Varennes;Culture / loisirs;FHJH-TC4B-8J7X;AMO
+S0004;131;S0004-B131;Collège Jaurès;69 rue de la République;38200;Montclair;Enseignement;B6JH-8W0E-590Z;Audit
+S0004;132;S0004-B132;Centre d'exploitation routier Le Parc;102 rue de la République;38250;Mirande;Technique;N593-HS4Y-BCGR;SDIE
+S0004;133;S0004-B133;Archives départementales Le Parc;5 rue des Écoles;38210;Varennes;Culture / loisirs;X6DY-RKMA-27GY;SDIE
+S0004;134;S0004-B134;Centre médico-social Moulin;82 rue du Stade;38120;Saint-Aubin-les-Prés;Santé / social;M0AH-7SF0-2Y9Q;SDIE
+S0004;135;S0004-B135;Centre d'exploitation routier Jaurès;46 place de la Mairie;38110;Belcourt;Technique;68ZE-MPWC-1RP8;SDIE + Audit
+S0004;136;S0004-B136;Musée départemental Moulin;73 place de la Mairie;38250;Mirande;Culture / loisirs;PMXH-A49W-JGQX;Audit + MOE + AMO
+S0004;137;S0004-B137;Collège La Fontaine;80 rue des Écoles;38230;Orvillers;Enseignement;M4RC-Z9JM-TM76;SDIE + Audit + AMO
+S0004;138;S0004-B138;Collège Pasteur;63 rue des Écoles;38210;Varennes;Enseignement;62RZ-G3QE-40DZ;Audit
+S0004;139;S0004-B139;Centre d'exploitation routier Rimbaud;48 rue de la République;38240;Fontclaire;Technique;H24K-4D66-ERCC;SDIE + Audit + AMO
+S0004;140;S0004-B140;Musée départemental Le Parc;14 chemin des Prés;38240;Fontclaire;Culture / loisirs;XV6A-BSNA-WPMM;Audit
+S0004;141;S0004-B141;Centre d'exploitation routier Les Tilleuls;70 rue des Écoles;38210;Varennes;Technique;RGQW-WS02-J18K;Audit + MOE
+S0004;142;S0004-B142;Centre d'exploitation routier Pasteur;5 allée des Tilleuls;38200;Montclair;Technique;P98G-QFEG-K5SD;AMO
+S0004;143;S0004-B143;Musée départemental Les Tilleuls;83 boulevard Victor Hugo;38120;Saint-Aubin-les-Prés;Culture / loisirs;2R53-NPVT-7E0R;Audit + MOE
+S0004;144;S0004-B144;Centre d'exploitation routier Curie;7 rue du Stade;38210;Varennes;Technique;W5EV-JS98-N5Y3;Audit + MOE
+S0004;145;S0004-B145;Centre médico-social Prévert;72 rue des Écoles;38200;Montclair;Santé / social;ZSCF-F4HV-M57T;Audit + MOE
+S0004;146;S0004-B146;Collège Curie;45 allée des Tilleuls;38220;Les Essarts;Enseignement;9W2E-CQ95-73F9;MOE
+S0004;147;S0004-B147;Collège Prévert;61 rue de la République;38220;Les Essarts;Enseignement;NDDD-GY91-R2GA;SDIE + Audit
+S0004;148;S0004-B148;Archives départementales Pasteur;50 boulevard Victor Hugo;38110;Belcourt;Culture / loisirs;Q61J-RER6-MZ5B;Audit
+S0004;149;S0004-B149;Collège Montesquieu;40 chemin des Prés;38210;Varennes;Enseignement;ZSA1-PPPK-FH3G;AMO
+S0004;150;S0004-B150;Musée départemental Moulin;20 chemin des Prés;38220;Les Essarts;Culture / loisirs;S85R-ETF9-VKNW;SDIE + Audit + MOE
+S0004;151;S0004-B151;Centre médico-social Hugo;89 place de la Mairie;38200;Montclair;Santé / social;V9AM-47BM-91MT;Audit
+S0004;152;S0004-B152;Centre d'exploitation routier La Fontaine;25 avenue Jean Jaurès;38200;Montclair;Technique;8B1H-EEE1-P5Y8;Audit
+S0004;153;S0004-B153;Archives départementales Prévert;18 place de la Mairie;38250;Mirande;Culture / loisirs;CE2T-0HTE-CD4B;Audit
+S0004;154;S0004-B154;Centre d'exploitation routier Moulin;55 rue du Stade;38250;Mirande;Technique;2RMS-26WX-2FS2;Audit + AMO
+S0004;155;S0004-B155;Centre d'exploitation routier Zola;114 boulevard Victor Hugo;38250;Mirande;Technique;JXAV-J39X-W57B;AMO
+S0004;156;S0004-B156;Archives départementales Prévert;4 place de la Mairie;38230;Orvillers;Culture / loisirs;XCX5-GMA7-57WQ;Audit
+S0004;157;S0004-B157;Musée départemental Zola;71 rue du Stade;38200;Montclair;Culture / loisirs;2AN9-A9B3-TKKW;SDIE + Audit
+S0004;158;S0004-B158;Collège Jaurès;59 allée des Tilleuls;38220;Les Essarts;Enseignement;Z0ZF-DYXT-W50F;Audit
+S0004;159;S0004-B159;Centre médico-social Curie;19 rue de la République;38110;Belcourt;Santé / social;P292-KN53-6TBA;Audit
+S0004;160;S0004-B160;Musée départemental Prévert;96 chemin des Prés;38200;Montclair;Culture / loisirs;25KM-QR4V-4JY8;Audit + MOE
+S0004;161;S0004-B161;Centre médico-social Les Tilleuls;8 avenue Jean Jaurès;38210;Varennes;Santé / social;5YJV-MGP8-ZZZB;SDIE + AMO
+S0004;162;S0004-B162;Collège Prévert;81 avenue Jean Jaurès;38110;Belcourt;Enseignement;DTT2-NPD0-CJG4;Audit + MOE + AMO
+S0004;163;S0004-B163;Centre d'exploitation routier Zola;93 rue de la République;38230;Orvillers;Technique;BCNN-YY28-Y9XN;Audit + AMO
+S0004;164;S0004-B164;Musée départemental Les Tilleuls;93 chemin des Prés;38220;Les Essarts;Culture / loisirs;1DNP-49H1-NRAR;SDIE + Audit
+S0004;165;S0004-B165;Centre d'exploitation routier Hugo;53 avenue Jean Jaurès;38110;Belcourt;Technique;ZFQW-KDKB-7Q2C;MOE
+S0004;166;S0004-B166;Musée départemental Moulin;44 allée des Tilleuls;38200;Montclair;Culture / loisirs;KM96-8D2X-R70K;AMO
+S0004;167;S0004-B167;Archives départementales Pasteur;67 boulevard Victor Hugo;38110;Belcourt;Culture / loisirs;1KDM-CCJH-MW7H;Audit + MOE
+S0004;168;S0004-B168;Musée départemental Moulin;70 chemin des Prés;38120;Saint-Aubin-les-Prés;Culture / loisirs;MH9J-FA4K-NW38;Audit + MOE
+S0004;169;S0004-B169;Collège Zola;23 allée des Tilleuls;38240;Fontclaire;Enseignement;PKNC-5X85-X6XK;Audit
+S0004;170;S0004-B170;Centre médico-social Rimbaud;115 boulevard Victor Hugo;38200;Montclair;Santé / social;QSBN-MXZ1-4Y7P;Audit + MOE
+S0004;171;S0004-B171;Musée départemental Montesquieu;14 rue du Stade;38200;Montclair;Culture / loisirs;6M4K-XSTF-FAYR;SDIE + Audit
+S0004;172;S0004-B172;Archives départementales Montesquieu;89 rue des Écoles;38230;Orvillers;Culture / loisirs;B4Z7-XM6W-BKS4;Audit
+S0004;173;S0004-B173;Centre d'exploitation routier Les Peupliers;85 rue de la République;38250;Mirande;Technique;5D80-99WJ-RWCD;Audit
+S0004;174;S0004-B174;Centre d'exploitation routier Le Parc;118 chemin des Prés;38240;Fontclaire;Technique;50S8-J3Q3-0P7J;SDIE
+S0004;175;S0004-B175;Centre d'exploitation routier Zola;49 rue du Stade;38240;Fontclaire;Technique;DBY8-CRQT-9J88;Audit + MOE
+S0004;176;S0004-B176;Archives départementales Pasteur;18 rue du Stade;38200;Montclair;Culture / loisirs;XVBX-VWRP-EBV0;Audit + MOE
+S0004;177;S0004-B177;Archives départementales Jaurès;5 allée des Tilleuls;38230;Orvillers;Culture / loisirs;Q7Y5-9HX5-5FY4;Audit
+S0004;178;S0004-B178;Centre d'exploitation routier Prévert;59 allée des Tilleuls;38110;Belcourt;Technique;NTPJ-JA2K-G3YA;Audit + MOE
+S0004;179;S0004-B179;Collège Prévert;11 place de la Mairie;38220;Les Essarts;Enseignement;4HG8-HHG0-7B9W;SDIE + Audit
+S0004;180;S0004-B180;Centre médico-social Ferry;11 place de la Mairie;38110;Belcourt;Santé / social;9ZTR-FWAD-P3G7;Audit
+S0004;181;S0004-B181;Musée départemental Zola;88 rue du Stade;38210;Varennes;Culture / loisirs;YG9V-0JWR-M26P;Audit
+S0004;182;S0004-B182;Centre d'exploitation routier Hugo;103 avenue Jean Jaurès;38220;Les Essarts;Technique;GSXF-CNBM-0040;Audit
+S0004;183;S0004-B183;Centre d'exploitation routier Moulin;5 rue de la République;38220;Les Essarts;Technique;53D7-758R-B7BG;Audit + MOE
+S0004;184;S0004-B184;Centre d'exploitation routier Le Parc;116 chemin des Prés;38240;Fontclaire;Technique;GA4H-3RRN-3GGB;Audit
+S0004;185;S0004-B185;Centre médico-social Pasteur;19 rue du Stade;38250;Mirande;Santé / social;D6WG-6244-GW1Z;Audit
+S0004;186;S0004-B186;Centre d'exploitation routier Le Parc;43 rue du Stade;38200;Montclair;Technique;0ZYV-S4E0-RY7P;Audit + MOE
+S0004;187;S0004-B187;Collège Montesquieu;110 chemin des Prés;38230;Orvillers;Enseignement;5XJC-B2RC-KR6P;Audit + MOE + AMO
+S0004;188;S0004-B188;Collège Jaurès;93 rue des Écoles;38210;Varennes;Enseignement;ZR4K-ZW12-N3N2;SDIE + Audit
+S0004;189;S0004-B189;Musée départemental Le Parc;75 rue des Écoles;38200;Montclair;Culture / loisirs;429Z-1Y2F-80B3;MOE
+S0004;190;S0004-B190;Musée départemental Rimbaud;105 avenue Jean Jaurès;38120;Saint-Aubin-les-Prés;Culture / loisirs;7ZE4-CVNS-M78M;Audit
+S0004;191;S0004-B191;Centre d'exploitation routier Pasteur;36 place de la Mairie;38120;Saint-Aubin-les-Prés;Technique;TAQA-WF28-6RA1;SDIE + MOE
+S0004;192;S0004-B192;Musée départemental Zola;89 allée des Tilleuls;38220;Les Essarts;Culture / loisirs;8D9H-WTFB-2BZ5;AMO
+S0004;193;S0004-B193;Centre médico-social Pasteur;68 avenue Jean Jaurès;38210;Varennes;Santé / social;QEXD-H3C7-9YZB;Audit + MOE
+S0004;194;S0004-B194;Centre médico-social Hugo;43 allée des Tilleuls;38240;Fontclaire;Santé / social;263B-A1Z7-4FWM;Audit
+S0004;195;S0004-B195;Collège Moulin;13 rue des Écoles;38230;Orvillers;Enseignement;TCRE-4YZ3-V9DX;Audit + AMO
+S0004;196;S0004-B196;Centre d'exploitation routier Moulin;43 place de la Mairie;38220;Les Essarts;Technique;23H8-7XXT-ANEJ;Audit
+S0004;197;S0004-B197;Centre médico-social Pasteur;53 allée des Tilleuls;38210;Varennes;Santé / social;DYXH-0VFF-MVE9;AMO
+S0004;198;S0004-B198;Archives départementales Zola;68 rue du Stade;38110;Belcourt;Culture / loisirs;Y6WZ-F50T-D8PJ;Audit + MOE
+S0004;199;S0004-B199;Centre médico-social Rimbaud;74 rue de la République;38250;Mirande;Santé / social;XX8S-BQX0-4RN2;Audit
+S0004;200;S0004-B200;Musée départemental La Fontaine;88 avenue Jean Jaurès;38210;Varennes;Culture / loisirs;N3Q3-7RQX-2QQB;Audit
+S0004;201;S0004-B201;Centre médico-social Moulin;70 avenue Jean Jaurès;38230;Orvillers;Santé / social;YDEM-PHVH-34QP;Audit
+S0004;202;S0004-B202;Musée départemental Prévert;80 chemin des Prés;38220;Les Essarts;Culture / loisirs;4CX5-5SBJ-46AH;SDIE + Audit + MOE
+S0004;203;S0004-B203;Collège Zola;88 place de la Mairie;38220;Les Essarts;Enseignement;YPTW-1JC4-1ENT;Audit
+S0004;204;S0004-B204;Musée départemental Prévert;39 place de la Mairie;38250;Mirande;Culture / loisirs;KAGE-YQJ3-9PJX;Audit
+S0004;205;S0004-B205;Centre médico-social Rimbaud;91 place de la Mairie;38200;Montclair;Santé / social;AF72-M8WG-QBD2;Audit
+S0004;206;S0004-B206;Centre médico-social Pasteur;118 rue de la République;38220;Les Essarts;Santé / social;SZ9X-M90N-JYJ9;Audit
+S0004;207;S0004-B207;Collège Jaurès;18 avenue Jean Jaurès;38250;Mirande;Enseignement;K1SE-WP5M-3CEH;SDIE + Audit
+S0004;208;S0004-B208;Collège Moulin;63 chemin des Prés;38240;Fontclaire;Enseignement;3QS9-VQRQ-0JPP;Audit
+S0004;209;S0004-B209;Archives départementales La Fontaine;57 boulevard Victor Hugo;38240;Fontclaire;Culture / loisirs;AVT8-59DK-YN4R;Audit
+S0004;210;S0004-B210;Musée départemental Le Parc;73 place de la Mairie;38250;Mirande;Culture / loisirs;CBRJ-Z2KK-ZXE1;SDIE
+S0004;211;S0004-B211;Archives départementales Les Peupliers;86 boulevard Victor Hugo;38120;Saint-Aubin-les-Prés;Culture / loisirs;TBZF-17HZ-4QYV;Audit
+S0004;212;S0004-B212;Collège Montesquieu;94 rue de la République;38230;Orvillers;Enseignement;GA39-MX8P-A3HQ;Audit + MOE
+S0004;213;S0004-B213;Musée départemental Montesquieu;25 place de la Mairie;38120;Saint-Aubin-les-Prés;Culture / loisirs;6AMM-KHQ6-P908;Audit
+S0004;214;S0004-B214;Centre médico-social Moulin;20 rue des Écoles;38120;Saint-Aubin-les-Prés;Santé / social;C7TX-4781-YPKQ;Audit
+S0004;215;S0004-B215;Centre d'exploitation routier Le Parc;39 rue de la République;38200;Montclair;Technique;7E89-EK8D-85V7;Audit + AMO
+S0004;216;S0004-B216;Collège La Fontaine;85 rue de la République;38110;Belcourt;Enseignement;Y7G2-4K06-7DCB;SDIE
+S0004;217;S0004-B217;Centre d'exploitation routier Ferry;21 rue des Écoles;38230;Orvillers;Technique;460D-CJA0-6DYQ;SDIE + AMO
+S0004;218;S0004-B218;Centre d'exploitation routier Zola;28 rue des Écoles;38240;Fontclaire;Technique;T7M7-X78Z-QJ25;SDIE + Audit + MOE
+S0004;219;S0004-B219;Centre d'exploitation routier Moulin;71 rue du Stade;38250;Mirande;Technique;JVC4-YQB0-Z6SW;Audit + MOE
+S0004;220;S0004-B220;Musée départemental Le Parc;119 place de la Mairie;38120;Saint-Aubin-les-Prés;Culture / loisirs;4QCN-CS7E-VZHH;Audit
+S0004;221;S0004-B221;Musée départemental Prévert;66 boulevard Victor Hugo;38240;Fontclaire;Culture / loisirs;9X67-GZZE-8163;MOE + AMO
+S0004;222;S0004-B222;Musée départemental Curie;39 avenue Jean Jaurès;38230;Orvillers;Culture / loisirs;4ZXC-JZZG-N12V;SDIE
+S0004;223;S0004-B223;Archives départementales Jaurès;5 place de la Mairie;38250;Mirande;Culture / loisirs;KAZV-8KRZ-7ZYY;SDIE + Audit + MOE
+S0004;224;S0004-B224;Musée départemental Les Tilleuls;87 chemin des Prés;38240;Fontclaire;Culture / loisirs;JM31-28QP-1NR6;Audit + MOE + AMO
+S0004;225;S0004-B225;Centre médico-social Moulin;83 boulevard Victor Hugo;38210;Varennes;Santé / social;54K7-NA1M-2XVT;Audit
+S0004;226;S0004-B226;Archives départementales Ferry;74 avenue Jean Jaurès;38240;Fontclaire;Culture / loisirs;Z6DN-ZNAK-QVCZ;MOE
+S0004;227;S0004-B227;Centre médico-social Hugo;7 boulevard Victor Hugo;38220;Les Essarts;Santé / social;SE56-NH4Y-VDP4;Audit
+S0004;228;S0004-B228;Musée départemental Moulin;54 rue du Stade;38230;Orvillers;Culture / loisirs;GXB1-BZDX-HV3C;SDIE + Audit + MOE
+S0004;229;S0004-B229;Centre d'exploitation routier Zola;41 avenue Jean Jaurès;38240;Fontclaire;Technique;DTHJ-AGFS-F79C;Audit + MOE
+S0004;230;S0004-B230;Archives départementales Les Peupliers;116 rue de la République;38240;Fontclaire;Culture / loisirs;CAH8-1GHB-2Z13;SDIE
+S0004;231;S0004-B231;Archives départementales Les Peupliers;85 avenue Jean Jaurès;38230;Orvillers;Culture / loisirs;S8F7-7GZ5-F7MN;Audit
+S0004;232;S0004-B232;Archives départementales Curie;14 place de la Mairie;38210;Varennes;Culture / loisirs;DHWT-G3ZQ-7MVY;Audit
+S0004;233;S0004-B233;Centre d'exploitation routier Le Parc;48 boulevard Victor Hugo;38250;Mirande;Technique;123F-GRKQ-7FWR;Audit
+S0004;234;S0004-B234;Centre d'exploitation routier Rimbaud;97 rue des Écoles;38120;Saint-Aubin-les-Prés;Technique;KDAW-MT2H-5ZYT;Audit
+S0004;235;S0004-B235;Collège Le Parc;34 avenue Jean Jaurès;38200;Montclair;Enseignement;PTMX-13BW-80SC;MOE + AMO
+S0004;236;S0004-B236;Musée départemental Rimbaud;77 rue du Stade;38200;Montclair;Culture / loisirs;MWY8-GBMJ-C5TQ;Audit
+S0004;237;S0004-B237;Centre médico-social Jaurès;119 rue des Écoles;38110;Belcourt;Santé / social;5XCG-A3SV-G95Q;Audit + MOE
+S0004;238;S0004-B238;Archives départementales Pasteur;29 rue des Écoles;38250;Mirande;Culture / loisirs;CHJZ-R8VD-DJCT;Audit + MOE
+S0004;239;S0004-B239;Centre médico-social Moulin;48 allée des Tilleuls;38250;Mirande;Santé / social;50Y8-MSDR-VG46;SDIE + Audit
+S0004;240;S0004-B240;Centre d'exploitation routier Jaurès;33 rue du Stade;38110;Belcourt;Technique;KSQ8-2BGA-ZNX8;Audit + MOE
+S0004;241;S0004-B241;Centre d'exploitation routier Curie;64 boulevard Victor Hugo;38110;Belcourt;Technique;QVJG-GMVA-MZ9W;SDIE + Audit + MOE + AMO
+S0004;242;S0004-B242;Centre d'exploitation routier Le Parc;60 rue du Stade;38200;Montclair;Technique;7Z2W-PZXZ-797P;Audit + MOE + AMO
+S0004;243;S0004-B243;Musée départemental Les Tilleuls;115 rue des Écoles;38220;Les Essarts;Culture / loisirs;0BT4-FZ6N-1J7S;Audit + MOE
+S0004;244;S0004-B244;Collège Prévert;107 allée des Tilleuls;38120;Saint-Aubin-les-Prés;Enseignement;XH0N-2WM8-D3JM;Audit
+S0004;245;S0004-B245;Collège Hugo;23 rue des Écoles;38240;Fontclaire;Enseignement;S51D-ARSJ-97KZ;Audit
+S0004;246;S0004-B246;Musée départemental Ferry;86 avenue Jean Jaurès;38200;Montclair;Culture / loisirs;QCZW-RYHV-5VQB;Audit + MOE
+S0004;247;S0004-B247;Archives départementales Les Peupliers;88 place de la Mairie;38210;Varennes;Culture / loisirs;Z5JX-V5YK-98KF;Audit + MOE + AMO
+S0004;248;S0004-B248;Collège Montesquieu;55 rue du Stade;38120;Saint-Aubin-les-Prés;Enseignement;6XGP-G517-XBBS;Audit
+S0004;249;S0004-B249;Archives départementales Les Tilleuls;104 boulevard Victor Hugo;38250;Mirande;Culture / loisirs;NBDB-5G6V-10S7;Audit
+S0004;250;S0004-B250;Musée départemental Hugo;80 chemin des Prés;38250;Mirande;Culture / loisirs;SK58-80C7-1C1D;SDIE + Audit + MOE
+S0005;1;S0005-B001;Immeuble Hugo;99 allée des Tilleuls;38120;Saint-Aubin-les-Prés;Logement collectif;9YV1-7A9W-ZY1W;SDIE + Audit
+S0005;2;S0005-B002;Résidence Jaurès;14 rue du Stade;38230;Orvillers;Logement collectif;TZJ2-ZSZZ-E31V;Audit + MOE
+S0005;3;S0005-B003;Pavillons Prévert;80 chemin des Prés;38120;Saint-Aubin-les-Prés;Logement individuel;WV1A-JCYP-WEEN;Audit
+S0005;4;S0005-B004;Foyer logement Zola;107 chemin des Prés;38240;Fontclaire;Hébergement;YADJ-5Y8B-CAZ6;Audit
+S0005;5;S0005-B005;Résidence Ferry;113 boulevard Victor Hugo;38110;Belcourt;Logement collectif;PAB2-4NV7-E7EZ;Audit + MOE + AMO
+S0005;6;S0005-B006;Foyer logement Rimbaud;89 avenue Jean Jaurès;38200;Montclair;Hébergement;3WX7-6626-A7DQ;Audit + MOE
+S0005;7;S0005-B007;Résidence Les Peupliers;47 chemin des Prés;38200;Montclair;Logement collectif;87CW-T0FY-NJA5;Audit + MOE
+S0005;8;S0005-B008;Immeuble La Fontaine;97 rue du Stade;38200;Montclair;Logement collectif;E8VT-TXQ1-W904;Audit + AMO
+S0005;9;S0005-B009;Résidence La Fontaine;5 place de la Mairie;38240;Fontclaire;Logement collectif;3JTS-KMP0-H9SW;Audit
+S0005;10;S0005-B010;Pavillons La Fontaine;101 rue du Stade;38230;Orvillers;Logement individuel;CK52-NR8J-D5KN;SDIE + MOE
+S0005;11;S0005-B011;Foyer logement Rimbaud;100 boulevard Victor Hugo;38210;Varennes;Hébergement;V73Q-GP73-7WK0;Audit
+S0005;12;S0005-B012;Immeuble Hugo;37 place de la Mairie;38230;Orvillers;Logement collectif;RF6M-CQX6-9VT5;Audit + MOE
+S0005;13;S0005-B013;Résidence Les Peupliers;68 rue du Stade;38230;Orvillers;Logement collectif;SGZV-WZTA-98ZX;Audit + AMO
+S0005;14;S0005-B014;Immeuble Prévert;5 place de la Mairie;38250;Mirande;Logement collectif;Q7T7-7QJ2-97QK;Audit
+S0005;15;S0005-B015;Immeuble Jaurès;120 boulevard Victor Hugo;38240;Fontclaire;Logement collectif;JDBZ-07P4-2TYK;Audit
+S0005;16;S0005-B016;Immeuble Montesquieu;82 allée des Tilleuls;38200;Montclair;Logement collectif;WW9M-5TRE-SN2W;Audit
+S0005;17;S0005-B017;Foyer logement Les Peupliers;72 avenue Jean Jaurès;38120;Saint-Aubin-les-Prés;Hébergement;C3CY-17B1-HDFW;Audit + MOE
+S0005;18;S0005-B018;Pavillons Ferry;56 place de la Mairie;38110;Belcourt;Logement individuel;T1MR-G576-AJ9B;SDIE + Audit + MOE
+S0005;19;S0005-B019;Immeuble Les Tilleuls;42 place de la Mairie;38110;Belcourt;Logement collectif;13KR-6M9T-MGR7;SDIE + Audit
+S0005;20;S0005-B020;Pavillons Hugo;8 chemin des Prés;38120;Saint-Aubin-les-Prés;Logement individuel;XT4Y-1TE1-H6F8;Audit + MOE
+S0005;21;S0005-B021;Immeuble Ferry;70 place de la Mairie;38200;Montclair;Logement collectif;FVW2-0XJA-03YH;Audit + MOE
+S0005;22;S0005-B022;Immeuble Jaurès;21 avenue Jean Jaurès;38220;Les Essarts;Logement collectif;K5S7-8HVD-MNGW;Audit + MOE
+S0005;23;S0005-B023;Foyer logement Le Parc;18 rue de la République;38110;Belcourt;Hébergement;Y00B-TZS5-41W7;Audit
+S0005;24;S0005-B024;Immeuble Pasteur;60 chemin des Prés;38110;Belcourt;Logement collectif;CW0E-1HPC-5KEE;MOE
+S0005;25;S0005-B025;Immeuble Moulin;106 rue du Stade;38110;Belcourt;Logement collectif;7HZA-CB48-48GE;Audit
+S0005;26;S0005-B026;Résidence Les Peupliers;72 allée des Tilleuls;38220;Les Essarts;Logement collectif;0V3M-VTH7-XZQ2;SDIE
+S0005;27;S0005-B027;Pavillons Jaurès;51 rue des Écoles;38230;Orvillers;Logement individuel;N51E-V4FC-ANK4;SDIE
+S0005;28;S0005-B028;Foyer logement Moulin;14 allée des Tilleuls;38220;Les Essarts;Hébergement;FN3N-F4W6-W753;Audit
+S0005;29;S0005-B029;Immeuble La Fontaine;57 rue de la République;38110;Belcourt;Logement collectif;KV46-33JR-S6TE;Audit
+S0005;30;S0005-B030;Pavillons Les Tilleuls;80 avenue Jean Jaurès;38240;Fontclaire;Logement individuel;N1XN-C660-4C8G;Audit + AMO
+S0005;31;S0005-B031;Immeuble Jaurès;17 boulevard Victor Hugo;38110;Belcourt;Logement collectif;VPK9-9YKN-JQ09;Audit
+S0005;32;S0005-B032;Pavillons Moulin;26 rue des Écoles;38230;Orvillers;Logement individuel;4NCY-XNNK-TNA6;Audit + MOE
+S0005;33;S0005-B033;Résidence Le Parc;30 allée des Tilleuls;38210;Varennes;Logement collectif;DFYN-RDSB-0Q04;Audit + MOE
+S0005;34;S0005-B034;Foyer logement Jaurès;26 rue des Écoles;38110;Belcourt;Hébergement;JBEG-BNFB-C1BG;SDIE
+S0005;35;S0005-B035;Résidence Moulin;40 allée des Tilleuls;38230;Orvillers;Logement collectif;FQQA-V479-8CCR;Audit
+S0005;36;S0005-B036;Résidence Rimbaud;69 boulevard Victor Hugo;38210;Varennes;Logement collectif;9MF3-H8ZD-5Y4A;Audit
+S0005;37;S0005-B037;Pavillons Curie;42 chemin des Prés;38250;Mirande;Logement individuel;YZYH-S2DE-CWFS;Audit + MOE + AMO
+S0005;38;S0005-B038;Foyer logement Montesquieu;11 place de la Mairie;38220;Les Essarts;Hébergement;5JWP-E2XN-VWXV;Audit + MOE
+S0005;39;S0005-B039;Immeuble Moulin;34 avenue Jean Jaurès;38250;Mirande;Logement collectif;P5J5-HE67-4Q2C;Audit + MOE
+S0005;40;S0005-B040;Foyer logement Le Parc;78 place de la Mairie;38210;Varennes;Hébergement;G0KJ-PSS0-Y9SE;Audit
+S0005;41;S0005-B041;Pavillons Ferry;102 avenue Jean Jaurès;38250;Mirande;Logement individuel;MCVT-DWW1-Q88K;SDIE
+S0005;42;S0005-B042;Foyer logement Zola;55 rue du Stade;38210;Varennes;Hébergement;KM12-89NS-RDS4;SDIE + Audit + MOE
+S0005;43;S0005-B043;Pavillons Pasteur;22 avenue Jean Jaurès;38220;Les Essarts;Logement individuel;B2Z1-BC4R-JDEJ;SDIE + MOE
+S0005;44;S0005-B044;Immeuble Rimbaud;117 rue du Stade;38230;Orvillers;Logement collectif;SA78-TY4R-D8DK;Audit
+S0005;45;S0005-B045;Foyer logement Montesquieu;92 allée des Tilleuls;38210;Varennes;Hébergement;HC09-W4SF-NZXX;Audit + MOE
+S0005;46;S0005-B046;Pavillons Le Parc;108 boulevard Victor Hugo;38230;Orvillers;Logement individuel;SBTF-BVXR-B6S2;Audit + MOE
+S0005;47;S0005-B047;Foyer logement Le Parc;93 rue des Écoles;38120;Saint-Aubin-les-Prés;Hébergement;ZT7Q-46MT-WAGD;Audit + MOE
+S0005;48;S0005-B048;Pavillons Ferry;96 rue du Stade;38240;Fontclaire;Logement individuel;CS20-G78M-XZX4;Audit
+S0005;49;S0005-B049;Pavillons Rimbaud;21 place de la Mairie;38220;Les Essarts;Logement individuel;16BJ-7SA4-0H9W;SDIE + Audit + MOE
+S0005;50;S0005-B050;Immeuble Le Parc;7 avenue Jean Jaurès;38250;Mirande;Logement collectif;RKW3-03RC-FQFC;Audit
+S0005;51;S0005-B051;Immeuble Moulin;113 avenue Jean Jaurès;38120;Saint-Aubin-les-Prés;Logement collectif;AA2T-6MMC-DSV7;SDIE + Audit + MOE + AMO
+S0005;52;S0005-B052;Foyer logement Zola;28 allée des Tilleuls;38110;Belcourt;Hébergement;E4HQ-24DT-KZ6A;SDIE + Audit + MOE
+S0005;53;S0005-B053;Pavillons Ferry;23 chemin des Prés;38200;Montclair;Logement individuel;Y4N1-WRE0-E17K;Audit + MOE + AMO
+S0005;54;S0005-B054;Immeuble Prévert;38 rue des Écoles;38230;Orvillers;Logement collectif;9RD2-FWN8-HM2T;MOE
+S0005;55;S0005-B055;Foyer logement Moulin;27 rue de la République;38230;Orvillers;Hébergement;FERM-BW04-Z4C3;SDIE + AMO
+S0005;56;S0005-B056;Immeuble Montesquieu;11 rue du Stade;38210;Varennes;Logement collectif;XKAC-FVBF-KJWC;Audit + MOE
+S0005;57;S0005-B057;Pavillons Curie;61 allée des Tilleuls;38240;Fontclaire;Logement individuel;VV9Y-1RV5-K9BG;Audit + MOE
+S0005;58;S0005-B058;Pavillons Ferry;18 allée des Tilleuls;38120;Saint-Aubin-les-Prés;Logement individuel;C9C0-0QZS-TSQR;Audit
+S0005;59;S0005-B059;Résidence Zola;120 place de la Mairie;38120;Saint-Aubin-les-Prés;Logement collectif;CVGP-ZQ3R-VFFY;Audit
+S0005;60;S0005-B060;Immeuble Les Tilleuls;59 place de la Mairie;38220;Les Essarts;Logement collectif;GFA0-75RS-5CVA;Audit
+S0005;61;S0005-B061;Pavillons Le Parc;53 avenue Jean Jaurès;38220;Les Essarts;Logement individuel;6P9H-DSK0-AZ06;Audit
+S0005;62;S0005-B062;Pavillons Curie;48 place de la Mairie;38200;Montclair;Logement individuel;8CZB-7WDB-C3BC;Audit + MOE
+S0005;63;S0005-B063;Résidence Pasteur;38 avenue Jean Jaurès;38200;Montclair;Logement collectif;R7H4-N1FY-Z603;Audit
+S0005;64;S0005-B064;Résidence Moulin;67 rue de la République;38120;Saint-Aubin-les-Prés;Logement collectif;RHZY-NVNQ-NMFQ;MOE
+S0005;65;S0005-B065;Foyer logement Jaurès;59 rue du Stade;38120;Saint-Aubin-les-Prés;Hébergement;817H-FQWY-TC0M;Audit + MOE
+S0005;66;S0005-B066;Foyer logement Moulin;78 allée des Tilleuls;38250;Mirande;Hébergement;S5PV-Y6RJ-C928;SDIE + Audit
+S0005;67;S0005-B067;Pavillons Prévert;15 allée des Tilleuls;38200;Montclair;Logement individuel;FFDA-56V1-AMRH;Audit
+S0005;68;S0005-B068;Résidence Montesquieu;82 allée des Tilleuls;38200;Montclair;Logement collectif;5NE4-NRRV-EEG7;SDIE + Audit + MOE
+S0005;69;S0005-B069;Immeuble Les Tilleuls;48 place de la Mairie;38120;Saint-Aubin-les-Prés;Logement collectif;MR0K-3CRV-MQ8E;SDIE + Audit
+S0005;70;S0005-B070;Foyer logement Prévert;88 allée des Tilleuls;38210;Varennes;Hébergement;9J92-MK7H-YDZJ;Audit
+S0005;71;S0005-B071;Immeuble Le Parc;95 rue de la République;38210;Varennes;Logement collectif;BZSK-A1SN-VYPS;Audit + MOE
+S0005;72;S0005-B072;Immeuble Pasteur;17 chemin des Prés;38240;Fontclaire;Logement collectif;3KXA-8WYJ-9DDC;SDIE
+S0005;73;S0005-B073;Immeuble Zola;87 place de la Mairie;38240;Fontclaire;Logement collectif;36PY-B37N-V9SF;SDIE + Audit
+S0005;74;S0005-B074;Immeuble La Fontaine;89 avenue Jean Jaurès;38240;Fontclaire;Logement collectif;XRHW-Q077-57ZE;Audit
+S0005;75;S0005-B075;Résidence Zola;62 rue du Stade;38200;Montclair;Logement collectif;K86M-4BS1-SZ47;SDIE + AMO
+S0005;76;S0005-B076;Immeuble Montesquieu;58 chemin des Prés;38110;Belcourt;Logement collectif;728D-A5G2-57KQ;SDIE
+S0005;77;S0005-B077;Immeuble Jaurès;67 boulevard Victor Hugo;38220;Les Essarts;Logement collectif;W8ZM-PD62-F2C9;Audit
+S0005;78;S0005-B078;Immeuble Hugo;17 rue du Stade;38230;Orvillers;Logement collectif;4GGR-ASX5-GV9D;Audit
+S0005;79;S0005-B079;Immeuble Les Tilleuls;85 place de la Mairie;38230;Orvillers;Logement collectif;T9MV-R1F4-H77T;Audit + MOE
+S0005;80;S0005-B080;Foyer logement Rimbaud;103 rue des Écoles;38200;Montclair;Hébergement;H06R-ER67-BKZ6;Audit
+S0005;81;S0005-B081;Résidence Curie;41 rue du Stade;38110;Belcourt;Logement collectif;BPSY-8G09-89RH;Audit
+S0005;82;S0005-B082;Immeuble Le Parc;59 place de la Mairie;38240;Fontclaire;Logement collectif;WPXJ-HVEK-5KTM;MOE
+S0005;83;S0005-B083;Résidence Les Tilleuls;8 avenue Jean Jaurès;38200;Montclair;Logement collectif;JZ0V-8YZ7-S0C0;Audit
+S0005;84;S0005-B084;Résidence Curie;87 rue des Écoles;38250;Mirande;Logement collectif;B4Q8-P3VZ-RAQ7;Audit
+S0005;85;S0005-B085;Résidence Hugo;62 boulevard Victor Hugo;38220;Les Essarts;Logement collectif;GD0S-DK2X-Z3P0;AMO
+S0005;86;S0005-B086;Immeuble Ferry;2 avenue Jean Jaurès;38240;Fontclaire;Logement collectif;VZC5-9T7Z-09GE;Audit + MOE
+S0005;87;S0005-B087;Foyer logement Prévert;85 allée des Tilleuls;38120;Saint-Aubin-les-Prés;Hébergement;A8PV-0PC7-CJ28;Audit + AMO
+S0005;88;S0005-B088;Immeuble Les Peupliers;35 avenue Jean Jaurès;38250;Mirande;Logement collectif;TZZ8-MSR8-7618;Audit
+S0005;89;S0005-B089;Foyer logement Les Tilleuls;95 rue de la République;38240;Fontclaire;Hébergement;VYJJ-Z5VF-9BFH;Audit
+S0005;90;S0005-B090;Pavillons Prévert;91 avenue Jean Jaurès;38210;Varennes;Logement individuel;BC9E-78S2-HC9V;SDIE + Audit
+S0005;91;S0005-B091;Foyer logement Moulin;44 rue du Stade;38210;Varennes;Hébergement;Y3V3-K7HQ-HPTF;SDIE + Audit + MOE + AMO
+S0005;92;S0005-B092;Foyer logement Hugo;61 boulevard Victor Hugo;38210;Varennes;Hébergement;6VBG-ZQNK-7608;Audit + MOE
+S0005;93;S0005-B093;Foyer logement Les Peupliers;36 rue des Écoles;38210;Varennes;Hébergement;R568-72CC-W64N;Audit
+S0005;94;S0005-B094;Immeuble Curie;25 rue du Stade;38110;Belcourt;Logement collectif;GPQW-7V4Y-T1AH;SDIE + MOE
+S0005;95;S0005-B095;Immeuble Prévert;88 avenue Jean Jaurès;38240;Fontclaire;Logement collectif;AWRR-SHDB-0AD0;Audit
+S0005;96;S0005-B096;Foyer logement Rimbaud;29 boulevard Victor Hugo;38220;Les Essarts;Hébergement;H7AE-2FJ2-9H8H;SDIE
+S0005;97;S0005-B097;Immeuble Jaurès;84 chemin des Prés;38120;Saint-Aubin-les-Prés;Logement collectif;QM5G-8TJM-30PE;AMO
+S0005;98;S0005-B098;Résidence Les Peupliers;33 rue des Écoles;38240;Fontclaire;Logement collectif;WEMH-DS9W-EVQ9;SDIE + AMO
+S0005;99;S0005-B099;Immeuble Les Tilleuls;63 place de la Mairie;38210;Varennes;Logement collectif;J1KA-BSC4-94VF;Audit + MOE
+S0005;100;S0005-B100;Immeuble Les Tilleuls;13 rue du Stade;38110;Belcourt;Logement collectif;R170-28F5-H900;SDIE

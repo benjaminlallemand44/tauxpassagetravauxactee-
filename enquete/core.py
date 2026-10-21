@@ -5,7 +5,9 @@ Aucune dépendance à Streamlit ici, pour pouvoir tester sans interface.
 from __future__ import annotations
 
 import hmac
+import json
 import os
+import re
 import sqlite3
 from contextlib import closing
 from datetime import datetime
@@ -13,29 +15,41 @@ from pathlib import Path
 
 import pandas as pd
 
+from enquete.questionnaire import (QUESTIONS_PARTIE2, STATUT_SI_MOE, STATUTS,
+                                   STATUTS_DETAILLES)
+
 RACINE = Path(__file__).resolve().parent.parent
 DOSSIER_DONNEES = Path(os.environ.get("ENQUETE_DATA_DIR", RACINE / "data"))
-
-FINANCEMENTS = ["sdie", "audit", "moe", "amo"]
-
-STATUTS = ["Oui – réalisés", "En cours", "Prévus", "Non", "Ne sait pas"]
-TYPES_TRAVAUX = [
-    "Isolation (murs, toiture, planchers)",
-    "Menuiseries",
-    "Chauffage / eau chaude",
-    "Ventilation",
-    "Éclairage",
-    "Rénovation globale",
-    "Autre",
-]
+FICHIER_DEFINITIONS = RACINE / "contenu" / "definitions.md"
 ANNEE_MIN, ANNEE_MAX = 1990, 2035
 
-CHAMPS_REPONSE = ["statut", "type_travaux", "annee", "commentaire"]
+# Colonnes Oui/Non regroupées en une seule colonne « Financements » à l'affichage.
+FINANCEMENTS = ["sdie", "audit", "moe", "amo"]
+# Colonnes du référentiel qui ne sont pas montrées dans le tableau des bâtiments.
+COLONNES_INTERNES = {"id_structure", "nom_structure", "type_structure", "email", "id_batiment"}
+LIBELLES = {
+    "num": "N°",
+    "nom_batiment": "Bâtiment",
+    "adresse": "Adresse",
+    "code_postal": "Code postal",
+    "commune": "Commune",
+    "typologie": "Typologie",
+    "rn": "RN",
+    "financement": "Financements reçus",
+    "financements": "Financements reçus",
+    "surface_m2": "Surface (m²)",
+    "annee_construction": "Année de construction",
+}
 
 
 # --------------------------------------------------------------------------
 # Référentiel
 # --------------------------------------------------------------------------
+def separer_emails(texte: str) -> list[str]:
+    """« a@x.fr ; B@y.fr » -> ["a@x.fr", "b@y.fr"]"""
+    return [e.lower() for e in re.split(r"[,;\s]+", texte or "") if e]
+
+
 def charger_structures(dossier: Path = DOSSIER_DONNEES) -> pd.DataFrame:
     return pd.read_csv(dossier / "structures.csv", sep=";", dtype=str).fillna("")
 
@@ -49,6 +63,36 @@ def charger_batiments(dossier: Path = DOSSIER_DONNEES) -> pd.DataFrame:
 def libelle_financement(ligne: pd.Series) -> str:
     finances = [f.upper() for f in FINANCEMENTS if str(ligne.get(f, "")).lower() == "oui"]
     return " + ".join(finances) if finances else "—"
+
+
+def a_recu_moe(ligne: pd.Series) -> bool:
+    """MOE dans les colonnes Oui/Non, ou mentionnée dans une colonne texte de financements."""
+    if str(ligne.get("moe", "")).lower() == "oui":
+        return True
+    return any(
+        re.search(r"\bMOE\b|ma[iî]trise d.[œo]e?uvre", str(v), re.IGNORECASE)
+        for col, v in ligne.items()
+        if "financ" in col and col != "financement"
+    )
+
+
+def colonnes_affichees(batiments: pd.DataFrame) -> list[str]:
+    """Colonnes du référentiel montrées au répondant, dans l'ordre du fichier."""
+    colonnes = ["num"] + [
+        c for c in batiments.columns
+        if c not in COLONNES_INTERNES and c not in FINANCEMENTS and c != "num"
+    ]
+    if any(f in batiments.columns for f in FINANCEMENTS):
+        colonnes.append("financement")
+    return colonnes
+
+
+def libelle(colonne: str) -> str:
+    return LIBELLES.get(colonne, colonne.replace("_", " ").capitalize())
+
+
+def charger_definitions() -> str:
+    return FICHIER_DEFINITIONS.read_text(encoding="utf-8") if FICHIER_DEFINITIONS.exists() else ""
 
 
 # --------------------------------------------------------------------------
@@ -69,9 +113,10 @@ def identifier_par_code(structures: pd.DataFrame, code: str) -> dict | None:
 
 
 def identifier_par_email(structures: pd.DataFrame, email: str, code: str) -> dict | None:
+    """Le code est celui de la structure ; l'e-mail doit être l'un de ses contacts."""
     email = (email or "").strip().lower()
     structure = identifier_par_code(structures, code)
-    if structure and structure["email"].strip().lower() == email:
+    if structure and email in separer_emails(structure["email"]):
         return structure
     return None
 
@@ -91,9 +136,15 @@ def _connexion(db: Path) -> sqlite3.Connection:
                id_structure TEXT NOT NULL,
                id_batiment  TEXT NOT NULL,
                statut       TEXT,
-               type_travaux TEXT,
-               annee        INTEGER,
                commentaire  TEXT,
+               maj_le       TEXT NOT NULL,
+               PRIMARY KEY (id_structure, id_batiment))"""
+    )
+    con.execute(
+        """CREATE TABLE IF NOT EXISTS details (
+               id_structure TEXT NOT NULL,
+               id_batiment  TEXT NOT NULL,
+               donnees      TEXT NOT NULL,
                maj_le       TEXT NOT NULL,
                PRIMARY KEY (id_structure, id_batiment))"""
     )
@@ -126,22 +177,10 @@ def verifier_reponses(reponses: pd.DataFrame) -> list[str]:
     """Renvoie la liste des erreurs de saisie (vide si tout est correct)."""
     erreurs = []
     for _, r in reponses.iterrows():
-        nom = r.get("nom_batiment", r["id_batiment"])
         statut = _nettoyer(r.get("statut"))
         if statut and statut not in STATUTS:
-            erreurs.append(f"{nom} : statut inconnu « {statut} ».")
-        type_travaux = _nettoyer(r.get("type_travaux"))
-        if type_travaux and type_travaux not in TYPES_TRAVAUX:
-            erreurs.append(f"{nom} : type de travaux inconnu « {type_travaux} ».")
-        annee = _nettoyer(r.get("annee"))
-        if annee:
-            try:
-                a = int(float(annee))
-            except ValueError:
-                erreurs.append(f"{nom} : année « {annee} » invalide.")
-                continue
-            if not ANNEE_MIN <= a <= ANNEE_MAX:
-                erreurs.append(f"{nom} : année {a} hors de la plage {ANNEE_MIN}–{ANNEE_MAX}.")
+            nom = r.get("nom_batiment", r["id_batiment"])
+            erreurs.append(f"{nom} : réponse inconnue « {statut} ».")
     return erreurs
 
 
@@ -151,30 +190,87 @@ def enregistrer_reponses(db: Path, id_structure: str, reponses: pd.DataFrame,
     pas à la structure sont ignorés. Renvoie le nombre de lignes enregistrées."""
     autorises = set(batiments.loc[batiments["id_structure"] == id_structure, "id_batiment"])
     maintenant = _maintenant()
-    lignes = []
-    for _, r in reponses.iterrows():
-        if r["id_batiment"] not in autorises:
-            continue
-        annee = _nettoyer(r.get("annee"))
-        lignes.append((
-            id_structure,
-            r["id_batiment"],
-            _nettoyer(r.get("statut")),
-            _nettoyer(r.get("type_travaux")),
-            int(float(annee)) if annee else None,
-            _nettoyer(r.get("commentaire")),
-            maintenant,
-        ))
+    lignes = [
+        (id_structure, r["id_batiment"], _nettoyer(r.get("statut")),
+         _nettoyer(r.get("commentaire")), maintenant)
+        for _, r in reponses.iterrows()
+        if r["id_batiment"] in autorises
+    ]
     with closing(_connexion(db)) as con, con:
         con.executemany(
-            """INSERT INTO reponses VALUES (?, ?, ?, ?, ?, ?, ?)
+            """INSERT INTO reponses VALUES (?, ?, ?, ?, ?)
                ON CONFLICT (id_structure, id_batiment) DO UPDATE SET
-                 statut = excluded.statut, type_travaux = excluded.type_travaux,
-                 annee = excluded.annee, commentaire = excluded.commentaire,
+                 statut = excluded.statut, commentaire = excluded.commentaire,
                  maj_le = excluded.maj_le""",
             lignes,
         )
     return len(lignes)
+
+
+def _valeur_detail(question: dict, valeur):
+    valeur = _nettoyer(valeur)
+    if not valeur:
+        return None
+    if question["type"] in ("nombre", "annee"):
+        nombre = float(valeur.replace(",", ".").replace(" ", ""))
+        return int(nombre) if question["type"] == "annee" or nombre.is_integer() else nombre
+    return valeur
+
+
+def verifier_details(details: pd.DataFrame, questions: list[dict] = QUESTIONS_PARTIE2,
+                     complet: bool = False) -> list[str]:
+    """Erreurs de saisie de la partie 2 ; avec complet=True, signale aussi les
+    questions obligatoires non remplies."""
+    erreurs = []
+    for _, r in details.iterrows():
+        nom = r.get("nom_batiment", r["id_batiment"])
+        for q in questions:
+            brut = _nettoyer(r.get(q["cle"]))
+            if not brut:
+                if complet and q.get("obligatoire"):
+                    erreurs.append(f"{nom} : « {q['libelle']} » est à renseigner.")
+                continue
+            if q["type"] == "choix" and brut not in q["options"]:
+                erreurs.append(f"{nom} : « {brut} » n'est pas une réponse possible pour « {q['libelle']} ».")
+            elif q["type"] in ("nombre", "annee"):
+                try:
+                    v = _valeur_detail(q, brut)
+                except ValueError:
+                    erreurs.append(f"{nom} : « {brut} » n'est pas un nombre ({q['libelle']}).")
+                    continue
+                if q["type"] == "annee" and not ANNEE_MIN <= v <= ANNEE_MAX:
+                    erreurs.append(f"{nom} : année {v} hors de la plage {ANNEE_MIN}–{ANNEE_MAX}.")
+    return erreurs
+
+
+def enregistrer_details(db: Path, id_structure: str, details: pd.DataFrame,
+                        batiments: pd.DataFrame, questions: list[dict] = QUESTIONS_PARTIE2) -> int:
+    autorises = set(batiments.loc[batiments["id_structure"] == id_structure, "id_batiment"])
+    maintenant = _maintenant()
+    lignes = [
+        (id_structure, r["id_batiment"],
+         json.dumps({q["cle"]: _valeur_detail(q, r.get(q["cle"])) for q in questions},
+                    ensure_ascii=False),
+         maintenant)
+        for _, r in details.iterrows()
+        if r["id_batiment"] in autorises
+    ]
+    with closing(_connexion(db)) as con, con:
+        con.executemany(
+            """INSERT INTO details VALUES (?, ?, ?, ?)
+               ON CONFLICT (id_structure, id_batiment) DO UPDATE SET
+                 donnees = excluded.donnees, maj_le = excluded.maj_le""",
+            lignes,
+        )
+    return len(lignes)
+
+
+def _details_en_colonnes(brut: pd.DataFrame, questions: list[dict]) -> pd.DataFrame:
+    cles = [q["cle"] for q in questions]
+    if brut.empty:
+        return pd.DataFrame(columns=["id_structure", "id_batiment", *cles])
+    valeurs = pd.DataFrame([json.loads(d) for d in brut["donnees"]], index=brut.index)
+    return pd.concat([brut[["id_structure", "id_batiment"]], valeurs.reindex(columns=cles)], axis=1)
 
 
 def valider(db: Path, id_structure: str) -> None:
@@ -196,28 +292,52 @@ def date_validation(db: Path, id_structure: str) -> str | None:
 # Vues combinées
 # --------------------------------------------------------------------------
 def tableau_structure(db: Path, id_structure: str, batiments: pd.DataFrame) -> pd.DataFrame:
-    """Bâtiments de la structure avec leurs réponses déjà saisies."""
+    """Bâtiments de la structure avec leurs réponses déjà saisies. Un bâtiment jamais
+    enregistré ayant reçu une MOE est pré-rempli avec STATUT_SI_MOE (colonne pre_rempli)."""
     bats = batiments[batiments["id_structure"] == id_structure].copy()
-    bats["financement"] = bats.apply(libelle_financement, axis=1)
-    rep = charger_reponses(db, id_structure).drop(columns=["id_structure", "maj_le"])
+    if any(f in bats.columns for f in FINANCEMENTS):
+        bats["financement"] = bats.apply(libelle_financement, axis=1) if len(bats) else ""
+    rep = charger_reponses(db, id_structure).drop(columns=["id_structure"])
     tableau = bats.merge(rep, on="id_batiment", how="left")
-    for champ in ["statut", "type_travaux", "commentaire"]:
+    jamais_enregistre = tableau["maj_le"].isna()
+    moe = tableau.apply(a_recu_moe, axis=1) if len(tableau) else pd.Series(dtype=bool)
+    tableau["pre_rempli"] = bool(STATUT_SI_MOE) & jamais_enregistre & moe
+    tableau.loc[tableau["pre_rempli"], "statut"] = STATUT_SI_MOE
+    for champ in ["statut", "commentaire"]:
         tableau[champ] = tableau[champ].fillna("").astype(str)
-    tableau["annee"] = pd.to_numeric(tableau["annee"], errors="coerce").astype("Int64")
-    return tableau.reset_index(drop=True)
+    return tableau.drop(columns=["maj_le"]).reset_index(drop=True)
 
 
-def export_complet(db: Path, structures: pd.DataFrame, batiments: pd.DataFrame) -> pd.DataFrame:
-    """Une ligne par bâtiment : référentiel + réponse + validation de la structure."""
+def tableau_details(db: Path, id_structure: str, batiments: pd.DataFrame,
+                    questions: list[dict] = QUESTIONS_PARTIE2) -> pd.DataFrame:
+    """Partie 2 : bâtiments dont la réponse ENREGISTRÉE ouvre les détails."""
+    tableau = tableau_structure(db, id_structure, batiments)
+    concernes = tableau[tableau["statut"].isin(STATUTS_DETAILLES) & ~tableau["pre_rempli"]]
+    with closing(_connexion(db)) as con:
+        brut = pd.read_sql_query(
+            "SELECT * FROM details WHERE id_structure = ?", con, params=(id_structure,))
+    details = _details_en_colonnes(brut, questions).drop(columns=["id_structure"])
+    return concernes.merge(details, on="id_batiment", how="left").reset_index(drop=True)
+
+
+def export_complet(db: Path, structures: pd.DataFrame, batiments: pd.DataFrame,
+                   questions: list[dict] = QUESTIONS_PARTIE2) -> pd.DataFrame:
+    """Une ligne par bâtiment : référentiel + réponses (parties 1 et 2) + validation."""
     with closing(_connexion(db)) as con:
         rep = pd.read_sql_query("SELECT * FROM reponses", con)
+        det = pd.read_sql_query("SELECT * FROM details", con)
         val = pd.read_sql_query("SELECT * FROM validations", con)
     infos = structures[["id_structure", "nom_structure", "type_structure", "email"]]
-    return (
+    export = (
         batiments.merge(infos, on="id_structure", how="left")
         .merge(rep, on=["id_structure", "id_batiment"], how="left")
+        .merge(_details_en_colonnes(det, questions), on=["id_structure", "id_batiment"], how="left")
         .merge(val, on="id_structure", how="left")
     )
+    # Détails d'un bâtiment dont la réponse a ensuite été changée en « Non » : on les masque.
+    hors_partie2 = ~export["statut"].isin(STATUTS_DETAILLES)
+    export.loc[hors_partie2, [q["cle"] for q in questions]] = None
+    return export
 
 
 def avancement(db: Path, structures: pd.DataFrame, batiments: pd.DataFrame) -> pd.DataFrame:
