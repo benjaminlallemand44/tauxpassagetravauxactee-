@@ -103,3 +103,14 @@ def test_admin_protegee_si_mot_de_passe(monkeypatch):
     bouton(at, "Se connecter").click().run()
     assert not at.exception
     assert at.metric[0].value == "5"
+
+
+def test_moe_precoche_oui_grands_travaux():
+    at = ouvrir(structure="S0004")
+    tableau = at.get("dataframe")[0].value
+    moe = tableau["financements"].str.contains("MOE")
+    assert moe.any() and (~moe).any()
+    # « Oui, grands travaux » (rep_1) pré-coché pour chaque bâtiment avec MOE, et seulement eux.
+    assert tableau.loc[moe, "rep_1"].all()
+    assert not tableau.loc[~moe, ["rep_0", "rep_1", "rep_2", "rep_3", "rep_4"]].any().any()
+    assert "pré-cochée" in " ".join(c.value for c in at.caption)
