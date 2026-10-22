@@ -1,4 +1,4 @@
-"""Logique métier de l'enquête : référentiel, identification, stockage des réponses.
+"""Logique métier de l'enquête : référentiel, stockage des réponses, exports.
 
 Aucune dépendance à Streamlit ici, pour pouvoir tester sans interface.
 """
@@ -16,8 +16,8 @@ import pandas as pd
 from sqlalchemy import create_engine, text
 from sqlalchemy.engine import Engine
 
-from enquete.questionnaire import (QUESTIONS_PARTIE2, STATUT_SI_MOE, STATUTS,
-                                   STATUTS_DETAILLES)
+from enquete.questionnaire import (COLONNES_MASQUEES, QUESTIONS_PARTIE2, STATUT_SI_MOE,
+                                   STATUTS, STATUTS_DETAILLES)
 
 RACINE = Path(__file__).resolve().parent.parent
 DOSSIER_DONNEES = Path(os.environ.get("ENQUETE_DATA_DIR", RACINE / "data"))
@@ -81,11 +81,29 @@ def colonnes_affichees(batiments: pd.DataFrame) -> list[str]:
     """Colonnes du référentiel montrées au répondant, dans l'ordre du fichier."""
     colonnes = ["num"] + [
         c for c in batiments.columns
-        if c not in COLONNES_INTERNES and c not in FINANCEMENTS and c != "num"
+        if c not in COLONNES_INTERNES | COLONNES_MASQUEES and c not in FINANCEMENTS and c != "num"
     ]
     if any(f in batiments.columns for f in FINANCEMENTS):
         colonnes.append("financement")
     return colonnes
+
+
+def une_seule_case(cases: pd.DataFrame, avant: pd.DataFrame) -> pd.DataFrame | None:
+    """Cases à cocher d'une ligne = choix exclusifs. Si une ligne a plusieurs cases cochées,
+    on garde celle qui vient d'être cochée (absente de `avant`), sinon la première.
+    Renvoie les cases corrigées, ou None s'il n'y a rien à corriger."""
+    cases = cases.fillna(False).astype(bool)
+    plusieurs = cases.sum(axis=1) > 1
+    if not plusieurs.any():
+        return None
+    corrige = cases.copy()
+    for i in cases.index[plusieurs]:
+        cochees = [c for c in cases.columns if cases.at[i, c]]
+        nouvelles = [c for c in cochees if not bool(avant.at[i, c])]
+        gardee = (nouvelles or cochees)[0]
+        for c in cases.columns:
+            corrige.at[i, c] = c == gardee
+    return corrige
 
 
 def libelle(colonne: str) -> str:
@@ -96,34 +114,13 @@ def charger_definitions() -> str:
     return FICHIER_DEFINITIONS.read_text(encoding="utf-8") if FICHIER_DEFINITIONS.exists() else ""
 
 
-# --------------------------------------------------------------------------
-# Identification
-# --------------------------------------------------------------------------
-def _egal(a: str, b: str) -> bool:
+def egal(a: str, b: str) -> bool:
+    """Comparaison de mots de passe à temps constant."""
     return hmac.compare_digest(a.encode(), b.encode())
 
 
-def identifier_par_code(structures: pd.DataFrame, code: str) -> dict | None:
-    code = (code or "").strip().upper()
-    if not code:
-        return None
-    for _, s in structures.iterrows():
-        if _egal(s["code_acces"].upper(), code):
-            return s.to_dict()
-    return None
-
-
-def identifier_par_email(structures: pd.DataFrame, email: str, code: str) -> dict | None:
-    """Le code est celui de la structure ; l'e-mail doit être l'un de ses contacts."""
-    email = (email or "").strip().lower()
-    structure = identifier_par_code(structures, code)
-    if structure and email in separer_emails(structure["email"]):
-        return structure
-    return None
-
-
 # --------------------------------------------------------------------------
-# Stockage : PostgreSQL (Supabase…) si DATABASE_URL est défini, sinon fichier SQLite
+# Stockage (fichier SQLite)
 # --------------------------------------------------------------------------
 _SCHEMA = [
     """CREATE TABLE IF NOT EXISTS reponses (
@@ -145,39 +142,30 @@ _SCHEMA = [
 ]
 
 
-def chemin_base() -> str | Path:
-    """Adresse de la base (DATABASE_URL) ou, à défaut, chemin du fichier SQLite local."""
-    return os.environ.get("DATABASE_URL") or Path(
-        os.environ.get("ENQUETE_DB", DOSSIER_DONNEES / "reponses.db"))
+def chemin_base() -> Path:
+    return Path(os.environ.get("ENQUETE_DB", DOSSIER_DONNEES / "reponses.db"))
 
 
 @lru_cache(maxsize=None)
 def _moteur_pour(url: str) -> Engine:
-    # Adresse Supabase « postgresql://… » ou « postgres://… » : on impose le pilote psycopg 3,
-    # le seul installé (le pilote par défaut dépend de la version de SQLAlchemy).
-    for prefixe in ("postgres://", "postgresql://"):
-        if url.startswith(prefixe):
-            url = "postgresql+psycopg://" + url[len(prefixe):]
-    moteur = create_engine(url, pool_pre_ping=True)
+    moteur = create_engine(url)
     with moteur.begin() as con:
         for ddl in _SCHEMA:
             con.execute(text(ddl))
     return moteur
 
 
-def _moteur(db: str | Path) -> Engine:
-    if isinstance(db, Path):
-        db.parent.mkdir(parents=True, exist_ok=True)
-        return _moteur_pour(f"sqlite:///{db.resolve()}")
-    return _moteur_pour(db)
+def _moteur(db: Path) -> Engine:
+    db.parent.mkdir(parents=True, exist_ok=True)
+    return _moteur_pour(f"sqlite:///{db.resolve()}")
 
 
-def _lire(db: str | Path, requete: str, **params) -> pd.DataFrame:
+def _lire(db: Path, requete: str, **params) -> pd.DataFrame:
     with _moteur(db).connect() as con:
         return pd.read_sql_query(text(requete), con, params=params)
 
 
-def _ecrire(db: str | Path, requete: str, lignes: list[dict]) -> None:
+def _ecrire(db: Path, requete: str, lignes: list[dict]) -> None:
     if lignes:
         with _moteur(db).begin() as con:
             con.execute(text(requete), lignes)
@@ -187,7 +175,7 @@ def _maintenant() -> str:
     return datetime.now().isoformat(timespec="seconds")
 
 
-def charger_reponses(db: str | Path, id_structure: str) -> pd.DataFrame:
+def charger_reponses(db: Path, id_structure: str) -> pd.DataFrame:
     return _lire(db, "SELECT * FROM reponses WHERE id_structure = :id", id=id_structure)
 
 
@@ -208,7 +196,7 @@ def verifier_reponses(reponses: pd.DataFrame) -> list[str]:
     return erreurs
 
 
-def enregistrer_reponses(db: str | Path, id_structure: str, reponses: pd.DataFrame,
+def enregistrer_reponses(db: Path, id_structure: str, reponses: pd.DataFrame,
                          batiments: pd.DataFrame) -> int:
     """Enregistre les réponses d'une structure. Les bâtiments qui n'appartiennent
     pas à la structure sont ignorés. Renvoie le nombre de lignes enregistrées."""
@@ -227,11 +215,22 @@ def enregistrer_reponses(db: str | Path, id_structure: str, reponses: pd.DataFra
     return len(lignes)
 
 
+def _liste(valeur) -> list[str]:
+    """Valeur d'une colonne à choix multiple (liste, tableau numpy, texte ou vide) -> liste."""
+    if valeur is None or (pd.api.types.is_scalar(valeur) and pd.isna(valeur)):
+        return []
+    if isinstance(valeur, str):
+        return [v.strip() for v in valeur.split(";") if v.strip()]
+    return [str(v) for v in valeur]
+
+
 def _valeur_detail(question: dict, valeur):
+    if question["type"] == "choix_multiple":
+        return _liste(valeur) or None
     valeur = _nettoyer(valeur)
     if not valeur:
         return None
-    if question["type"] in ("nombre", "annee"):
+    if question["type"] in ("nombre", "annee", "pourcentage"):
         nombre = float(valeur.replace(",", ".").replace(" ", ""))
         return int(nombre) if question["type"] == "annee" or nombre.is_integer() else nombre
     return valeur
@@ -245,6 +244,15 @@ def verifier_details(details: pd.DataFrame, questions: list[dict] = QUESTIONS_PA
     for _, r in details.iterrows():
         nom = r.get("nom_batiment", r["id_batiment"])
         for q in questions:
+            if q["type"] == "choix_multiple":
+                choix = _liste(r.get(q["cle"]))
+                if not choix and complet and q.get("obligatoire"):
+                    erreurs.append(f"{nom} : « {q['libelle']} » est à renseigner.")
+                inconnus = [c for c in choix if c not in q["options"]]
+                if inconnus:
+                    erreurs.append(f"{nom} : « {', '.join(inconnus)} » n'est pas une réponse "
+                                   f"possible pour « {q['libelle']} ».")
+                continue
             brut = _nettoyer(r.get(q["cle"]))
             if not brut:
                 if complet and q.get("obligatoire"):
@@ -252,7 +260,7 @@ def verifier_details(details: pd.DataFrame, questions: list[dict] = QUESTIONS_PA
                 continue
             if q["type"] == "choix" and brut not in q["options"]:
                 erreurs.append(f"{nom} : « {brut} » n'est pas une réponse possible pour « {q['libelle']} ».")
-            elif q["type"] in ("nombre", "annee"):
+            elif q["type"] in ("nombre", "annee", "pourcentage"):
                 try:
                     v = _valeur_detail(q, brut)
                 except ValueError:
@@ -260,10 +268,13 @@ def verifier_details(details: pd.DataFrame, questions: list[dict] = QUESTIONS_PA
                     continue
                 if q["type"] == "annee" and not ANNEE_MIN <= v <= ANNEE_MAX:
                     erreurs.append(f"{nom} : année {v} hors de la plage {ANNEE_MIN}–{ANNEE_MAX}.")
+                if q["type"] == "pourcentage" and not 0 <= v <= 100:
+                    erreurs.append(f"{nom} : {v} % n'est pas un pourcentage entre 0 et 100 "
+                                   f"({q['libelle']}).")
     return erreurs
 
 
-def enregistrer_details(db: str | Path, id_structure: str, details: pd.DataFrame,
+def enregistrer_details(db: Path, id_structure: str, details: pd.DataFrame,
                         batiments: pd.DataFrame, questions: list[dict] = QUESTIONS_PARTIE2) -> int:
     autorises = set(batiments.loc[batiments["id_structure"] == id_structure, "id_batiment"])
     maintenant = _maintenant()
@@ -289,13 +300,13 @@ def _details_en_colonnes(brut: pd.DataFrame, questions: list[dict]) -> pd.DataFr
     return pd.concat([brut[["id_structure", "id_batiment"]], valeurs.reindex(columns=cles)], axis=1)
 
 
-def valider(db: str | Path, id_structure: str) -> None:
+def valider(db: Path, id_structure: str) -> None:
     _ecrire(db, """INSERT INTO validations VALUES (:s, :le)
                    ON CONFLICT (id_structure) DO UPDATE SET valide_le = excluded.valide_le""",
             [{"s": id_structure, "le": _maintenant()}])
 
 
-def date_validation(db: str | Path, id_structure: str) -> str | None:
+def date_validation(db: Path, id_structure: str) -> str | None:
     lignes = _lire(db, "SELECT valide_le FROM validations WHERE id_structure = :id", id=id_structure)
     return lignes["valide_le"].iloc[0] if len(lignes) else None
 
@@ -303,7 +314,7 @@ def date_validation(db: str | Path, id_structure: str) -> str | None:
 # --------------------------------------------------------------------------
 # Vues combinées
 # --------------------------------------------------------------------------
-def tableau_structure(db: str | Path, id_structure: str, batiments: pd.DataFrame) -> pd.DataFrame:
+def tableau_structure(db: Path, id_structure: str, batiments: pd.DataFrame) -> pd.DataFrame:
     """Bâtiments de la structure avec leurs réponses déjà saisies. Un bâtiment jamais
     enregistré ayant reçu une MOE est pré-rempli avec STATUT_SI_MOE (colonne pre_rempli)."""
     bats = batiments[batiments["id_structure"] == id_structure].copy()
@@ -320,7 +331,7 @@ def tableau_structure(db: str | Path, id_structure: str, batiments: pd.DataFrame
     return tableau.drop(columns=["maj_le"]).reset_index(drop=True)
 
 
-def tableau_details(db: str | Path, id_structure: str, batiments: pd.DataFrame,
+def tableau_details(db: Path, id_structure: str, batiments: pd.DataFrame,
                     questions: list[dict] = QUESTIONS_PARTIE2) -> pd.DataFrame:
     """Partie 2 : bâtiments dont la réponse ENREGISTRÉE ouvre les détails."""
     tableau = tableau_structure(db, id_structure, batiments)
@@ -330,7 +341,7 @@ def tableau_details(db: str | Path, id_structure: str, batiments: pd.DataFrame,
     return concernes.merge(details, on="id_batiment", how="left").reset_index(drop=True)
 
 
-def export_complet(db: str | Path, structures: pd.DataFrame, batiments: pd.DataFrame,
+def export_complet(db: Path, structures: pd.DataFrame, batiments: pd.DataFrame,
                    questions: list[dict] = QUESTIONS_PARTIE2) -> pd.DataFrame:
     """Une ligne par bâtiment : référentiel + réponses (parties 1 et 2) + validation."""
     rep = _lire(db, "SELECT * FROM reponses")
@@ -346,10 +357,13 @@ def export_complet(db: str | Path, structures: pd.DataFrame, batiments: pd.DataF
     # Détails d'un bâtiment dont la réponse a ensuite été changée en « Non » : on les masque.
     hors_partie2 = ~export["statut"].isin(STATUTS_DETAILLES)
     export.loc[hors_partie2, [q["cle"] for q in questions]] = None
+    for q in questions:
+        if q["type"] == "choix_multiple":
+            export[q["cle"]] = export[q["cle"]].map(lambda v: " ; ".join(_liste(v)) or None)
     return export
 
 
-def avancement(db: str | Path, structures: pd.DataFrame, batiments: pd.DataFrame) -> pd.DataFrame:
+def avancement(db: Path, structures: pd.DataFrame, batiments: pd.DataFrame) -> pd.DataFrame:
     export = export_complet(db, structures, batiments)
     export["renseigne"] = export["statut"].fillna("").ne("")
     synthese = (

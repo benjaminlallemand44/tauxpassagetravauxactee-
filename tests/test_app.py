@@ -10,12 +10,7 @@ from enquete.questionnaire import OUI_PETITS
 
 @pytest.fixture(autouse=True)
 def base_temporaire(db, monkeypatch):
-    monkeypatch.setenv("ADMIN_PASSWORD", "secret")
-
-
-def code(id_structure):
-    s = core.charger_structures()
-    return s.loc[s["id_structure"] == id_structure, "code_acces"].iloc[0]
+    monkeypatch.delenv("ADMIN_PASSWORD", raising=False)
 
 
 def ouvrir(**params):
@@ -29,37 +24,49 @@ def bouton(at, debut):
     return next(b for b in at.button if b.label.startswith(debut))
 
 
-def test_lien_personnel_affiche_les_batiments_de_la_structure():
-    at = ouvrir(code=code("S0004"))
+def test_accueil_liste_les_collectivites_et_ouvre_la_bonne():
+    at = ouvrir()
     assert not at.exception
-    assert at.title[0].value == "Travaux de rénovation énergétique"
+    noms = [b.label for b in at.button]
+    assert "Département de la Haute-Vallée" in noms and len(noms) == 6  # 5 + administration
+    bouton(at, "Département de la Haute-Vallée").click().run()
+    assert not at.exception
+    assert at.query_params["structure"] in ("S0004", ["S0004"])
+    assert at.metric[0].value == "250"
+
+
+def test_recherche_sur_l_accueil():
+    at = ouvrir()
+    at.text_input[0].input("montclair").run()
+    assert [b.label for b in at.button][:-1] == ["Ville de Montclair"]
+
+
+def test_lien_direct_et_cases_a_cocher():
+    at = ouvrir(structure="S0004")
+    assert not at.exception
     assert at.metric[0].value == "250"
     assert "petits travaux" in at.info[0].value.lower()
+    tableau = at.get("dataframe")[0].value
+    assert "rn" not in tableau.columns  # RN masqué
+    assert [c for c in tableau.columns if c.startswith("rep_")] == [f"rep_{i}" for i in range(5)]
+    # Les colonnes descriptives viennent avant les cases à cocher.
+    assert list(tableau.columns).index("typologie") < list(tableau.columns).index("rep_0")
 
 
-def test_lien_invalide():
-    at = ouvrir(code="FAUX0000")
+def test_collectivite_inconnue():
+    at = ouvrir(structure="S9999")
     assert not at.exception
-    assert "pas valide" in at.error[0].value
-
-
-def test_connexion_second_contact_meme_code():
-    at = ouvrir()
-    at.text_input[0].input("test3-bis@votre-domaine.fr")
-    at.text_input[1].input(code("S0003"))
-    at.button[0].click().run()
-    assert not at.exception
-    assert at.metric[0].value == "80"
+    assert "introuvable" in at.error[0].value
 
 
 def test_parcours_complet():
-    at = ouvrir(code=code("S0002"))
+    at = ouvrir(structure="S0002")
     bouton(at, "✅ Valider").click().run()
     assert "sans réponse" in at.error[0].value
 
-    bouton(at, "Mettre « Non »").click().run()
+    bouton(at, "Cocher « Non »").click().run()
     assert not at.exception
-    assert at.metric[1].value == "5 / 5"
+    assert "coché pour" in at.success[0].value
 
     bouton(at, "✅ Valider").click().run()
     assert not at.exception
@@ -72,21 +79,27 @@ def test_validation_bloquee_par_partie2_obligatoire(db):
     t.loc[0, "statut"] = OUI_PETITS
     core.enregistrer_reponses(db, "S0001", t, batiments)
 
-    at = ouvrir(code=code("S0001"))
-    assert "(1 bâtiment(s))" in at.tabs[1].label
+    at = ouvrir(structure="S0001")
+    assert at.metric[1].value == "1"
     bouton(at, "✅ Valider").click().run()
     assert not at.exception
     assert "Partie 2 à compléter" in at.error[0].value
     assert at.metric[2].value == "En cours de saisie"
 
 
-def test_admin():
+def test_admin_ouverte_sans_mot_de_passe():
+    at = ouvrir(admin="1")
+    assert not at.exception
+    assert at.metric[0].value == "5"
+
+
+def test_admin_protegee_si_mot_de_passe(monkeypatch):
+    monkeypatch.setenv("ADMIN_PASSWORD", "secret")
     at = ouvrir(admin="1")
     at.text_input[0].input("mauvais")
-    at.button[0].click().run()
+    bouton(at, "Se connecter").click().run()
     assert "incorrect" in at.error[0].value
-
     at.text_input[0].input("secret")
-    at.button[0].click().run()
+    bouton(at, "Se connecter").click().run()
     assert not at.exception
     assert at.metric[0].value == "5"

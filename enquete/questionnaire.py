@@ -4,7 +4,7 @@ Les définitions des petits et grands travaux se trouvent dans contenu/definitio
 """
 
 # --------------------------------------------------------------------------
-# Partie 1 : une réponse par bâtiment
+# Partie 1 : une réponse par bâtiment, une case à cocher par réponse possible
 # --------------------------------------------------------------------------
 QUESTION = "Est-ce que les bâtiments suivants sont passés en travaux de rénovation énergétique ?"
 
@@ -19,12 +19,24 @@ STATUTS = [
 ]
 STATUT_NON = "Non"
 
+# Titre de chaque colonne à cocher (le libellé complet s'affiche en info-bulle).
+TITRES_COLONNES = {
+    OUI_PETITS: "Oui, petits",
+    OUI_GRANDS: "Oui, grands",
+    "Non, mais je planifie de faire les travaux dans les 5 ans": "Prévus < 5 ans",
+    "Non": "Non",
+    "Ne sait pas": "Ne sait pas",
+}
+
 # Réponses qui ouvrent la partie 2 pour le bâtiment.
 STATUTS_DETAILLES = [OUI_PETITS, OUI_GRANDS]
 
-# Réponse pré-sélectionnée quand « MOE » figure parmi les financements du bâtiment.
+# Réponse pré-cochée quand « MOE » figure parmi les financements du bâtiment.
 # Le répondant peut la modifier. Mettre None pour désactiver la pré-sélection.
 STATUT_SI_MOE = OUI_GRANDS
+
+# Colonnes du référentiel qui ne sont pas montrées au répondant (elles restent dans l'export).
+COLONNES_MASQUEES = {"rn"}
 
 # --------------------------------------------------------------------------
 # Partie 2 : détails pour les bâtiments ayant répondu « Oui »
@@ -32,41 +44,37 @@ STATUT_SI_MOE = OUI_GRANDS
 # Chaque question devient une colonne du tableau de la partie 2.
 #   cle          nom de la colonne dans l'export (sans espace ni accent)
 #   libelle      titre de la colonne affiché au répondant
-#   type         "choix" (liste déroulante), "texte", "nombre" ou "annee"
-#   options      pour "choix" uniquement
+#   type         "choix" (liste déroulante), "choix_multiple", "texte", "nombre",
+#                "pourcentage" ou "annee"
+#   options      pour "choix" et "choix_multiple"
 #   aide         (facultatif) info-bulle sur la colonne
 #   obligatoire  (facultatif) à remplir avant de pouvoir valider
-#
-# ⚠️ Questions d'exemple, à remplacer par les questions définitives.
 QUESTIONS_PARTIE2 = [
     {
-        "cle": "annee_fin_travaux",
-        "libelle": "Année de fin des travaux",
-        "type": "annee",
+        "cle": "travaux",
+        "libelle": "Travaux réalisés ou en cours",
+        "type": "choix_multiple",
+        "aide": "Plusieurs choix possibles.",
         "obligatoire": True,
-    },
-    {
-        "cle": "nature_travaux",
-        "libelle": "Nature principale des travaux",
-        "type": "choix",
         "options": [
-            "Isolation (murs, toiture, planchers)",
-            "Menuiseries",
-            "Chauffage / eau chaude",
-            "Ventilation",
+            "Isolation des murs",
+            "Isolation du plancher",
+            "Étanchéité à l'air",
+            "Ouvrants",
+            "Isolation des combles/toiture",
+            "Système de chauffage",
+            "Système de ventilation",
+            "ECS",
             "Éclairage",
-            "Plusieurs postes",
-            "Autre",
+            "GTB/GTC",
+            "Mise en place d'énergies renouvelables",
+            "Autres travaux",
         ],
     },
     {
-        "cle": "montant_ht",
-        "libelle": "Montant des travaux (€ HT)",
-        "type": "nombre",
-    },
-    {
-        "cle": "precisions",
-        "libelle": "Précisions",
-        "type": "texte",
+        "cle": "economie_energie_finale_pct",
+        "libelle": "Économie d'énergie finale projetée (%)",
+        "type": "pourcentage",
+        "aide": "Gain attendu sur la consommation d'énergie finale du bâtiment, en %.",
     },
 ]

@@ -15,23 +15,11 @@ def test_referentiel_de_test(ref):
     structures, batiments = ref
     tailles = batiments.groupby("id_structure").size().to_dict()
     assert tailles == {"S0001": 4, "S0002": 5, "S0003": 80, "S0004": 250, "S0005": 100}
-    assert structures["code_acces"].is_unique
+    assert structures["id_structure"].is_unique
+    # RN masqué au répondant (mais conservé dans le référentiel et l'export).
     assert core.colonnes_affichees(batiments) == [
-        "num", "nom_batiment", "adresse", "code_postal", "commune", "typologie", "rn", "financements"]
-
-
-def test_identification(ref):
-    structures, _ = ref
-    s = structures.set_index("id_structure").loc["S0003"]
-    assert core.identifier_par_code(structures, s["code_acces"].lower())["id_structure"] == "S0003"
-    assert core.identifier_par_code(structures, "MAUVAIS1") is None
-    assert core.identifier_par_code(structures, "") is None
-    # Les deux contacts de la structure se connectent avec le même code.
-    for email in ["test3@votre-domaine.fr", "TEST3-BIS@votre-domaine.fr"]:
-        assert core.identifier_par_email(structures, email, s["code_acces"])["id_structure"] == "S0003"
-    # Le code d'une autre structure ne doit pas ouvrir celle-ci.
-    autre = structures.set_index("id_structure").loc["S0001", "code_acces"]
-    assert core.identifier_par_email(structures, "test3@votre-domaine.fr", autre) is None
+        "num", "nom_batiment", "adresse", "code_postal", "commune", "typologie", "financements"]
+    assert "rn" in batiments.columns
 
 
 def test_detection_moe():
@@ -101,30 +89,33 @@ def test_partie2(ref, db):
     det = core.tableau_details(db, "S0002", batiments)
     assert list(det["num"]) == [1, 2, 5]
 
-    det.loc[0, ["annee_fin_travaux", "nature_travaux", "montant_ht"]] = [2022, "Menuiseries", 45000]
+    det["travaux"] = [["Ouvrants", "ECS"], None, None]
+    det.loc[0, "economie_energie_finale_pct"] = 35
     assert core.verifier_details(det) == []
-    # L'année est obligatoire : 2 bâtiments sur 3 ne l'ont pas.
+    # Les travaux sont obligatoires : 2 bâtiments sur 3 n'en ont pas.
     assert len(core.verifier_details(det, complet=True)) == 2
     core.enregistrer_details(db, "S0002", det, batiments)
 
     relu = core.tableau_details(db, "S0002", batiments)
-    assert relu.loc[0, "annee_fin_travaux"] == 2022
-    assert relu.loc[0, "nature_travaux"] == "Menuiseries"
-    assert relu.loc[0, "montant_ht"] == 45000
-    assert pd.isna(relu.loc[1, "annee_fin_travaux"])
+    assert relu.loc[0, "travaux"] == ["Ouvrants", "ECS"]
+    assert relu.loc[0, "economie_energie_finale_pct"] == 35
+    assert relu.loc[1, "travaux"] is None or relu.loc[1, "travaux"] != relu.loc[1, "travaux"]
 
     mauvais = relu.copy()
-    mauvais.loc[1, "annee_fin_travaux"] = 1850
-    mauvais.loc[2, "nature_travaux"] = "Toiture verte"
+    mauvais["travaux"] = [["Ouvrants", "Toiture verte"], ["ECS"], ["ECS"]]
+    mauvais.loc[1, "economie_energie_finale_pct"] = 140
     assert len(core.verifier_details(mauvais)) == 2
+
+    structures = core.charger_structures()
+    export = core.export_complet(db, structures, batiments).set_index("id_batiment")
+    assert export.loc["S0002-B001", "travaux"] == "Ouvrants ; ECS"
 
     # Un bâtiment repassé en « Non » sort de la partie 2 et ses détails sont masqués à l'export.
     t["statut"] = ["Non", OUI_GRANDS, "Non", "Ne sait pas", OUI_PETITS]
     core.enregistrer_reponses(db, "S0002", t, batiments)
     assert list(core.tableau_details(db, "S0002", batiments)["num"]) == [2, 5]
-    structures = core.charger_structures()
     export = core.export_complet(db, structures, batiments).set_index("id_batiment")
-    assert pd.isna(export.loc["S0002-B001", "annee_fin_travaux"])
+    assert pd.isna(export.loc["S0002-B001", "travaux"])
 
 
 def test_validation_avancement_export(ref, db):
@@ -142,10 +133,10 @@ def test_validation_avancement_export(ref, db):
     export = core.export_complet(db, structures, batiments)
     assert len(export) == len(batiments)
     assert (export.loc[export["id_structure"] == "S0002", "statut"] == "Non").all()
-    assert "annee_fin_travaux" in export.columns
+    assert {"travaux", "economie_energie_finale_pct"} <= set(export.columns)
 
 
-def test_preparer_contacts_multiples_et_codes_conserves(tmp_path):
+def test_preparer_contacts_multiples():
     ref = pd.DataFrame({
         "id_structure": ["A", "A", "B"],
         "nom_structure": ["Alpha", "Alpha", "Beta"],
@@ -153,35 +144,41 @@ def test_preparer_contacts_multiples_et_codes_conserves(tmp_path):
         "nom_batiment": ["École", "Gymnase", "Mairie"],
         "typologie": ["Enseignement", "Sport", "Bureaux"],
     })
-    structures, batiments, acces, avert = preparer(ref.copy(), tmp_path, "https://enquete.fr/")
+    structures, batiments, acces, avert = preparer(ref.copy(), "https://enquete.fr/")
     assert structures.loc[0, "email"] == "a@x.fr, a2@x.fr, a3@x.fr"
     assert list(batiments["id_batiment"]) == ["A-B001", "A-B002", "B-B001"]
     assert "typologie" in batiments.columns
     assert list(acces["email"]) == ["a@x.fr", "a2@x.fr", "a3@x.fr", "b@x.fr"]
-    assert acces.loc[0, "code_acces"] == acces.loc[2, "code_acces"] != acces.loc[3, "code_acces"]
-    assert acces.loc[0, "lien"] == "https://enquete.fr/?code=" + acces.loc[0, "code_acces"]
+    assert acces.loc[0, "lien"] == acces.loc[2, "lien"] == "https://enquete.fr/?structure=A"
+    assert acces.loc[3, "lien"] == "https://enquete.fr/?structure=B"
     assert avert == []
     assert list(format_brevo(acces).columns) == [
-        "EMAIL", "ID_STRUCTURE", "NOM_STRUCTURE", "NB_BATIMENTS", "CODE_ACCES", "LIEN"]
-
-    structures.to_csv(tmp_path / "structures.csv", sep=";", index=False)
-    structures2, *_ = preparer(ref.copy(), tmp_path, "https://enquete.fr")
-    assert list(structures2["code_acces"]) == list(structures["code_acces"])
+        "EMAIL", "ID_STRUCTURE", "NOM_STRUCTURE", "NB_BATIMENTS", "LIEN"]
 
 
-def test_preparer_email_partage_entre_structures(tmp_path):
+def test_preparer_email_partage_entre_structures():
     ref = pd.DataFrame({
         "id_structure": ["A", "B"], "nom_structure": ["Alpha", "Beta"],
         "email": ["commun@x.fr", "commun@x.fr, b@x.fr"], "nom_batiment": ["École", "Mairie"],
     })
-    _, _, acces, avert = preparer(ref, tmp_path, "http://localhost:8501")
+    _, _, acces, avert = preparer(ref, "http://localhost:8501")
     assert len(avert) == 1 and "commun@x.fr" in avert[0]
     assert list(format_brevo(acces)["EMAIL"]) == ["commun@x.fr", "b@x.fr"]
 
 
-def test_preparer_refuse_email_manquant_ou_invalide(tmp_path):
+def test_preparer_refuse_email_manquant_ou_invalide():
     base = {"id_structure": ["A"], "nom_structure": ["Alpha"], "nom_batiment": ["École"]}
     with pytest.raises(SystemExit):
-        preparer(pd.DataFrame({**base, "email": [""]}), tmp_path, "http://localhost:8501")
+        preparer(pd.DataFrame({**base, "email": [""]}), "http://localhost:8501")
     with pytest.raises(SystemExit):
-        preparer(pd.DataFrame({**base, "email": ["pas-un-mail"]}), tmp_path, "http://localhost:8501")
+        preparer(pd.DataFrame({**base, "email": ["pas-un-mail"]}), "http://localhost:8501")
+
+
+def test_une_seule_case_par_ligne():
+    avant = pd.DataFrame({"a": [True, False, False], "b": [False, False, False], "c": [False, True, False]})
+    # Ligne 0 : on coche « b » en plus de « a » -> « b » remplace « a ».
+    # Ligne 1 : rien ne change. Ligne 2 : deux cases cochées d'un coup -> la première.
+    apres = pd.DataFrame({"a": [True, False, True], "b": [True, False, True], "c": [False, True, False]})
+    corrige = core.une_seule_case(apres, avant)
+    assert corrige.values.tolist() == [[False, True, False], [False, False, True], [True, False, False]]
+    assert core.une_seule_case(avant, avant) is None

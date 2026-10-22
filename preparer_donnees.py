@@ -11,16 +11,13 @@ Entrée : un fichier Excel (.xlsx) ou CSV (séparateur « ; ») avec une ligne p
 
 Plusieurs e-mails par structure : séparez-les par « , » ou « ; » dans la cellule, ou
 mettez des e-mails différents sur des lignes de la même structure. Tous les contacts
-d'une structure partagent le même code d'accès.
+d'une structure reçoivent le même lien.
 
 Sorties (dans data/ par défaut) :
-  structures.csv        une ligne par structure, avec son code d'accès
+  structures.csv        une ligne par structure
   batiments.csv         une ligne par bâtiment, numérotés 1..n dans chaque structure
-  acces.csv             une ligne par contact : e-mail, structure, code, lien
+  acces.csv             une ligne par contact : e-mail, structure, lien direct
   brevo_contacts.csv    le même fichier au format d'import Brevo (attributs en majuscules)
-
-Les codes déjà attribués (structures.csv existant) sont conservés : on peut relancer
-le script après une correction du référentiel sans invalider les liens déjà envoyés.
 
 Usage :
   python preparer_donnees.py referentiel.xlsx --base-url https://enquete.mondomaine.fr
@@ -28,7 +25,6 @@ Usage :
 from __future__ import annotations
 
 import argparse
-import secrets
 import sys
 from pathlib import Path
 
@@ -37,9 +33,6 @@ import pandas as pd
 from enquete.core import DOSSIER_DONNEES, FINANCEMENTS, separer_emails
 
 OBLIGATOIRES = ["id_structure", "nom_structure", "email", "nom_batiment"]
-# Pas de 0/O ni 1/I/L : les codes sont recopiés à la main par certains répondants.
-ALPHABET_CODE = "ABCDEFGHJKMNPQRSTUVWXYZ23456789"
-LONGUEUR_CODE = 8
 
 
 def lire_referentiel(chemin: Path) -> pd.DataFrame:
@@ -61,14 +54,6 @@ def oui_non(valeur: str) -> str:
     return "Oui" if valeur.strip().lower() in {"oui", "o", "yes", "y", "1", "x", "vrai", "true"} else "Non"
 
 
-def nouveau_code(existants: set[str]) -> str:
-    while True:
-        code = "".join(secrets.choice(ALPHABET_CODE) for _ in range(LONGUEUR_CODE))
-        if code not in existants:
-            existants.add(code)
-            return code
-
-
 def _emails_uniques(cellules: pd.Series) -> str:
     vus = []
     for cellule in cellules:
@@ -78,7 +63,7 @@ def _emails_uniques(cellules: pd.Series) -> str:
     return ", ".join(vus)
 
 
-def preparer(ref: pd.DataFrame, dossier: Path, base_url: str):
+def preparer(ref: pd.DataFrame, base_url: str):
     """Renvoie (structures, batiments, acces, avertissements)."""
     avertissements = []
     if "type_structure" not in ref.columns:
@@ -101,13 +86,7 @@ def preparer(ref: pd.DataFrame, dossier: Path, base_url: str):
     if invalides:
         raise SystemExit(f"Adresses e-mail invalides : {', '.join(invalides)}")
 
-    anciens = {}
-    if (dossier / "structures.csv").exists():
-        prec = pd.read_csv(dossier / "structures.csv", sep=";", dtype=str).fillna("")
-        anciens = dict(zip(prec["id_structure"], prec["code_acces"]))
-    utilises = set(anciens.values())
-    infos["code_acces"] = [anciens.get(i) or nouveau_code(utilises) for i in infos["id_structure"]]
-    structures = infos[["id_structure", "nom_structure", "type_structure", "email", "code_acces"]]
+    structures = infos[["id_structure", "nom_structure", "type_structure", "email"]]
 
     ref["num"] = ref.groupby("id_structure", sort=False).cumcount() + 1
     sans_id = ref["id_batiment"] == ""
@@ -127,8 +106,8 @@ def preparer(ref: pd.DataFrame, dossier: Path, base_url: str):
     acces = structures.merge(nb_bat, on="id_structure")
     acces["email"] = acces["email"].map(separer_emails)
     acces = acces.explode("email", ignore_index=True)
-    acces["lien"] = base_url.rstrip("/") + "/?code=" + acces["code_acces"]
-    acces = acces[["email", "id_structure", "nom_structure", "nb_batiments", "code_acces", "lien"]]
+    acces["lien"] = base_url.rstrip("/") + "/?structure=" + acces["id_structure"]
+    acces = acces[["email", "id_structure", "nom_structure", "nb_batiments", "lien"]]
 
     partages = acces.loc[acces["email"].duplicated(keep=False)]
     for email, groupe in partages.groupby("email"):
@@ -143,7 +122,7 @@ def preparer(ref: pd.DataFrame, dossier: Path, base_url: str):
 def format_brevo(acces: pd.DataFrame) -> pd.DataFrame:
     """Un contact par ligne, attributs en majuscules comme dans Brevo."""
     brevo = acces.drop_duplicates("email").rename(columns=str.upper)
-    return brevo[["EMAIL", "ID_STRUCTURE", "NOM_STRUCTURE", "NB_BATIMENTS", "CODE_ACCES", "LIEN"]]
+    return brevo[["EMAIL", "ID_STRUCTURE", "NOM_STRUCTURE", "NB_BATIMENTS", "LIEN"]]
 
 
 def main(argv: list[str] | None = None) -> None:
@@ -156,7 +135,7 @@ def main(argv: list[str] | None = None) -> None:
 
     args.sortie.mkdir(parents=True, exist_ok=True)
     structures, batiments, acces, avertissements = preparer(
-        lire_referentiel(args.referentiel), args.sortie, args.base_url)
+        lire_referentiel(args.referentiel), args.base_url)
     structures.to_csv(args.sortie / "structures.csv", sep=";", index=False)
     batiments.to_csv(args.sortie / "batiments.csv", sep=";", index=False)
     # utf-8-sig : s'ouvre correctement dans Excel.
