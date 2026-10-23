@@ -45,9 +45,11 @@ def test_lien_direct_et_cases_a_cocher():
     at = ouvrir(structure="S0004")
     assert not at.exception
     assert at.metric[0].value == "250"
-    assert "petits travaux" in at.info[0].value.lower()
+    assert at.title[0].value == "Enquête d'impact Travaux"
+    assert "Consigne" in at.info[0].value and "Travaux prévus" in at.info[0].value
+    assert [t.label for t in at.tabs] == ["Partie 1 : État des bâtiments", "Partie 2 : Détails des travaux"]
     tableau = at.get("dataframe")[0].value
-    assert "rn" not in tableau.columns  # RN masqué
+    assert "rn" not in tableau.columns and "code_postal" not in tableau.columns  # masqués
     assert [c for c in tableau.columns if c.startswith("rep_")] == [f"rep_{i}" for i in range(5)]
     # Les colonnes descriptives viennent avant les cases à cocher.
     assert list(tableau.columns).index("typologie") < list(tableau.columns).index("rep_0")
@@ -73,7 +75,7 @@ def test_parcours_complet():
     assert at.metric[2].value == "Validé"
 
 
-def test_validation_bloquee_par_partie2_obligatoire(db):
+def test_partie2_recommandee_validation_possible(db):
     batiments = core.charger_batiments()
     t = core.tableau_structure(db, "S0001", batiments).assign(statut="Non")
     t.loc[0, "statut"] = OUI_PETITS
@@ -81,10 +83,12 @@ def test_validation_bloquee_par_partie2_obligatoire(db):
 
     at = ouvrir(structure="S0001")
     assert at.metric[1].value == "1"
+    assert "énergie finale" in at.info[1].value
+    assert "Difficultés rencontrées" in at.warning[0].value
     bouton(at, "✅ Valider").click().run()
     assert not at.exception
-    assert "Partie 2 à compléter" in at.error[0].value
-    assert at.metric[2].value == "En cours de saisie"
+    assert at.metric[2].value == "Validé"
+    assert "recommandée" in at.success[0].value
 
 
 def test_admin_ouverte_sans_mot_de_passe():

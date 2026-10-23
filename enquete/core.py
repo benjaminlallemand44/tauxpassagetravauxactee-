@@ -238,8 +238,8 @@ def _valeur_detail(question: dict, valeur):
 
 def verifier_details(details: pd.DataFrame, questions: list[dict] = QUESTIONS_PARTIE2,
                      complet: bool = False) -> list[str]:
-    """Erreurs de saisie de la partie 2 ; avec complet=True, signale aussi les
-    questions obligatoires non remplies."""
+    """Erreurs de saisie de la partie 2 (dont les précisions exigées par « Autre ») ;
+    avec complet=True, signale aussi les questions obligatoires non remplies."""
     erreurs = []
     for _, r in details.iterrows():
         nom = r.get("nom_batiment", r["id_batiment"])
@@ -255,7 +255,11 @@ def verifier_details(details: pd.DataFrame, questions: list[dict] = QUESTIONS_PA
                 continue
             brut = _nettoyer(r.get(q["cle"]))
             if not brut:
-                if complet and q.get("obligatoire"):
+                requis = q.get("requis_si")
+                if requis and requis[1] in _liste(r.get(requis[0])):
+                    erreurs.append(f"{nom} : « {requis[1]} » est coché, précisez-le dans "
+                                   f"« {q['libelle']} ».")
+                elif complet and q.get("obligatoire"):
                     erreurs.append(f"{nom} : « {q['libelle']} » est à renseigner.")
                 continue
             if q["type"] == "choix" and brut not in q["options"]:
@@ -272,6 +276,14 @@ def verifier_details(details: pd.DataFrame, questions: list[dict] = QUESTIONS_PA
                     erreurs.append(f"{nom} : {v} % n'est pas un pourcentage entre 0 et 100 "
                                    f"({q['libelle']}).")
     return erreurs
+
+
+def nb_sans_detail(details: pd.DataFrame, questions: list[dict] = QUESTIONS_PARTIE2) -> int:
+    """Bâtiments de la partie 2 pour lesquels aucune question n'est renseignée."""
+    def vide(r) -> bool:
+        return all(not (_liste(r.get(q["cle"])) if q["type"] == "choix_multiple"
+                        else _nettoyer(r.get(q["cle"]))) for q in questions)
+    return int(sum(vide(r) for _, r in details.iterrows()))
 
 
 def enregistrer_details(db: Path, id_structure: str, details: pd.DataFrame,
@@ -344,7 +356,8 @@ def tableau_details(db: Path, id_structure: str, batiments: pd.DataFrame,
 def export_complet(db: Path, structures: pd.DataFrame, batiments: pd.DataFrame,
                    questions: list[dict] = QUESTIONS_PARTIE2) -> pd.DataFrame:
     """Une ligne par bâtiment : référentiel + réponses (parties 1 et 2) + validation."""
-    rep = _lire(db, "SELECT * FROM reponses")
+    # Le commentaire de la partie 1 n'est plus demandé : il est remplacé par celui de la partie 2.
+    rep = _lire(db, "SELECT * FROM reponses").drop(columns=["commentaire"])
     det = _lire(db, "SELECT * FROM details")
     val = _lire(db, "SELECT * FROM validations")
     infos = structures[["id_structure", "nom_structure", "type_structure", "email"]]

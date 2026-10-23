@@ -1,4 +1,4 @@
-# Enquête : travaux de rénovation énergétique des bâtiments (maquette)
+# Enquête d'impact Travaux (maquette)
 
 Maquette Streamlit d'une enquête auprès des collectivités sur les travaux de rénovation
 énergétique de leurs bâtiments financés (SDIE, audit, MOE, AMO).
@@ -9,43 +9,52 @@ Chaque questionnaire a aussi un lien direct : `https://…/?structure=S0001`.
 
 ## Le questionnaire
 
-**Onglet 1 – Situation des bâtiments.** Les définitions des petits et grands travaux
-s'affichent, puis la question : *« Est-ce que les bâtiments suivants sont passés en travaux de
-rénovation énergétique ? »*.
+**Enquête d'impact Travaux**, sous-titrée « Passage en travaux de rénovation énergétique à la
+suite du soutien ACTEE ». Elle comporte deux parties : la partie 1 est obligatoire, la
+partie 2 est recommandée.
 
-Le tableau montre d'abord les caractéristiques du bâtiment : nom, adresse, code postal,
-commune, typologie, financements reçus. Viennent ensuite **cinq colonnes à cocher**, une par
-réponse :
+**Partie 1 : État des bâtiments.** La question posée est *« Les bâtiments suivants sont-ils
+passés en travaux de rénovation énergétique depuis le soutien ACTEE (tous types de travaux,
+réalisés ou en cours) ? »*. Elle est précédée d'une **Consigne** qui définit les « petits »
+travaux, les « grands » travaux et les travaux prévus.
 
-- Oui, en petits travaux
-- Oui, en grands travaux de rénovation énergétique
-- Non, mais je planifie de faire les travaux dans les 5 ans
-- Non
-- Ne sait pas
+Le tableau montre les caractéristiques du bâtiment (nom, adresse, commune, typologie,
+financements reçus), puis **cinq colonnes à cocher**, une seule par bâtiment :
+- Oui, en « petits » travaux ;
+- Oui, en « grands » travaux de rénovation énergétique ;
+- Prévus ≤ 5 ans (non, mais la structure planifie d'effectuer les travaux dans les 5 ans) ;
+- Non ;
+- Ne sait pas.
 
-Une seule case peut être cochée par bâtiment : cocher une autre case remplace la première.
-Quand **« MOE »** figure dans les financements, la case « Oui, en grands travaux » est
-pré-cochée. La colonne RN n'est pas affichée, mais elle reste dans l'export.
+Quand une **MOE** figure dans les financements, « Oui, « grands » » est pré-coché. Le RN et
+le code postal ne sont pas affichés, mais restent dans l'export.
 
-**Onglet 2 – Détails des travaux.** Il liste uniquement les bâtiments enregistrés en « Oui,
-petits » ou « Oui, grands » dans l'onglet 1. Pour chacun, on demande :
+**Partie 2 : Détails des travaux.** Elle concerne les bâtiments enregistrés en « Oui » dans
+la partie 1. Une consigne explique l'énergie finale et les acronymes, et un bloc dépliable
+donne la définition des montages contractuels. Les colonnes demandées sont :
+- **les travaux réalisés ou en cours**, en choix multiple : isolation des murs, du plancher,
+  des combles/toiture, étanchéité à l'air, ouvrants, chauffage, ventilation, ECS, éclairage,
+  GTB/GTC, énergies renouvelables, protections solaires, brasseurs d'air, climatisation,
+  autres travaux ;
+- **précisez (autres travaux)**, obligatoire si « Autres travaux » est coché ;
+- **le montage contractuel**, en choix multiple : MOD, co-maîtrise d'ouvrage, mutualisation,
+  MGPE, MGPE à paiement différé, marché de partenariat, groupement de commandes, marchés
+  allotis, autre ;
+- **précisez (autre montage)**, obligatoire si « Autre » est coché ;
+- **l'économie d'énergie finale projetée**, en % ;
+- **un commentaire** sur les difficultés, les arbitrages et les aléas.
 
-- **les travaux réalisés ou en cours**, en choix multiple (obligatoire) : isolation des murs,
-  isolation du plancher, étanchéité à l'air, ouvrants, isolation des combles/toiture, système
-  de chauffage, système de ventilation, ECS, éclairage, GTB/GTC, mise en place d'énergies
-  renouvelables, autres travaux ;
-- **l'économie d'énergie finale projetée**, en %.
-
-On peut enregistrer à tout moment. La validation finale exige que l'onglet 1 soit complet et
-que les questions obligatoires de l'onglet 2 soient remplies.
+On peut enregistrer à tout moment. Pour valider, il suffit que la partie 1 soit complète. Si
+la partie 2 n'est pas remplie, l'application le signale sans bloquer la validation.
 
 ### Modifier le contenu
 
 | Quoi | Où |
 |---|---|
 | Définitions des petits / grands travaux | `contenu/definitions.md` (Markdown) |
+| Titre, sous-titre, introduction, noms des onglets | `enquete/questionnaire.py` |
 | Question, réponses, titres des colonnes à cocher, pré-sélection MOE, colonnes masquées | `enquete/questionnaire.py` |
-| Questions de l'onglet 2 | `enquete/questionnaire.py`, liste `QUESTIONS_PARTIE2` |
+| Consigne de la partie 2, définitions des montages, questions de la partie 2 | `enquete/questionnaire.py` (`CONSIGNE_PARTIE2`, `DEFINITIONS_MONTAGES`, `QUESTIONS_PARTIE2`) |
 
 ## Administration : suivi et exports
 
@@ -54,7 +63,7 @@ Le bouton en bas de la page d'accueil, ou `https://…/?admin=1`, donne accès �
 - l'avancement par collectivité ;
 - les réponses d'une collectivité ;
 - l'export **Excel** ou **CSV**, avec une ligne par bâtiment : référentiel, réponse de
-  l'onglet 1, détails de l'onglet 2, date de validation.
+  la partie 1, détails de la partie 2, date de validation.
 
 La page est ouverte à tous par défaut. Pour la protéger, définissez le secret
 `ADMIN_PASSWORD` : sur Streamlit Cloud, dans **⋮ → Settings → Secrets**, ajoutez

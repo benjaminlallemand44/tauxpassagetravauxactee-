@@ -15,10 +15,11 @@ import pandas as pd
 import streamlit as st
 
 from enquete import core
-from enquete.questionnaire import (QUESTION, QUESTIONS_PARTIE2, STATUT_NON, STATUT_SI_MOE,
-                                   STATUTS, STATUTS_DETAILLES, TITRES_COLONNES)
+from enquete.questionnaire import (CONSIGNE_PARTIE2, DEFINITIONS_MONTAGES, INTRODUCTION, ONGLETS, QUESTION,
+                                   QUESTIONS_PARTIE2, SOUS_TITRE, STATUT_NON, STATUT_SI_MOE,
+                                   STATUTS, STATUTS_DETAILLES, TITRE, TITRES_COLONNES)
 
-st.set_page_config(page_title="Enquête rénovation énergétique", page_icon="🏢", layout="wide",
+st.set_page_config(page_title=TITRE, page_icon="🏢", layout="wide",
                    initial_sidebar_state="collapsed")
 
 # Largeur (en pixels) des colonnes descriptives : les cases à cocher doivent rester visibles.
@@ -44,6 +45,11 @@ def mot_de_passe_admin() -> str | None:
         return None
 
 
+def en_tete() -> None:
+    st.title(TITRE)
+    st.markdown(f"#### {SOUS_TITRE}")
+
+
 def aller_a(**params: str) -> None:
     st.query_params.clear()
     st.query_params.update(params)
@@ -53,7 +59,7 @@ def aller_a(**params: str) -> None:
 # Accueil
 # --------------------------------------------------------------------------
 def page_accueil(structures: pd.DataFrame, batiments: pd.DataFrame) -> None:
-    st.title("Enquête : travaux de rénovation énergétique")
+    en_tete()
     st.write("Choisissez une collectivité pour ouvrir son questionnaire.")
 
     synthese = core.avancement(core.chemin_base(), structures, batiments)
@@ -87,19 +93,23 @@ def page_accueil(structures: pd.DataFrame, batiments: pd.DataFrame) -> None:
 def _colonne_question(q: dict):
     aide = q.get("aide")
     libelle = q["libelle"] + (" *" if q.get("obligatoire") else "")
+    largeur = q.get("largeur", "medium")
     if q["type"] == "choix":
         return st.column_config.SelectboxColumn(libelle, options=q["options"], help=aide, width="medium")
     if q["type"] == "choix_multiple":
-        return st.column_config.MultiselectColumn(libelle, options=q["options"], help=aide, width="large")
+        libelles = q.get("libelles", {})
+        return st.column_config.MultiselectColumn(
+            libelle, options=q["options"], help=aide, width=largeur,
+            format_func=lambda option: libelles.get(option, option))
     if q["type"] == "annee":
         return st.column_config.NumberColumn(libelle, min_value=core.ANNEE_MIN,
                                              max_value=core.ANNEE_MAX, step=1, format="%d", help=aide)
     if q["type"] == "pourcentage":
         return st.column_config.NumberColumn(libelle, min_value=0, max_value=100, step=1,
-                                             format="%d %%", help=aide, width="medium")
+                                             format="%d %%", help=aide, width=largeur)
     if q["type"] == "nombre":
         return st.column_config.NumberColumn(libelle, min_value=0, help=aide)
-    return st.column_config.TextColumn(libelle, help=aide, width="large")
+    return st.column_config.TextColumn(libelle, help=aide, width=q.get("largeur", "large"))
 
 
 def _erreurs(titre: str, erreurs: list[str]) -> bool:
@@ -125,10 +135,10 @@ def statuts_depuis_cases(df: pd.DataFrame) -> pd.Series:
 
 def base_partie1(tableau: pd.DataFrame, batiments: pd.DataFrame) -> pd.DataFrame:
     caracteristiques = core.colonnes_affichees(batiments)
-    base = tableau[["id_batiment", *caracteristiques, "commentaire"]].copy()
+    base = tableau[["id_batiment", *caracteristiques]].copy()
     for cle, statut in CASES.items():
         base[cle] = tableau["statut"].eq(statut)
-    return base[["id_batiment", *caracteristiques, *CASES, "commentaire"]]
+    return base
 
 
 def editeur_partie1(id_s: str, tableau: pd.DataFrame, batiments: pd.DataFrame) -> pd.DataFrame:
@@ -144,7 +154,6 @@ def editeur_partie1(id_s: str, tableau: pd.DataFrame, batiments: pd.DataFrame) -
         "id_batiment": None,
         "num": st.column_config.NumberColumn("N°", width=45, pinned=True),
         "nom_batiment": st.column_config.TextColumn("Bâtiment", width=180, pinned=True),
-        "commentaire": st.column_config.TextColumn("Commentaire", width="medium"),
         **{c: st.column_config.TextColumn(core.libelle(c), width=LARGEURS.get(c, "medium"))
            for c in caracteristiques if c not in ("num", "nom_batiment")},
         **{cle: st.column_config.CheckboxColumn(TITRES_COLONNES.get(statut, statut), help=statut,
@@ -174,6 +183,7 @@ def editeur_partie1(id_s: str, tableau: pd.DataFrame, batiments: pd.DataFrame) -
 def editeur_partie2(id_s: str, details: pd.DataFrame) -> pd.DataFrame:
     cles = [q["cle"] for q in QUESTIONS_PARTIE2]
     donnees = details[["id_batiment", "num", "nom_batiment", "statut", *cles]].copy()
+    donnees["statut"] = donnees["statut"].map(lambda v: TITRES_COLONNES.get(v, v))
     for q in QUESTIONS_PARTIE2:
         if q["type"] == "choix_multiple":
             donnees[q["cle"]] = donnees[q["cle"]].map(core._liste)
@@ -183,9 +193,9 @@ def editeur_partie2(id_s: str, details: pd.DataFrame) -> pd.DataFrame:
             donnees[q["cle"]] = donnees[q["cle"]].astype(object).where(donnees[q["cle"]].notna(), None)
     config = {
         "id_batiment": None,
-        "num": st.column_config.NumberColumn("N°", width="small", pinned=True),
-        "nom_batiment": st.column_config.TextColumn("Bâtiment", pinned=True),
-        "statut": st.column_config.TextColumn("Réponse (partie 1)"),
+        "num": st.column_config.NumberColumn("N°", width=45, pinned=True),
+        "nom_batiment": st.column_config.TextColumn("Bâtiment", width=180, pinned=True),
+        "statut": st.column_config.TextColumn("Partie 1", width=120),
         **{q["cle"]: _colonne_question(q) for q in QUESTIONS_PARTIE2},
     }
     return st.data_editor(
@@ -201,9 +211,8 @@ def page_questionnaire(structure: dict, batiments: pd.DataFrame) -> None:
     id_s = structure["id_structure"]
 
     st.button("← Toutes les collectivités", on_click=aller_a)
-    st.title("Travaux de rénovation énergétique")
-    st.write(f"Cette enquête porte sur les bâtiments de **{structure['nom_structure']}**. "
-             "Elle comporte deux parties ; vous pouvez enregistrer et revenir plus tard.")
+    en_tete()
+    st.write(INTRODUCTION.format(structure=structure["nom_structure"]))
 
     tableau = core.tableau_structure(db, id_s, batiments)
     details = core.tableau_details(db, id_s, batiments)
@@ -223,8 +232,7 @@ def page_questionnaire(structure: dict, batiments: pd.DataFrame) -> None:
                            "Vous pouvez encore modifier vos réponses.")
 
     # La clé fait retenir l'onglet ouvert d'un rafraîchissement à l'autre.
-    onglet1, onglet2 = st.tabs(["1. Situation des bâtiments", "2. Détails des travaux"],
-                               key=f"onglets_{id_s}", on_change="rerun")
+    onglet1, onglet2 = st.tabs(ONGLETS, key=f"onglets_{id_s}", on_change="rerun")
 
     with onglet1:
         st.subheader(QUESTION)
@@ -252,6 +260,10 @@ def page_questionnaire(structure: dict, batiments: pd.DataFrame) -> None:
     edite2 = None
     with onglet2:
         st.subheader("Détails des travaux")
+        st.info(CONSIGNE_PARTIE2)
+        with st.expander("Définitions des montages contractuels"):
+            st.markdown("\n".join(f"- **{nom}** : {definition}"
+                                   for nom, definition in DEFINITIONS_MONTAGES.items()))
         if details.empty:
             st.info("Aucun bâtiment concerné pour l'instant. Cette partie liste les bâtiments "
                     f"pour lesquels vous avez répondu « {' » ou « '.join(STATUTS_DETAILLES)} » "
@@ -260,6 +272,9 @@ def page_questionnaire(structure: dict, batiments: pd.DataFrame) -> None:
             st.write("Pour chacun des bâtiments ayant fait l'objet de travaux, merci de préciser :")
             if any(q.get("obligatoire") for q in QUESTIONS_PARTIE2):
                 st.caption("Les colonnes marquées d'un astérisque (*) sont obligatoires pour valider.")
+            commentaire = next((q for q in QUESTIONS_PARTIE2 if q["cle"] == "commentaire_travaux"), None)
+            if commentaire:
+                st.warning(f"💬 **{commentaire['libelle']}** (dernière colonne) : {commentaire['aide']}")
             edite2 = editeur_partie2(id_s, details)
             if st.button("💾 Enregistrer la partie 2", type="primary"):
                 if not _erreurs("Corrigez les saisies suivantes :", core.verifier_details(edite2)):
@@ -281,11 +296,16 @@ def page_questionnaire(structure: dict, batiments: pd.DataFrame) -> None:
                      "à compléter avant de valider.")
             return
         # La partie 2 est relue après enregistrement : de nouveaux « Oui » peuvent y être apparus.
-        a_completer = core.verifier_details(core.tableau_details(db, id_s, batiments), complet=True)
+        details = core.tableau_details(db, id_s, batiments)
+        a_completer = core.verifier_details(details, complet=True)
         if _erreurs("Réponses enregistrées. Partie 2 à compléter avant de valider :", a_completer):
             return
         core.valider(db, id_s)
-        st.session_state["message"] = "Merci ! Votre questionnaire est validé."
+        message = "Merci ! Votre questionnaire est validé."
+        if sans_detail := core.nb_sans_detail(details):
+            message += (f" La partie 2 (recommandée) n'est pas renseignée pour {sans_detail} "
+                        "bâtiment(s) : vous pouvez encore la compléter.")
+        st.session_state["message"] = message
         st.rerun()
 
 
@@ -336,8 +356,8 @@ def page_admin(structures: pd.DataFrame, batiments: pd.DataFrame) -> None:
         "Structure", synthese["id_structure"],
         format_func=lambda i: f"{i} – {synthese.set_index('id_structure').loc[i, 'nom_structure']}")
     vue = export[export["id_structure"] == choix].drop(columns=["email"])
-    en_tete = ["num", "nom_batiment", "statut", "commentaire", *[q["cle"] for q in QUESTIONS_PARTIE2]]
-    st.dataframe(vue[en_tete + [c for c in vue.columns if c not in en_tete]],
+    premieres = ["num", "nom_batiment", "statut", *[q["cle"] for q in QUESTIONS_PARTIE2]]
+    st.dataframe(vue[premieres + [c for c in vue.columns if c not in premieres]],
                  hide_index=True, width="stretch")
 
     st.subheader("Exports (une ligne par bâtiment)")

@@ -16,10 +16,10 @@ def test_referentiel_de_test(ref):
     tailles = batiments.groupby("id_structure").size().to_dict()
     assert tailles == {"S0001": 4, "S0002": 5, "S0003": 80, "S0004": 250, "S0005": 100}
     assert structures["id_structure"].is_unique
-    # RN masqué au répondant (mais conservé dans le référentiel et l'export).
+    # RN et code postal masqués au répondant (mais conservés dans le référentiel et l'export).
     assert core.colonnes_affichees(batiments) == [
-        "num", "nom_batiment", "adresse", "code_postal", "commune", "typologie", "financements"]
-    assert "rn" in batiments.columns
+        "num", "nom_batiment", "adresse", "commune", "typologie", "financements"]
+    assert {"rn", "code_postal"} <= set(batiments.columns)
 
 
 def test_detection_moe():
@@ -90,21 +90,35 @@ def test_partie2(ref, db):
     assert list(det["num"]) == [1, 2, 5]
 
     det["travaux"] = [["Ouvrants", "ECS"], None, None]
+    det["montage_contractuel"] = [["Marché de Partenariat"], None, None]
     det.loc[0, "economie_energie_finale_pct"] = 35
+    det.loc[0, "commentaire_travaux"] = "Arbitrage budgétaire"
     assert core.verifier_details(det) == []
-    # Les travaux sont obligatoires : 2 bâtiments sur 3 n'en ont pas.
-    assert len(core.verifier_details(det, complet=True)) == 2
+    # La partie 2 est recommandée : rien d'obligatoire pour valider.
+    assert core.verifier_details(det, complet=True) == []
+    assert core.nb_sans_detail(det) == 2
     core.enregistrer_details(db, "S0002", det, batiments)
 
     relu = core.tableau_details(db, "S0002", batiments)
     assert relu.loc[0, "travaux"] == ["Ouvrants", "ECS"]
     assert relu.loc[0, "economie_energie_finale_pct"] == 35
+    assert relu.loc[0, "montage_contractuel"] == ["Marché de Partenariat"]
+    assert relu.loc[0, "commentaire_travaux"] == "Arbitrage budgétaire"
     assert relu.loc[1, "travaux"] is None or relu.loc[1, "travaux"] != relu.loc[1, "travaux"]
 
     mauvais = relu.copy()
     mauvais["travaux"] = [["Ouvrants", "Toiture verte"], ["ECS"], ["ECS"]]
     mauvais.loc[1, "economie_energie_finale_pct"] = 140
     assert len(core.verifier_details(mauvais)) == 2
+
+    # « Autres travaux » / « Autre » montage cochés : la précision devient obligatoire.
+    autres = relu.copy()
+    autres["travaux"] = [["Autres travaux"], ["ECS"], ["ECS"]]
+    autres["montage_contractuel"] = [["Autre"], None, None]
+    erreurs = core.verifier_details(autres)
+    assert len(erreurs) == 2 and "précisez" in erreurs[0]
+    autres.loc[0, ["autres_travaux_precision", "autre_montage_precision"]] = ["Toiture végétalisée", "SEM"]
+    assert core.verifier_details(autres) == []
 
     structures = core.charger_structures()
     export = core.export_complet(db, structures, batiments).set_index("id_batiment")
