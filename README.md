@@ -1,4 +1,4 @@
-# Enquête d'impact Travaux (maquette)
+# Évaluation du programme ACTEE (maquette)
 
 Maquette Streamlit d'une enquête auprès des collectivités sur les travaux de rénovation
 énergétique de leurs bâtiments financés (SDIE, audit, MOE, AMO).
@@ -9,7 +9,7 @@ Chaque questionnaire a aussi un lien direct : `https://…/?structure=S0001`.
 
 ## Le questionnaire
 
-**Enquête d'impact Travaux**, sous-titrée « Passage en travaux de rénovation énergétique à la
+**Évaluation du programme ACTEE**, sous-titrée « Passage en travaux de rénovation énergétique à la
 suite du soutien ACTEE ». Elle comporte deux parties : la partie 1 est obligatoire, la
 partie 2 est recommandée.
 

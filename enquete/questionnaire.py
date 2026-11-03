@@ -6,8 +6,22 @@ Les consignes de la partie 1 (définitions) se trouvent dans contenu/definitions
 # --------------------------------------------------------------------------
 # En-tête
 # --------------------------------------------------------------------------
-TITRE = "Enquête d'impact Travaux"
+TITRE = "Évaluation du programme ACTEE"
 SOUS_TITRE = "Passage en travaux de rénovation énergétique à la suite du soutien ACTEE"
+# Texte de la page d'accueil (Markdown).
+TEXTE_ACCUEIL = """Vous répondez à cette enquête en tant que membre d'une convention ACTEE, pour \
+les bâtiments associés à certaines actions financées par ACTEE. Vos bâtiments sont pré-fléchés.
+
+Cette enquête vise à produire des statistiques sur la pertinence et l'efficacité des aides aux \
+collectivités territoriales. Elle comporte deux parties :
+
+- **la partie 1 est obligatoire** : elle permet de décompter les réalisations de « petits » et de \
+« grands » travaux de rénovation, ainsi que les travaux non enclenchés mais prévus dans les 5 ans ;
+- **la partie 2 est recommandée** : elle permet une meilleure qualification des travaux par lots, \
+de leur véhicule contractuel, de leur impact énergétique, et de votre retour d'expérience.
+
+Vous pouvez enregistrer et revenir plus tard."""
+
 # {structure} est remplacé par le nom de la collectivité.
 INTRODUCTION = (
     "Cette enquête porte sur les bâtiments de **{structure}**. Elle comporte deux parties ; "
@@ -74,7 +88,8 @@ DEFINITIONS_MONTAGES = {
         "d'entre elles."
     ),
     "Mutualisation des travaux avec plusieurs collectivités": (
-        "Plusieurs collectivités mènent des travaux dans le cadre d'une opération unique."
+        "Plusieurs collectivités mènent des travaux conjointement, par exemple via un "
+        "groupement de commandes."
     ),
     "Marché Global de Performance Énergétique": (
         "Réalisation de travaux avec objectif de performance énergétique dont l'atteinte "

@@ -15,7 +15,8 @@ import pandas as pd
 import streamlit as st
 
 from enquete import core
-from enquete.questionnaire import (CONSIGNE_PARTIE2, DEFINITIONS_MONTAGES, INTRODUCTION, ONGLETS, QUESTION,
+from enquete.questionnaire import (CONSIGNE_PARTIE2, DEFINITIONS_MONTAGES, INTRODUCTION,
+                                   TEXTE_ACCUEIL, ONGLETS, QUESTION,
                                    QUESTIONS_PARTIE2, SOUS_TITRE, STATUT_NON, STATUT_SI_MOE,
                                    STATUTS, STATUTS_DETAILLES, TITRE, TITRES_COLONNES)
 
@@ -60,7 +61,8 @@ def aller_a(**params: str) -> None:
 # --------------------------------------------------------------------------
 def page_accueil(structures: pd.DataFrame, batiments: pd.DataFrame) -> None:
     en_tete()
-    st.write("Choisissez une collectivité pour ouvrir son questionnaire.")
+    st.markdown(TEXTE_ACCUEIL)
+    st.write("**Choisissez une collectivité pour ouvrir son questionnaire.**")
 
     synthese = core.avancement(core.chemin_base(), structures, batiments)
     recherche = st.text_input("Rechercher une collectivité", placeholder="Nom ou identifiant")
@@ -260,22 +262,29 @@ def page_questionnaire(structure: dict, batiments: pd.DataFrame) -> None:
     edite2 = None
     with onglet2:
         st.subheader("Détails des travaux")
-        st.info(CONSIGNE_PARTIE2)
+        # Liste des lots écrite en clair : le répondant peut rassembler les informations
+        # bâtiment par bâtiment sans ouvrir le menu.
+        travaux = next(q for q in QUESTIONS_PARTIE2 if q["cle"] == "travaux")
+        lots = " ; ".join(travaux.get("libelles", {}).get(o, o) for o in travaux["options"])
+        st.info(f"{CONSIGNE_PARTIE2}\n\n**Lots de travaux proposés** : {lots}.")
         with st.expander("Définitions des montages contractuels"):
             st.markdown("\n".join(f"- **{nom}** : {definition}"
                                    for nom, definition in DEFINITIONS_MONTAGES.items()))
+        st.write("Pour chacun des bâtiments ayant fait l'objet de travaux, merci de préciser :")
+        if any(q.get("obligatoire") for q in QUESTIONS_PARTIE2):
+            st.caption("Les colonnes marquées d'un astérisque (*) sont obligatoires pour valider.")
+        commentaire = next((q for q in QUESTIONS_PARTIE2 if q["cle"] == "commentaire_travaux"), None)
+        if commentaire:
+            st.warning(f"💬 **{commentaire['libelle']}** (dernière colonne) : {commentaire['aide']}")
         if details.empty:
-            st.info("Aucun bâtiment concerné pour l'instant. Cette partie liste les bâtiments "
-                    f"pour lesquels vous avez répondu « {' » ou « '.join(STATUTS_DETAILLES)} » "
-                    "dans la partie 1, une fois celle-ci enregistrée.")
-        else:
-            st.write("Pour chacun des bâtiments ayant fait l'objet de travaux, merci de préciser :")
-            if any(q.get("obligatoire") for q in QUESTIONS_PARTIE2):
-                st.caption("Les colonnes marquées d'un astérisque (*) sont obligatoires pour valider.")
-            commentaire = next((q for q in QUESTIONS_PARTIE2 if q["cle"] == "commentaire_travaux"), None)
-            if commentaire:
-                st.warning(f"💬 **{commentaire['libelle']}** (dernière colonne) : {commentaire['aide']}")
-            edite2 = editeur_partie2(id_s, details)
+            st.info("Le tableau se remplira avec les bâtiments pour lesquels vous aurez répondu "
+                    f"« {' » ou « '.join(STATUTS_DETAILLES)} » dans la partie 1, une fois "
+                    "celle-ci enregistrée. Ses colonnes vous indiquent dès maintenant les "
+                    "informations qui seront demandées.")
+        # Le tableau s'affiche même vide, pour montrer les informations demandées.
+        tableau2 = editeur_partie2(id_s, details)
+        if not details.empty:
+            edite2 = tableau2
             if st.button("💾 Enregistrer la partie 2", type="primary"):
                 if not _erreurs("Corrigez les saisies suivantes :", core.verifier_details(edite2)):
                     core.enregistrer_details(db, id_s, edite2, batiments)

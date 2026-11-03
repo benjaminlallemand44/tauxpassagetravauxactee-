@@ -35,6 +35,25 @@ def test_accueil_liste_les_collectivites_et_ouvre_la_bonne():
     assert at.metric[0].value == "250"
 
 
+def test_texte_d_accueil():
+    at = ouvrir()
+    assert at.title[0].value == "Évaluation du programme ACTEE"
+    texte = " ".join(m.value for m in at.markdown)
+    assert "membre d'une convention ACTEE" in texte and "pré-fléchés" in texte
+    assert "la partie 1 est obligatoire" in texte and "la partie 2 est recommandée" in texte
+
+
+def test_partie2_visible_meme_vide():
+    at = ouvrir(structure="S0003")
+    tableaux = at.get("dataframe")
+    assert len(tableaux) == 2  # partie 1 et partie 2
+    vide = tableaux[1].value
+    assert len(vide) == 0
+    assert {"travaux", "montage_contractuel", "economie_energie_finale_pct"} <= set(vide.columns)
+    assert "Lots de travaux proposés" in at.info[1].value and "Brasseurs d'air" in at.info[1].value
+    assert not [b for b in at.button if b.label.startswith("💾 Enregistrer la partie 2")]
+
+
 def test_recherche_sur_l_accueil():
     at = ouvrir()
     at.text_input[0].input("montclair").run()
@@ -45,7 +64,7 @@ def test_lien_direct_et_cases_a_cocher():
     at = ouvrir(structure="S0004")
     assert not at.exception
     assert at.metric[0].value == "250"
-    assert at.title[0].value == "Enquête d'impact Travaux"
+    assert at.title[0].value == "Évaluation du programme ACTEE"
     assert "Consigne" in at.info[0].value and "Travaux prévus" in at.info[0].value
     assert [t.label for t in at.tabs] == ["Partie 1 : État des bâtiments", "Partie 2 : Détails des travaux"]
     tableau = at.get("dataframe")[0].value
