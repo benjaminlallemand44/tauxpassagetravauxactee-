@@ -137,3 +137,20 @@ def test_moe_precoche_oui_grands_travaux():
     assert tableau.loc[moe, "rep_1"].all()
     assert not tableau.loc[~moe, ["rep_0", "rep_1", "rep_2", "rep_3", "rep_4"]].any().any()
     assert "pré-cochée" in " ".join(c.value for c in at.caption)
+
+
+def test_reponses_d_une_version_anterieure(db):
+    """Réponses enregistrées avec d'anciens libellés et d'anciennes questions : la page
+    doit s'afficher (le tableau de la partie 2, vide, ne doit pas planter)."""
+    import json
+    batiments = core.charger_batiments()
+    t = core.tableau_structure(db, "S0002", batiments).assign(statut="Oui, en petits travaux")
+    core.enregistrer_reponses(db, "S0002", t, batiments)
+    with core._moteur(db).begin() as con:
+        from sqlalchemy import text
+        con.execute(text("INSERT INTO details VALUES ('S0002', 'S0002-B001', :d, '2026-10-22')"),
+                    {"d": json.dumps({"travaux": ["Ouvrants"], "annee_fin_travaux": 2022})})
+    at = ouvrir(structure="S0002")
+    assert not at.exception
+    assert [m.value for m in at.metric][:2] == ["5", "0"]
+    assert len(at.get("dataframe")) == 2

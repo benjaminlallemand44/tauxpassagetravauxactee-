@@ -188,7 +188,10 @@ def editeur_partie2(id_s: str, details: pd.DataFrame) -> pd.DataFrame:
     donnees["statut"] = donnees["statut"].map(lambda v: TITRES_COLONNES.get(v, v))
     for q in QUESTIONS_PARTIE2:
         if q["type"] == "choix_multiple":
-            donnees[q["cle"]] = donnees[q["cle"]].map(core._liste)
+            # dtype objet imposé : un tableau vide ou des réponses d'une version antérieure
+            # (sans cette question) donneraient sinon une colonne float, refusée par l'éditeur.
+            donnees[q["cle"]] = pd.Series([core._liste(v) for v in donnees[q["cle"]]],
+                                          index=donnees.index, dtype=object)
         elif q["type"] in ("nombre", "annee", "pourcentage"):
             donnees[q["cle"]] = pd.to_numeric(donnees[q["cle"]], errors="coerce")
         else:
