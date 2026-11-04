@@ -16,7 +16,7 @@ import streamlit as st
 
 from enquete import core
 from enquete.questionnaire import (CONSIGNE_PARTIE2, DEFINITIONS_MONTAGES, INTRODUCTION,
-                                   TEXTE_ACCUEIL, ONGLETS, QUESTION,
+                                   PRESENTATION, TEXTE_ACCUEIL, ONGLETS, QUESTION,
                                    QUESTIONS_PARTIE2, SOUS_TITRE, STATUT_NON, STATUT_SI_MOE,
                                    STATUTS, STATUTS_DETAILLES, TITRE, TITRES_COLONNES)
 
@@ -222,7 +222,8 @@ def page_questionnaire(structure: dict, batiments: pd.DataFrame) -> None:
 
     st.button("← Toutes les collectivités", on_click=aller_a)
     en_tete()
-    st.write(INTRODUCTION.format(structure=structure["nom_structure"]))
+    st.markdown(PRESENTATION)
+    st.markdown(INTRODUCTION.format(structure=structure["nom_structure"]))
 
     tableau = core.tableau_structure(db, id_s, batiments)
     details = core.tableau_details(db, id_s, batiments)

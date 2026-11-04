@@ -95,6 +95,9 @@ def test_lien_direct_et_cases_a_cocher():
     assert not at.exception
     assert at.metric[0].value == "250"
     assert at.title[0].value == "Évaluation du programme ACTEE"
+    texte = " ".join(m.value for m in at.markdown)
+    assert "membre d'une convention ACTEE" in texte and "la partie 2 est recommandée" in texte
+    assert "Questionnaire de **Département de la Haute-Vallée**" in texte
     assert "Consigne" in at.info[0].value and "Travaux prévus" in at.info[0].value
     assert [t.label for t in at.tabs] == ["Partie 1 : État des bâtiments", "Partie 2 : Détails des travaux"]
     tableau = at.get("dataframe")[0].value

@@ -8,8 +8,8 @@ Les consignes de la partie 1 (définitions) se trouvent dans contenu/definitions
 # --------------------------------------------------------------------------
 TITRE = "Évaluation du programme ACTEE"
 SOUS_TITRE = "Passage en travaux de rénovation énergétique à la suite du soutien ACTEE"
-# Texte de la page d'accueil (Markdown).
-TEXTE_ACCUEIL = """Vous répondez à cette enquête en tant que membre d'une convention ACTEE, pour \
+# Présentation de l'enquête (Markdown), en haut de l'accueil et de chaque questionnaire.
+PRESENTATION = """Vous répondez à cette enquête en tant que membre d'une convention ACTEE, pour \
 les bâtiments associés à certaines actions financées par ACTEE. Vos bâtiments sont pré-fléchés.
 
 Cette enquête vise à produire des statistiques sur la pertinence et l'efficacité des aides aux \
@@ -18,16 +18,12 @@ collectivités territoriales. Elle comporte deux parties :
 - **la partie 1 est obligatoire** : elle permet de décompter les réalisations de « petits » et de \
 « grands » travaux de rénovation, ainsi que les travaux non enclenchés mais prévus dans les 5 ans ;
 - **la partie 2 est recommandée** : elle permet une meilleure qualification des travaux par lots, \
-de leur véhicule contractuel, de leur impact énergétique, et de votre retour d'expérience.
+de leur véhicule contractuel, de leur impact énergétique, et de votre retour d'expérience."""
 
-Vous pouvez enregistrer et revenir plus tard."""
+TEXTE_ACCUEIL = PRESENTATION + "\n\nVous pouvez enregistrer et revenir plus tard."
 
-# {structure} est remplacé par le nom de la collectivité.
-INTRODUCTION = (
-    "Cette enquête porte sur les bâtiments de **{structure}**. Elle comporte deux parties ; "
-    "la partie 1 est obligatoire et la partie 2 est recommandée ; vous pouvez enregistrer "
-    "et revenir plus tard."
-)
+# Sous la présentation, dans le questionnaire ({structure} : nom de la collectivité).
+INTRODUCTION = ("Questionnaire de **{structure}**. Vous pouvez enregistrer et revenir plus tard.")
 ONGLETS = ["Partie 1 : État des bâtiments", "Partie 2 : Détails des travaux"]
 
 # --------------------------------------------------------------------------
