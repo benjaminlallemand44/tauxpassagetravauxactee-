@@ -127,7 +127,7 @@ AUTRE_MONTAGE = "Autre"
 #   aide           (facultatif) info-bulle sur la colonne
 #   obligatoire    (facultatif) à remplir avant de pouvoir valider
 #   requis_si      (facultatif) (cle, option) : à remplir si cette option est choisie
-#   largeur        (facultatif) largeur de la colonne en pixels
+#   multiligne     (facultatif) champ texte sur plusieurs lignes
 QUESTIONS_PARTIE2 = [
     {
         "cle": "travaux",
@@ -155,7 +155,6 @@ QUESTIONS_PARTIE2 = [
             "ECS": "ECS (Eau Chaude Sanitaire)",
             "GTB/GTC": "GTB/GTC (Gestion Technique du Bâtiment / Centralisée)",
         },
-        "largeur": 330,
     },
     {
         "cle": "autres_travaux_precision",
@@ -163,13 +162,12 @@ QUESTIONS_PARTIE2 = [
         "type": "texte",
         "aide": "À remplir uniquement si « Autres travaux » est coché.",
         "requis_si": ("travaux", AUTRES_TRAVAUX),
-        "largeur": 170,
     },
     {
         "cle": "montage_contractuel",
         "libelle": "Montage contractuel",
         "type": "choix_multiple",
-        "aide": "Plusieurs choix possibles. Définitions au-dessus du tableau.",
+        "aide": "Plusieurs choix possibles. Définitions au-dessus des bâtiments.",
         "options": [
             "Maîtrise d'ouvrage déléguée",
             "Co-maîtrise d'ouvrage",
@@ -181,7 +179,6 @@ QUESTIONS_PARTIE2 = [
             "Marchés de travaux allotis",
             AUTRE_MONTAGE,
         ],
-        "largeur": 280,
     },
     {
         "cle": "autre_montage_precision",
@@ -189,7 +186,6 @@ QUESTIONS_PARTIE2 = [
         "type": "texte",
         "aide": "À remplir uniquement si « Autre » est coché dans le montage contractuel.",
         "requis_si": ("montage_contractuel", AUTRE_MONTAGE),
-        "largeur": 170,
     },
     {
         "cle": "economie_energie_finale_pct",
@@ -202,6 +198,7 @@ QUESTIONS_PARTIE2 = [
         "cle": "commentaire_travaux",
         "libelle": "Commentaire",
         "type": "texte",
+        "multiligne": True,
         "aide": "Difficultés rencontrées ou surmontées par votre structure, critères "
                 "d'arbitrage ou de priorisation, aléas…",
     },

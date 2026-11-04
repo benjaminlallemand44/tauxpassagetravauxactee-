@@ -45,13 +45,43 @@ def test_texte_d_accueil():
 
 def test_partie2_visible_meme_vide():
     at = ouvrir(structure="S0003")
-    tableaux = at.get("dataframe")
-    assert len(tableaux) == 2  # partie 1 et partie 2
-    vide = tableaux[1].value
-    assert len(vide) == 0
-    assert {"travaux", "montage_contractuel", "economie_energie_finale_pct"} <= set(vide.columns)
-    assert "Lots de travaux proposés" in at.info[1].value and "Brasseurs d'air" in at.info[1].value
+    # Aperçu : une fiche d'exemple, désactivée, avec les choix visibles.
+    assert "aperçu" in at.info[2].value
+    assert [p.label for p in at.pills] == ["Travaux réalisés ou en cours", "Montage contractuel"]
+    assert all(p.disabled for p in at.pills)
+    assert "Brasseurs d'air" in at.pills[0].options
+    assert "Lots de travaux proposés" in at.info[1].value
     assert not [b for b in at.button if b.label.startswith("💾 Enregistrer la partie 2")]
+
+
+def test_partie2_choix_multiples_et_precision(db):
+    batiments = core.charger_batiments()
+    t = core.tableau_structure(db, "S0001", batiments).assign(statut="Non")
+    t.loc[0, "statut"] = OUI_PETITS
+    core.enregistrer_reponses(db, "S0001", t, batiments)
+
+    at = ouvrir(structure="S0001")
+    travaux, montage = at.pills
+    assert not travaux.disabled and len(travaux.options) == 15
+    assert not [ti for ti in at.text_input if ti.label.startswith("Précisez")]
+    # « Autres travaux » sélectionné : le champ « Précisez » apparaît.
+    travaux.set_value(["Ouvrants", "Autres travaux"]).run()
+    assert [ti.label for ti in at.text_input if ti.label.startswith("Précisez")] == ["Précisez (autres travaux)"]
+    bouton(at, "💾 Enregistrer la partie 2").click().run()
+    assert "précisez-le" in at.error[0].value
+    next(ti for ti in at.text_input if ti.label.startswith("Précisez")).input("Toiture végétalisée")
+    at.pills[1].set_value(["Marché de Partenariat"])
+    at.number_input[0].set_value(40)
+    bouton(at, "💾 Enregistrer la partie 2").click().run()
+    assert not at.exception
+    assert "Partie 2 enregistrée" in at.success[0].value
+    relu = core.tableau_details(db, "S0001", batiments).iloc[0]
+    assert relu["travaux"] == ["Ouvrants", "Autres travaux"]
+    assert relu["autres_travaux_precision"] == "Toiture végétalisée"
+    assert relu["montage_contractuel"] == ["Marché de Partenariat"]
+    assert relu["economie_energie_finale_pct"] == 40
+    # Après rechargement, les choix enregistrés sont en surbrillance.
+    assert at.pills[0].value == ["Ouvrants", "Autres travaux"]
 
 
 def test_recherche_sur_l_accueil():
@@ -153,4 +183,4 @@ def test_reponses_d_une_version_anterieure(db):
     at = ouvrir(structure="S0002")
     assert not at.exception
     assert [m.value for m in at.metric][:2] == ["5", "0"]
-    assert len(at.get("dataframe")) == 2
+    assert len(at.pills) == 2

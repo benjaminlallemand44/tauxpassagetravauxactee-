@@ -92,26 +92,38 @@ def page_accueil(structures: pd.DataFrame, batiments: pd.DataFrame) -> None:
 # --------------------------------------------------------------------------
 # Questionnaire
 # --------------------------------------------------------------------------
-def _colonne_question(q: dict):
+def _texte(valeur) -> str:
+    return "" if valeur is None or (pd.api.types.is_scalar(valeur) and pd.isna(valeur)) else str(valeur)
+
+
+def _champ(q: dict, valeur, cle: str, desactive: bool = False):
+    """Widget d'une question de la partie 2, pré-rempli avec la réponse enregistrée."""
     aide = q.get("aide")
     libelle = q["libelle"] + (" *" if q.get("obligatoire") else "")
-    largeur = q.get("largeur", "medium")
-    if q["type"] == "choix":
-        return st.column_config.SelectboxColumn(libelle, options=q["options"], help=aide, width="medium")
     if q["type"] == "choix_multiple":
+        # Toutes les valeurs visibles ; un clic sélectionne (surbrillance), un second désélectionne.
         libelles = q.get("libelles", {})
-        return st.column_config.MultiselectColumn(
-            libelle, options=q["options"], help=aide, width=largeur,
-            format_func=lambda option: libelles.get(option, option))
-    if q["type"] == "annee":
-        return st.column_config.NumberColumn(libelle, min_value=core.ANNEE_MIN,
-                                             max_value=core.ANNEE_MAX, step=1, format="%d", help=aide)
-    if q["type"] == "pourcentage":
-        return st.column_config.NumberColumn(libelle, min_value=0, max_value=100, step=1,
-                                             format="%d %%", help=aide, width=largeur)
-    if q["type"] == "nombre":
-        return st.column_config.NumberColumn(libelle, min_value=0, help=aide)
-    return st.column_config.TextColumn(libelle, help=aide, width=q.get("largeur", "large"))
+        return st.pills(libelle, q["options"], selection_mode="multi",
+                        default=[v for v in core._liste(valeur) if v in q["options"]],
+                        format_func=lambda option: libelles.get(option, option),
+                        key=cle, help=aide, disabled=desactive)
+    if q["type"] == "choix":
+        options = q["options"]
+        return st.selectbox(libelle, options, index=options.index(valeur) if valeur in options else None,
+                            key=cle, help=aide, disabled=desactive, placeholder="Choisir…")
+    if q["type"] in ("nombre", "annee", "pourcentage"):
+        nombre = pd.to_numeric(valeur, errors="coerce")
+        bornes = {"pourcentage": (0, 100), "annee": (core.ANNEE_MIN, core.ANNEE_MAX)}
+        mini, maxi = bornes.get(q["type"], (0, None))
+        entier = q["type"] != "nombre"
+        return st.number_input(
+            libelle, min_value=mini, max_value=maxi, step=1 if entier else None,
+            value=None if pd.isna(nombre) else (int(nombre) if entier else float(nombre)),
+            key=cle, help=aide, disabled=desactive, placeholder="")
+    if q.get("multiligne"):
+        return st.text_area(libelle, value=_texte(valeur), key=cle, help=aide,
+                            disabled=desactive, height=80)
+    return st.text_input(libelle, value=_texte(valeur), key=cle, help=aide, disabled=desactive)
 
 
 def _erreurs(titre: str, erreurs: list[str]) -> bool:
@@ -182,33 +194,26 @@ def editeur_partie1(id_s: str, tableau: pd.DataFrame, batiments: pd.DataFrame) -
     return edite.assign(statut=statuts_depuis_cases(edite))
 
 
-def editeur_partie2(id_s: str, details: pd.DataFrame) -> pd.DataFrame:
-    cles = [q["cle"] for q in QUESTIONS_PARTIE2]
-    donnees = details[["id_batiment", "num", "nom_batiment", "statut", *cles]].copy()
-    donnees["statut"] = donnees["statut"].map(lambda v: TITRES_COLONNES.get(v, v))
-    for q in QUESTIONS_PARTIE2:
-        if q["type"] == "choix_multiple":
-            # dtype objet imposé : un tableau vide ou des réponses d'une version antérieure
-            # (sans cette question) donneraient sinon une colonne float, refusée par l'éditeur.
-            donnees[q["cle"]] = pd.Series([core._liste(v) for v in donnees[q["cle"]]],
-                                          index=donnees.index, dtype=object)
-        elif q["type"] in ("nombre", "annee", "pourcentage"):
-            donnees[q["cle"]] = pd.to_numeric(donnees[q["cle"]], errors="coerce")
-        else:
-            donnees[q["cle"]] = donnees[q["cle"]].astype(object).where(donnees[q["cle"]].notna(), None)
-    config = {
-        "id_batiment": None,
-        "num": st.column_config.NumberColumn("N°", width=45, pinned=True),
-        "nom_batiment": st.column_config.TextColumn("Bâtiment", width=180, pinned=True),
-        "statut": st.column_config.TextColumn("Partie 1", width=120),
-        **{q["cle"]: _colonne_question(q) for q in QUESTIONS_PARTIE2},
-    }
-    return st.data_editor(
-        donnees, key=f"p2_{id_s}_{st.session_state.get(f'gen_{id_s}', 0)}",
-        hide_index=True, num_rows="fixed", width="stretch", placeholder="",
-        height=38 + 35 * len(donnees),
-        disabled=["num", "nom_batiment", "statut"], column_config=config,
-    )
+def fiches_partie2(id_s: str, details: pd.DataFrame, apercu: bool = False) -> pd.DataFrame:
+    """Une fiche par bâtiment. Renvoie les réponses affichées (une ligne par bâtiment).
+    Un champ « Précisez » n'apparaît que si l'option qui l'exige est sélectionnée."""
+    gen = st.session_state.get(f"gen_{id_s}", 0)
+    lignes = []
+    for _, b in details.iterrows():
+        with st.container(border=True):
+            st.markdown(f"**{b['num']}. {b['nom_batiment']}** · "
+                        f"{TITRES_COLONNES.get(b['statut'], b['statut'])}")
+            reponse = {"id_batiment": b["id_batiment"], "nom_batiment": b["nom_batiment"]}
+            for q in QUESTIONS_PARTIE2:
+                requis = q.get("requis_si")
+                if requis and requis[1] not in core._liste(reponse.get(requis[0])):
+                    reponse[q["cle"]] = None
+                    continue
+                reponse[q["cle"]] = _champ(q, b.get(q["cle"]),
+                                           f"p2_{id_s}_{gen}_{b['id_batiment']}_{q['cle']}", apercu)
+            lignes.append(reponse)
+    return pd.DataFrame(lignes, columns=["id_batiment", "nom_batiment",
+                                         *[q["cle"] for q in QUESTIONS_PARTIE2]])
 
 
 def page_questionnaire(structure: dict, batiments: pd.DataFrame) -> None:
@@ -275,19 +280,22 @@ def page_questionnaire(structure: dict, batiments: pd.DataFrame) -> None:
                                    for nom, definition in DEFINITIONS_MONTAGES.items()))
         st.write("Pour chacun des bâtiments ayant fait l'objet de travaux, merci de préciser :")
         if any(q.get("obligatoire") for q in QUESTIONS_PARTIE2):
-            st.caption("Les colonnes marquées d'un astérisque (*) sont obligatoires pour valider.")
+            st.caption("Les champs marqués d'un astérisque (*) sont obligatoires pour valider.")
         commentaire = next((q for q in QUESTIONS_PARTIE2 if q["cle"] == "commentaire_travaux"), None)
         if commentaire:
-            st.warning(f"💬 **{commentaire['libelle']}** (dernière colonne) : {commentaire['aide']}")
+            st.warning(f"💬 **{commentaire['libelle']}** (dernier champ de chaque bâtiment) : "
+                       f"{commentaire['aide']}")
         if details.empty:
-            st.info("Le tableau se remplira avec les bâtiments pour lesquels vous aurez répondu "
-                    f"« {' » ou « '.join(STATUTS_DETAILLES)} » dans la partie 1, une fois "
-                    "celle-ci enregistrée. Ses colonnes vous indiquent dès maintenant les "
-                    "informations qui seront demandées.")
-        # Le tableau s'affiche même vide, pour montrer les informations demandées.
-        tableau2 = editeur_partie2(id_s, details)
-        if not details.empty:
-            edite2 = tableau2
+            st.info("Les bâtiments pour lesquels vous aurez répondu "
+                    f"« {' » ou « '.join(STATUTS_DETAILLES)} » dans la partie 1 apparaîtront "
+                    "ici, une fois celle-ci enregistrée. Voici dès maintenant un aperçu des "
+                    "informations qui seront demandées pour chacun :")
+            exemple = pd.DataFrame([{"id_batiment": "apercu", "num": "—",
+                                     "nom_batiment": "Exemple de bâtiment",
+                                     "statut": STATUTS_DETAILLES[-1]}])
+            fiches_partie2(id_s, exemple, apercu=True)
+        else:
+            edite2 = fiches_partie2(id_s, details)
             if st.button("💾 Enregistrer la partie 2", type="primary"):
                 if not _erreurs("Corrigez les saisies suivantes :", core.verifier_details(edite2)):
                     core.enregistrer_details(db, id_s, edite2, batiments)

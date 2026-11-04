@@ -31,16 +31,16 @@ le code postal ne sont pas affichés, mais restent dans l'export.
 
 **Partie 2 : Détails des travaux.** Elle concerne les bâtiments enregistrés en « Oui » dans
 la partie 1. Une consigne explique l'énergie finale et les acronymes, et un bloc dépliable
-donne la définition des montages contractuels. Les colonnes demandées sont :
-- **les travaux réalisés ou en cours**, en choix multiple : isolation des murs, du plancher,
+donne la définition des montages contractuels. Chaque bâtiment a sa fiche, qui demande :
+- **les travaux réalisés ou en cours**, en choix multiple (toutes les valeurs sont affichées ; un clic sélectionne, la valeur passe en surbrillance, un second clic la retire) : isolation des murs, du plancher,
   des combles/toiture, étanchéité à l'air, ouvrants, chauffage, ventilation, ECS, éclairage,
   GTB/GTC, énergies renouvelables, protections solaires, brasseurs d'air, climatisation,
   autres travaux ;
-- **précisez (autres travaux)**, obligatoire si « Autres travaux » est coché ;
+- **précisez (autres travaux)**, qui n'apparaît et n'est obligatoire que si « Autres travaux » est sélectionné ;
 - **le montage contractuel**, en choix multiple : MOD, co-maîtrise d'ouvrage, mutualisation,
   MGPE, MGPE à paiement différé, marché de partenariat, groupement de commandes, marchés
   allotis, autre ;
-- **précisez (autre montage)**, obligatoire si « Autre » est coché ;
+- **précisez (autre montage)**, qui n'apparaît et n'est obligatoire que si « Autre » est sélectionné ;
 - **l'économie d'énergie finale projetée**, en % ;
 - **un commentaire** sur les difficultés, les arbitrages et les aléas.
 
